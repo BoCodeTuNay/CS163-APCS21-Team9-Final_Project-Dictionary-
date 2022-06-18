@@ -1,16 +1,25 @@
 #pragma once
+#include <string>
+#include <string.h>
 #include "../Constant.h"
 
+using namespace std;
+
 struct DefStr {
-	char s[150];
+	string s;
+
+	void SetDef(string& Def);
 };
 
 struct TrieNode {
 	char NodeChar;
-	Definition* DefStr;
-	TrieNode* NextNode[26];
+	DefStr* Def;
+	TrieNode* NextNode[MaxDiffChar];
 
-	TrieNode() : NodeChar(' '), DefStr(NULL) {
+	TrieNode() {
+		Def = NULL;
+		NodeChar = ' ';
+		for (int i = 0; i < MaxDiffChar; ++i) Root->NextNode[i] = NULL;
 	}
 };
 
@@ -20,7 +29,9 @@ struct Trie {
 	Trie() : Root(NULL) {
 	}
 
-	void AddToTrie(Char InputStr[], int InputSize);
+	void AddToTrie(string& InputStr, string& Def);
+	DefStr* SearchForDef(string& InputStr);
+	void EditDef(string& InputStr, string& NewDef);
 };
 
 #include ".../Trie/Trie.cpp"
