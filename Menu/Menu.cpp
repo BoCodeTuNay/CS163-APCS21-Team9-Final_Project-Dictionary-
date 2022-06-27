@@ -1,5 +1,10 @@
 ﻿#include "Menu.h"
 
+HANDLE hConsoleOutput;
+int vitri;
+int tongvitri;
+int page;
+
 // bam vao key de dung chuong trinh
 void WaitKey()
 {

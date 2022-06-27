@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Menu\Menu.cpp" />
     <ClCompile Include="Dictionary.cpp" />
   </ItemGroup>
   <ItemGroup>

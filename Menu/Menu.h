@@ -9,10 +9,10 @@ using namespace std;
 #define ConsoleWidth 80
 #define ConsoleHeight 35
 
-HANDLE hConsoleOutput;
-int vitri; // vị trí mỗi dòng 
-int tongvitri; // tổng vị trí trong trang đó
-int page; // số trang
+extern HANDLE hConsoleOutput;
+extern int vitri; // vị trí mỗi dòng 
+extern int tongvitri; // tổng vị trí trong trang đó
+extern int page; // số trang
 
 // bam vao key de dung chuong trinh
 void WaitKey();
