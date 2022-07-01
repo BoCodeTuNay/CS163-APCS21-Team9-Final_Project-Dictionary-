@@ -1,202 +1,6 @@
 ﻿#include "Menu.h"
 
-HANDLE hConsoleOutput;
-int vitri;
-int tongvitri;
-int page;
-
-// bam vao key de dung chuong trinh
-void WaitKey()
-{
-	cout << endl << endl << endl << "\t\t\tPress any key";
-	while (_kbhit()) _getch(); // Empty the input buffer
-	_getch(); // Wait for a key
-	while (_kbhit()) _getch(); // Empty the input buffer (some keys sends two messages)
-}
-
-// Hàm thay đổi kích cỡ của khung cmd với tham số truyền vào là chiều cao, chiều rộng.
-void resizeConsole(int width, int height)
-{
-	/*HWND console = GetConsoleWindow();
-	RECT r;
-	GetWindowRect(console, &r);
-	MoveWindow(console, r.left, r.top, width, height, TRUE);*/
-
-	COORD crd = { width, height };
-	SMALL_RECT rec = { 0, 0, width - 1, height - 1 };
-	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleWindowInfo(hConsoleOutput, TRUE, &rec);
-	SetConsoleScreenBufferSize(hConsoleOutput, crd);
-}
-
-// Hàm tô màu.
-void textcolor(int x)
-{
-	HANDLE mau;
-	mau = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(mau, x);
-}
-
-// font chu
-void textFont() {
-	HANDLE font;
-	font = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_FONT_INFOEX temp;
-	temp.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-	temp.dwFontSize.X = 0;
-	temp.dwFontSize.Y = 20;
-	temp.FontFamily = TMPF_TRUETYPE;
-	wcscpy_s(temp.FaceName, L"Arial");
-	SetCurrentConsoleFontEx(font, true, &temp);
-	/*GetCurrentConsoleFontEx(font, true, );*/
-}
-void textFont2() {
-	HANDLE font;
-	font = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_FONT_INFOEX temp;
-	temp.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-	temp.dwFontSize.X = 0;
-	temp.dwFontSize.Y = 20;
-	temp.FontFamily = TMPF_TRUETYPE;
-	wcscpy_s(temp.FaceName, L"Courier");
-	SetCurrentConsoleFontEx(font, true, &temp);
-}
-
-// Hàm dịch chuyển con trỏ đến tọa độ x, y.
-void gotoxy(int x, int y)
-{
-	HANDLE hConsoleOutput;
-	COORD Cursor_an_Pos = { x - 1,y - 1 };
-	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
-}
-
-// Hàm xóa màn hình.
-void XoaManHinh()
-{
-	HANDLE hOut;
-	COORD Position;
-	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	Position.X = 0;
-	Position.Y = 0;
-	SetConsoleCursorPosition(hOut, Position);
-}
-
-// Tô màu chữ rồi đổi về mặc định
-void ToMau(int x, int y, string a, int color) // x, y là tọa độ con trỏ cần nhảy đến để viết, a là chuỗi cần truyền vào, color là màu truyền vào.
-{
-	gotoxy(x, y);
-	textcolor(color);
-	cout << a;
-	textcolor(7);
-}
-
-//disable resize window
-void DisableResizeWindow()
-{
-	HWND hWnd = GetConsoleWindow();
-	SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_SIZEBOX);
-}
-
-//true: hien, false: an
-void ShowScrollbar(BOOL Show)
-{
-	HWND hWnd = GetConsoleWindow();
-	ShowScrollBar(hWnd, SB_BOTH, Show);
-}
-
-//disable zoom, minimize, close
-void DisableCtrButton(bool Close, bool Min, bool Max)
-{
-	HWND hWnd = GetConsoleWindow();
-	HMENU hMenu = GetSystemMenu(hWnd, false);
-
-	if (Close == 1)
-	{
-		DeleteMenu(hMenu, SC_CLOSE, MF_BYCOMMAND);
-	}
-	if (Min == 1)
-	{
-		DeleteMenu(hMenu, SC_MINIMIZE, MF_BYCOMMAND);
-	}
-	if (Max == 1)
-	{
-		DeleteMenu(hMenu, SC_MAXIMIZE, MF_BYCOMMAND);
-	}
-}
-
-//viết tiếng viêt
-BOOL WINAPI SetConsoleOutputCP(
-	_In_ UINT wCodePageID
-);
-
-//tạo tiêu đề 
-BOOL WINAPI SetConsoleTitle(
-	_In_ LPCTSTR lpConsoleTitle
-);
-
-//ẩn hiện con trỏ
-void ShowCur(bool CursorVisibility)
-{
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO ConCurInf;
-
-	ConCurInf.dwSize = 10;
-	ConCurInf.bVisible = CursorVisibility;
-
-	SetConsoleCursorInfo(handle, &ConCurInf);
-}
-
-//đổi màu background
-void setBackgroundColor(WORD color)
-{
-	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_SCREEN_BUFFER_INFO screen_buffer_info;
-	GetConsoleScreenBufferInfo(hConsoleOutput, &screen_buffer_info);
-	WORD wAttributes = screen_buffer_info.wAttributes;
-	color &= 0x000f;
-	color <<= 4; // Dich trai 3 bit de phu hop voi mau nen
-	wAttributes &= 0xff0f; // Cai 0 cho 1 bit chu nhay va 3 bit mau nen
-	wAttributes |= color;
-	SetConsoleTextAttribute(hConsoleOutput, wAttributes);
-}
-
-//reset color
-WORD textattr()
-{
-	CONSOLE_SCREEN_BUFFER_INFO ConsoleInfo;
-	GetConsoleScreenBufferInfo(hConsoleOutput, &ConsoleInfo);
-	return ConsoleInfo.wAttributes;
-}
-void resettextattr()
-{
-	DWORD Mau_Mac_Dinh = textattr();
-	SetConsoleTextAttribute(hConsoleOutput, Mau_Mac_Dinh);
-}
-
-// đổi màu background + chữ
-void setColorBGTextXY(bool flag, SHORT x, SHORT y, WORD color, WORD background, LPSTR str, ...)
-{
-
-	gotoxy(x, y);
-	/*setBackgroundColor(background);*/
-	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (flag == true) {
-		SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | BACKGROUND_GREEN);
-	}
-	/*textcolor(color);*/
-	/*In duoc nhieu chu hon*/
-	va_list args;
-	va_start(args, str);
-	vprintf(str, args);
-	va_end(args);
-	/*In duoc nhieu chu hon*/
-	SetConsoleTextAttribute(hStdOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
-	resettextattr();
-	//setColor(7);
-}
-
-// vẽ menu
+// Ve menu
 void Menuchung() {
 	int i;
 	for (i = 0; i < ConsoleWidth; i++) {
@@ -275,7 +79,7 @@ void Menu2(int index) {
 	s2 = "VIEW";
 	s3 = "ADD/REMOVE/EDIT";
 	s4 = "RESET ORIGIN";
-	s5 = "GUESS (BY USER)";
+	s5 = "TEST VOCABULARY";
 	s6 = "BACK";
 	LPSTR copy1 = const_cast<char*>(s1.c_str());
 	LPSTR copy2 = const_cast<char*>(s2.c_str());
@@ -318,7 +122,7 @@ void Menu4(int index) {
 	if (index == 2) flag3 = true;
 	if (index == 3) flag4 = true;
 	s1 = "VIEW HISTORY OF SEARCHING";
-	s2 = "VIEW RANDOM WORD AND ITS DEFINITION";
+	s2 = "VIEW RANDOM WORD";
 	s3 = "VIEW FAVOURITE LIST";
 	s4 = "BACK";
 	LPSTR copy1 = const_cast<char*>(s1.c_str());
@@ -378,6 +182,32 @@ void Menu6(int index) {
 	setColorBGTextXY(flag2, (ConsoleWidth / 2 - s2.length() / 2), 9, 15, (index == 1) ? 2 : 0, copy2);
 	setColorBGTextXY(flag3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0, copy3);
 }
+
+void Menu7() {/*
+	vitri = index;
+	tongvitri = 4;
+	string s1, s2, s3, s4;
+	bool flag1 = false, flag2 = false, flag3 = false, flag4 = false;
+	if (index == 0) flag1 = true;
+	if (index == 1) flag2 = true;
+	if (index == 2) flag3 = true;
+	if (index == 3) flag4 = true;*/
+
+	srand(time(NULL));
+	int index = rand() % EmojiDict.ExistingWords.size();
+
+	string LineStr = "The randomly picked word is: ";
+	string WordStr = string("Word: ") + EmojiDict.ExistingWords[index]->Word;
+	string DefStr = string("Definition: ") + EmojiDict.ExistingWords[index]->Definition;
+
+	LPSTR Line = const_cast<char*>(LineStr.c_str());
+	LPSTR Word = const_cast<char*>(WordStr.c_str());
+	LPSTR Definition = const_cast<char*>(DefStr.c_str());
+	setColorBGTextXY(false, 10, 15, 15, 0, Line);
+	setColorBGTextXY(false, 10, 17, 15, 0, Word);
+	setColorBGTextXY(false, 10, 19, 15, 0, Definition);
+}
+
 void xuliphim(KEY_EVENT_RECORD key) {
 	if (key.bKeyDown) {
 		switch (key.wVirtualKeyCode) {
@@ -564,8 +394,8 @@ void xuliphim(KEY_EVENT_RECORD key) {
 
 				}
 				else if (vitri == 1) {
-					// ham VIEW RANDOM WORD AND ITS DEFINITION
-
+					// ham VIEW RANDOM WORD
+					page = 7;
 				}
 				else if (vitri == 2) {
 					// ham VIEW FAVOURITE LIST
@@ -661,6 +491,11 @@ void xulisukien() {
 					system("cls");
 					MenuHelper2();
 					Menu6(vitri);
+				}
+				else if (page == 7) {
+					system("cls");
+					Menuchung();
+					Menu7();
 				}
 				if (eventbuffer[i].EventType == KEY_EVENT) {
 					xuliphim(eventbuffer[i].Event.KeyEvent);

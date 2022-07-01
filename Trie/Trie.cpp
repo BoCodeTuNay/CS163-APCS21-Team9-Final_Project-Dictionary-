@@ -1,38 +1,41 @@
 #include "../Trie/Trie.h"
 
-void DefStr::SetDef(string& Def) {
-	s = Def;
-}
-
-void Trie::AddToTrie(string& InputStr, string& Def) {
+void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	if (Root == NULL) {
-		Root = new TrieNode;
+		Root = new TrieNode();
 	}
 
 	TrieNode* Cur = Root;
 
+	string WordTmp;
 	for (char c : InputStr) {
+		WordTmp += c;
 		int cNum = int(c);
 		if (Cur->NextNode[cNum] == NULL) {
-			Cur->NextNode[cNum] = new TrieNode;
+			Cur->NextNode[cNum] = new TrieNode(c);
 		}
 		Cur = Cur->NextNode[cNum];
 	}
 
-	(*Cur->Def).SetDef(Def);
+	Cur->Word = WordTmp;
+	Cur->Definition = Def;
+	ExistingWords.push_back(Cur);
 }
 
-DefStr* Trie::SearchForDef(string& InputStr) {
+string* Trie::SearchForDef(const string& InputStr) {
 	TrieNode* Cur = Root;
 	for (char c : InputStr) {
 		int cNum = int(c);
 		if (Cur->NextNode[cNum] == NULL) return NULL;
 		Cur = Cur->NextNode[cNum];
 	}
-	return Cur->Def;
+	return &(Cur->Definition);
 }
 
-void Trie::EditDef(string& InputStr, string& NewDef) {
-	DefStr* NeedDef = SearchForDef(InputStr);
-	(*NeedDef).SetDef(NewDef);
+void Trie::EditDef(const string& InputStr, const string& NewDef) {
+	string* NeedDef = SearchForDef(InputStr);
+
+	if (NeedDef != NULL) {
+		*NeedDef = NewDef;
+	}
 }

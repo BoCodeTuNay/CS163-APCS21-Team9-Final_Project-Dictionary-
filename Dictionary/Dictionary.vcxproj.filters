@@ -18,13 +18,31 @@
     <ClCompile Include="Dictionary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Menu\Menu.cpp">
+    <ClCompile Include="..\Trie\Trie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Data\Data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UI\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UI\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Menu\Menu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\Trie\Trie.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Data\Data.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UI\Console.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UI\Menu.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
