@@ -17,5 +17,5 @@ void Menu6(int index);
 void Menu7();
 
 // Xu li su kien ban phim
-void xuliphim(KEY_EVENT_RECORD key);
-void xulisukien();
+void HandleKeyInput(KEY_EVENT_RECORD key);
+void Event();
