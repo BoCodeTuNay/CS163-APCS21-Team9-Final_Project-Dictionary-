@@ -9,8 +9,8 @@ using namespace std;
 
 struct TrieNode {
 	// Su dung string word de co the lay duoc word ma khong phai traverse qua trie
-	string Word;
-
+	string Word = "";
+	
 	string Definition;
 
 	char NodeChar;
@@ -27,7 +27,7 @@ struct TrieNode {
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 };
-
+ 
 struct Trie {
 	TrieNode* Root = NULL;
 

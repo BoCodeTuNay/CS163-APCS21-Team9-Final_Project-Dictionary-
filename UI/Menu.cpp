@@ -1,5 +1,6 @@
 ﻿#include "Menu.h"
 
+
 // Ve menu
 void Menuchung() {
 	for (int i = 0; i < ConsoleWidth; i++) {
@@ -133,6 +134,53 @@ void Menu7() {
 		PrintLong(Definition, 10, 19, 15, 0);
 		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), 29, 15, 2);
 	}
+}
+
+void Menu8(string& temp) {
+	int i = 0;	
+	string s1 = "The keyword you want to search: ";
+	Print(s1, 10, 13, 14, 0);
+	cin >> temp;
+	string Def;
+	TrieNode* cur = CurrentDict.Root;	
+	for (i; i < temp.length(); i++) {
+		char c = temp[i];
+		int cNum = int(c);		
+		if (!cur->NextNode[cNum]) break;
+		if (cur->NextNode[cNum] != NULL) {
+			cur = cur->NextNode[cNum];
+		}
+	}
+	if (i == temp.length()) {
+		Def = cur->Definition;
+		string s2 = string("Definition: ") + Def;
+		PrintLong(s2, 10, 15, 15, 0);
+		page = 9;
+	}	
+	else {
+		page = 10;
+	}
+}
+
+void Menu9(int index, string& temp) {
+	vitri = index;
+	string Announce = "Successfully";
+	string AddToFav = "Add to favourite list";
+	string BackButton = "Back";
+	Print(Announce, 10, 17, 15, (index == 0) ? 0 : 0);
+	Print(AddToFav, 30, 17, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
+}
+
+void Menu10(int index, string& temp) {
+	vitri = index;
+	temp = "";
+	string Announce = "Invalid Word";
+	string AddToFav = "Search again";
+	string BackButton = "Back";
+	Print(Announce, 10, 17, 15, (index == 0) ? 2 : 0);
+	Print(AddToFav, 30, 17, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
 }
 
 void HandleKeyInput(KEY_EVENT_RECORD key) {
@@ -270,7 +318,28 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 		case VK_RETURN:
 			switch (page) {
 			case 1:
-				if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3 || vitri == 4) {
+				if (vitri == 0) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 1) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 2) {
+					page = 2;
+					vitri = 0;
+					CurrentDict = EngToEngDict;
+					Clrscr();
+				}
+				else if (vitri == 3) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 4) {
 					page = 2;
 					vitri = 0;
 					Clrscr();
@@ -313,6 +382,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 3:
 				if (vitri == 0) {
 					// ham SEARCH FOR KEYWORD
+					page = 8;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 1) {
@@ -394,13 +465,64 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				IsRandomValid = true;
 				Clrscr();
 				break;
+			case 9:
+				if (vitri == 2) {
+					page = 3;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			case 10:
+				if (vitri == 1) {
+					page = 8;
+					vitri = 0;
+					Clrscr();
+				}
+				if (vitri == 2) {
+					page = 3;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			}			
+			break;
+		case VK_LEFT:
+			switch (page) {
+			case 9:
+				if (vitri == 0) {
+					vitri = 2;
+				}
+				else vitri--;
+				break;
+			case 10:
+				if (vitri == 0) {
+					vitri = 2;
+				}
+				else vitri--;
+				break;
+			}			
+			break;
+		case VK_RIGHT:
+			switch (page) {
+			case 9:
+				if (vitri == 2) {
+					vitri = 0;
+				}
+				else vitri++;
+				break;
+			case 10:
+				if (vitri == 2) {
+					vitri = 0;
+				}
+				else vitri++;
+				break;
 			}
 			break;
-		}
-
+		}		
 	}
 }
 void Event() {
+	string temp;
 	while (true) {
 		DWORD DWNumberOfEvent = 0;
 		DWORD DWNumberOfEventsRead = 0;
@@ -443,6 +565,16 @@ void Event() {
 				else if (page == 7) {
 					Menuchung();
 					Menu7();
+				}
+				else if (page == 8) {
+					Menuchung();
+					Menu8(temp);				
+				}
+				else if (page == 9) {
+					Menu9(vitri, temp);
+				}
+				else if (page == 10) {
+					Menu10(vitri, temp);
 				}
 			}
 		}

@@ -1,6 +1,13 @@
 #include "Data.h"
+#include<iostream>
+using namespace std;
 
+Trie CurrentDict;
 Trie EmojiDict;
+Trie SlangDict;
+Trie EngToEngDict;
+Trie EngToVietDict;
+Trie VietToEngDict;
 
 // Bien boolean phuc vu chuc nang random
 // Loai bo truong hop data bi random lai khi nguoi dung su dung cac phim mui ten
@@ -22,3 +29,20 @@ void LoadEmojiData()
 
 	input.close();
 }
+
+void LoadEngToEngData() {
+	ifstream fin;
+	fin.open("../Database/Anh Anh_smaller_size_reformated.txt");
+	while (!fin.eof()) 
+	{
+		string Word, Definition;
+		getline(fin, Word, '\n');
+		getline(fin, Definition, '\n');
+
+		EngToEngDict.AddToTrie(Word, Definition);
+	}
+
+	fin.close();
+}
+
+// node nao co -> word , definition

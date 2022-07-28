@@ -1,5 +1,6 @@
 #include "../Trie/Trie.h"
 
+
 void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	if (Root == NULL) {
 		Root = new TrieNode();

@@ -13,6 +13,7 @@ int main() {
 	SetCursor(false);
 
 	LoadEmojiData();
+	LoadEngToEngData();
 
 	page = 1;
 
