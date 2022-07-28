@@ -32,10 +32,12 @@ string* Trie::SearchForDef(const string& InputStr) {
 	return &(Cur->Definition);
 }
 
-void Trie::EditDef(const string& InputStr, const string& NewDef) {
+bool Trie::EditDef(const string& InputStr, const string& NewDef) {
 	string* NeedDef = SearchForDef(InputStr);
 
 	if (NeedDef != NULL) {
 		*NeedDef = NewDef;
+		return true;
 	}
+	return false;
 }
