@@ -36,6 +36,6 @@ struct Trie {
 
 	void AddToTrie(const string& InputStr, const string& Def);
 	string* SearchForDef(const string& InputStr);
-	void EditDef(const string& InputStr, const string& NewDef);
+	bool EditDef(const string& InputStr, const string& NewDef);
 };
 
