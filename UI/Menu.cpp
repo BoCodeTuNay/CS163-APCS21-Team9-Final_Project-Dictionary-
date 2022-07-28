@@ -167,7 +167,7 @@ void Menu9(int index, string& temp) {
 	string Announce = "Successfully";
 	string AddToFav = "Add to favourite list";
 	string BackButton = "Back";
-	Print(Announce, 10, 17, 15, (index == 0) ? 0 : 0);
+	Print(Announce, 10, 17, 15, (index == 0) ? 2 : 0);
 	Print(AddToFav, 30, 17, 15, (index == 1) ? 2 : 0);
 	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
 }
@@ -176,10 +176,10 @@ void Menu10(int index, string& temp) {
 	vitri = index;
 	temp = "";
 	string Announce = "Invalid Word";
-	string AddToFav = "Search again";
+	string SearchAgain = "Search again";
 	string BackButton = "Back";
 	Print(Announce, 10, 17, 15, (index == 0) ? 2 : 0);
-	Print(AddToFav, 30, 17, 15, (index == 1) ? 2 : 0);
+	Print(SearchAgain, 30, 17, 15, (index == 1) ? 2 : 0);
 	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
 }
 

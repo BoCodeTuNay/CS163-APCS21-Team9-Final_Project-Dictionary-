@@ -1,6 +1,4 @@
 #include "Data.h"
-#include<iostream>
-using namespace std;
 
 Trie CurrentDict;
 Trie EmojiDict;
@@ -33,16 +31,30 @@ void LoadEmojiData()
 void LoadEngToEngData() {
 	ifstream fin;
 	fin.open("../Database/Anh Anh_smaller_size_reformated.txt");
-	while (!fin.eof()) 
-	{
-		string Word, Definition;
-		getline(fin, Word, '\n');
-		getline(fin, Definition, '\n');
-
-		EngToEngDict.AddToTrie(Word, Definition);
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		EngToEngDict.AddToTrie(a, b);
 	}
-
-	fin.close();
 }
 
-// node nao co -> word , definition

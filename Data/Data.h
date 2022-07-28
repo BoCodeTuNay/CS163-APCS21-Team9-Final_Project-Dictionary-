@@ -1,7 +1,9 @@
 #pragma once
 
 #include <fstream>
+#include <iostream>
 #include <vector>
+#include <sstream>
 #include "../Trie/Trie.h"
 
 using namespace std;
