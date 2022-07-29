@@ -19,26 +19,41 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	}
 
 	Cur->Word = WordTmp;
-	Cur->Definition = Def;
+	Cur->Definition.push_back(Def);
 	ExistingWords.push_back(Cur);
 }
 
-string* Trie::SearchForDef(const string& InputStr) {
+//string* Trie::SearchForDef(const string& InputStr) {
+//	TrieNode* Cur = Root;
+//	for (char c : InputStr) {
+//		int cNum = int(c);
+//		if (Cur->NextNode[cNum] == NULL) return NULL;
+//		Cur = Cur->NextNode[cNum];
+//	}
+//	return &(Cur->Definition);
+//}
+
+//bool Trie::EditDef(const string& InputStr, const string& NewDef) {
+//	string* NeedDef = SearchForDef(InputStr);
+//
+//	if (NeedDef != NULL) {
+//		*NeedDef = NewDef;
+//		return true;
+//	}
+//	return false;
+//}
+
+TrieNode* Trie::checkWordExist(const string& InputStr) {
+	if (Root == nullptr) return nullptr;
 	TrieNode* Cur = Root;
-	for (char c : InputStr) {
-		int cNum = int(c);
-		if (Cur->NextNode[cNum] == NULL) return NULL;
-		Cur = Cur->NextNode[cNum];
+	int i = 0;
+	for (i; i < InputStr.length(); i++) {
+		int cNum = int(InputStr[i]);
+		if (Cur->NextNode[cNum] == NULL) break;
+		if (Cur->NextNode[cNum]->NodeChar == InputStr[i]) {
+			Cur = Cur->NextNode[cNum];
+		}
 	}
-	return &(Cur->Definition);
-}
-
-bool Trie::EditDef(const string& InputStr, const string& NewDef) {
-	string* NeedDef = SearchForDef(InputStr);
-
-	if (NeedDef != NULL) {
-		*NeedDef = NewDef;
-		return true;
-	}
-	return false;
+	if (i == InputStr.length() && Cur->Word != "") return Cur;
+	else return nullptr;
 }

@@ -1,5 +1,11 @@
 ﻿#include "Menu.h"
 
+/*
+Note ve thu tu Menu:
+
+Menu7: Random word
+Menu 8,9,10: Search for keyword (cua Menu3)
+*/
 
 // Ve menu
 void Menuchung() {
@@ -125,63 +131,79 @@ void Menu7() {
 		int index = rand() % EmojiDict.ExistingWords.size();
 
 		string Instruction = "The randomly picked word is: ";
-		string Word = string("Word: ") + EmojiDict.ExistingWords[index]->Word;
-		string Definition = string("Definition: ") + EmojiDict.ExistingWords[index]->Definition;
+		string WordAnnounce = "Word: "; 
+		string Word = EmojiDict.ExistingWords[index]->Word;
+		string DefAnnounce = "Definition: ";
 		string BackButton = "Back";
 
-		Print(Instruction, 10, 15, 14, 0);
-		Print(Word, 10, 17, 15, 0);
-		PrintLong(Definition, 10, 19, 15, 0);
+		Print(Instruction, 10, 10, 14, 0);
+		Print(WordAnnounce, 10, 12, 14, 0);
+		Print(Word, 16, 12, 15, 0);
+		Print(DefAnnounce, 10, 14, 14, 0);
+		int y_start = 14;
+		for (auto k : EmojiDict.ExistingWords[index]->Definition) {
+			PrintLong(k, 22, y_start, 15, 0);
+			y_start += 2;
+		}
 		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), 29, 15, 2);
 	}
 }
 
-void Menu8(string& temp) {
+void Menu8(string& KeyWord) {
 	int i = 0;	
 	string s1 = "The keyword you want to search: ";
 	Print(s1, 10, 8, 14, 0);
-	cin >> temp;
-	string Def;
+	cin >> KeyWord;
 	TrieNode* cur = CurrentDict.Root;	
-	for (i; i < temp.length(); i++) {
-		char c = temp[i];
+	for (i; i < KeyWord.length(); i++) {
+		char c = KeyWord[i];
 		int cNum = int(c);		
 		if (!cur->NextNode[cNum]) break;
 		if (cur->NextNode[cNum] != NULL) {
 			cur = cur->NextNode[cNum];
 		}
 	}
-	Def = cur->Definition;
-	string s2 = string("Definition: ") + Def;
-	if (i == temp.length() && Def != "") {
-		PrintLong(s2, 10, 10, 15, 0);
+	int y_start = 10;
+	string s2 = "Definition: ";
+
+	// count de dem so definition duoc in ra cua tu do
+	int count = 0;
+
+	if (i == KeyWord.length() && !cur->Definition.empty()) {
+		Print(s2, 10, 10, 14, 0);	
+		for (auto k : cur->Definition) {
+			AddToHistoryList(cur->Word, k);
+			count++;
+			if (count == 6) break;
+			PrintLongMost2Line(k, 22, y_start, 15, 0);
+			y_start += 2;
+		}
 		page = 9;
 	}	
-	else {
-		
+	else {		
 		page = 10;
 	}
 }
 
-void Menu9(int index, string& temp) {
+void Menu9(int index, string& KeyWord) {
 	vitri = index;
 	string Announce = "Successfully";
 	string AddToFav = "Add to favourite list";
 	string BackButton = "Back";
-	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 20, 14, (index == 0) ? 12 : 0);
-	Print(AddToFav, 10, 22, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 22, 15, (index == 2) ? 2 : 0);
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
-void Menu10(int index, string& temp) {
+void Menu10(int index, string& KeyWord) {
 	vitri = index;
-	temp = "";
+	KeyWord = "";
 	string Announce = "Invalid Word";
 	string SearchAgain = "Search again";
 	string BackButton = "Back";	
-	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 20, 14, (index == 0) ? 12 : 0);
-	Print(SearchAgain, 10, 22, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 22, 15, (index == 2) ? 2 : 0);
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(SearchAgain, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
 void HandleKeyInput(KEY_EVENT_RECORD key) {
@@ -352,6 +374,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 5) {
+					OutputToHistoryList();
 					Clrscr();
 					exit(0);
 				}
@@ -482,7 +505,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 10:
 				if (vitri == 1) {
 					page = 8;
-					vitri = 1;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 2) {
@@ -516,8 +539,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 		}		
 	}
 }
+
 void Event() {
-	string temp;
 	while (true) {
 		DWORD DWNumberOfEvent = 0;
 		DWORD DWNumberOfEventsRead = 0;
@@ -563,15 +586,16 @@ void Event() {
 				}
 				else if (page == 8) {
 					Menuchung();
-					Menu8(temp);				
+					Menu8(KeyWord);				
 				}
 				else if (page == 9) {
-					Menu9(vitri, temp);
+					Menu9(vitri, KeyWord);
 				}
 				else if (page == 10) {
-					Menu10(vitri, temp);
+					Menu10(vitri, KeyWord);
 				}
 			}
 		}
 	}
+
 }

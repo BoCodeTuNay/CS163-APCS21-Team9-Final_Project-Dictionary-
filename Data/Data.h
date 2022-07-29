@@ -1,12 +1,7 @@
-#pragma once
+﻿#pragma once
 
-#include <fstream>
-#include <iostream>
-#include <vector>
-#include <sstream>
 #include "../Trie/Trie.h"
-
-using namespace std;
+#include "../History/History.h"
 
 extern Trie CurrentDict;
 extern Trie EmojiDict;
@@ -14,10 +9,21 @@ extern Trie SlangDict;
 extern Trie EngToEngDict;
 extern Trie EngToVietDict;
 extern Trie VietToEngDict;
+extern vector<History*>HistoryList;
 
 // Bien boolean phuc vu chuc nang random
 // Loai bo truong hop data bi random lai khi nguoi dung su dung cac phim mui ten
 extern bool IsRandomValid;
 
+//string Keyword để search for keyword
+extern string KeyWord;
+
 void LoadEmojiData();
+
 void LoadEngToEngData();
+
+void LoadHistoryData();
+
+void AddToHistoryList(string& InputWord, string& InputDef);
+
+void OutputToHistoryList();

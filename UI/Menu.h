@@ -15,9 +15,9 @@ void Menu4(int index);
 void Menu5(int index);
 void Menu6(int index);
 void Menu7();
-void Menu8(string& temp);
-void Menu9(int index, string& temp);
-void Menu10(int index, string& temp);
+void Menu8(string& KeyWord);
+void Menu9(int index, string& KeyWord);
+void Menu10(int index, string& KeyWord);
 
 // Xu li su kien ban phim
 void HandleKeyInput(KEY_EVENT_RECORD key);

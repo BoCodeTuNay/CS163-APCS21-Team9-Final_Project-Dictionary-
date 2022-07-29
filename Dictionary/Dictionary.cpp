@@ -14,12 +14,12 @@ int main() {
 
 	LoadEmojiData();
 	LoadEngToEngData();
+	LoadHistoryData();
 
 	page = 1;
 
 	Event();
-	cout << endl;
-
+	
 	system("pause");
 	return 0;
 }

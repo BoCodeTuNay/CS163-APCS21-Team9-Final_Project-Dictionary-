@@ -1,8 +1,11 @@
-#pragma once
+﻿#pragma once
 
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <sstream>
 #include <string>
 #include <cstring>
-#include <vector>
 #include "../Constant.h"
 
 using namespace std;
@@ -11,7 +14,8 @@ struct TrieNode {
 	// Su dung string word de co the lay duoc word ma khong phai traverse qua trie
 	string Word;
 	
-	string Definition;
+	// 1 từ có thể có nhiều định nghĩa
+	vector<string> Definition;
 
 	char NodeChar;
 
@@ -35,7 +39,10 @@ struct Trie {
 	vector<TrieNode*>ExistingWords;
 
 	void AddToTrie(const string& InputStr, const string& Def);
-	string* SearchForDef(const string& InputStr);
-	bool EditDef(const string& InputStr, const string& NewDef);
+	/*string* SearchForDef(const string& InputStr);*/
+	/*bool EditDef(const string& InputStr, const string& NewDef);*/
+
+	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
+	TrieNode* checkWordExist(const string& InputStr);
 };
 
