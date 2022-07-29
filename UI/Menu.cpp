@@ -139,7 +139,7 @@ void Menu7() {
 void Menu8(string& temp) {
 	int i = 0;	
 	string s1 = "The keyword you want to search: ";
-	Print(s1, 10, 13, 14, 0);
+	Print(s1, 10, 8, 14, 0);
 	cin >> temp;
 	string Def;
 	TrieNode* cur = CurrentDict.Root;	
@@ -151,13 +151,14 @@ void Menu8(string& temp) {
 			cur = cur->NextNode[cNum];
 		}
 	}
-	if (i == temp.length()) {
-		Def = cur->Definition;
-		string s2 = string("Definition: ") + Def;
-		PrintLong(s2, 10, 15, 15, 0);
+	Def = cur->Definition;
+	string s2 = string("Definition: ") + Def;
+	if (i == temp.length() && Def != "") {
+		PrintLong(s2, 10, 10, 15, 0);
 		page = 9;
 	}	
 	else {
+		
 		page = 10;
 	}
 }
@@ -167,9 +168,9 @@ void Menu9(int index, string& temp) {
 	string Announce = "Successfully";
 	string AddToFav = "Add to favourite list";
 	string BackButton = "Back";
-	Print(Announce, 10, 17, 15, (index == 0) ? 2 : 0);
-	Print(AddToFav, 30, 17, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 20, 14, (index == 0) ? 12 : 0);
+	Print(AddToFav, 10, 22, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 22, 15, (index == 2) ? 2 : 0);
 }
 
 void Menu10(int index, string& temp) {
@@ -177,10 +178,10 @@ void Menu10(int index, string& temp) {
 	temp = "";
 	string Announce = "Invalid Word";
 	string SearchAgain = "Search again";
-	string BackButton = "Back";
-	Print(Announce, 10, 17, 15, (index == 0) ? 2 : 0);
-	Print(SearchAgain, 30, 17, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 17, 15, (index == 2) ? 2 : 0);
+	string BackButton = "Back";	
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 20, 14, (index == 0) ? 12 : 0);
+	Print(SearchAgain, 10, 22, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 22, 15, (index == 2) ? 2 : 0);
 }
 
 void HandleKeyInput(KEY_EVENT_RECORD key) {
@@ -312,6 +313,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 						vitri += 1;
 					Menu6(vitri);
 				}
+				break;
+			case 9:
+				if (vitri == 0) vitri = 1;
+				break;
+			case 10:
+				if (vitri == 0) vitri = 1;
 				break;
 			}
 			break;
@@ -475,10 +482,10 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 10:
 				if (vitri == 1) {
 					page = 8;
-					vitri = 0;
+					vitri = 1;
 					Clrscr();
 				}
-				if (vitri == 2) {
+				else if (vitri == 2) {
 					page = 3;
 					vitri = 0;
 					Clrscr();
@@ -489,32 +496,20 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 		case VK_LEFT:
 			switch (page) {
 			case 9:
-				if (vitri == 0) {
-					vitri = 2;
-				}
-				else vitri--;
+				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			case 10:
-				if (vitri == 0) {
-					vitri = 2;
-				}
-				else vitri--;
+				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}			
 			break;
 		case VK_RIGHT:
 			switch (page) {
 			case 9:
-				if (vitri == 2) {
-					vitri = 0;
-				}
-				else vitri++;
+				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			case 10:
-				if (vitri == 2) {
-					vitri = 0;
-				}
-				else vitri++;
+				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
 			break;

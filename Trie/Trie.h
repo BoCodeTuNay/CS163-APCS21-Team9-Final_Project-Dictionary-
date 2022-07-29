@@ -9,7 +9,7 @@ using namespace std;
 
 struct TrieNode {
 	// Su dung string word de co the lay duoc word ma khong phai traverse qua trie
-	string Word = "";
+	string Word;
 	
 	string Definition;
 
