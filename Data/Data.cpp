@@ -8,9 +8,9 @@ Trie EngToVietDict;
 Trie VietToEngDict;
 vector<History*>HistoryList;
 
-// Bien boolean phuc vu chuc nang random
+// Bien int phuc vu chuc nang random
 // Loai bo truong hop data bi random lai khi nguoi dung su dung cac phim mui ten
-bool IsRandomValid = true;
+int RandomIndex = -1;
 
 //string Keyword để search for keyword
 string KeyWord;

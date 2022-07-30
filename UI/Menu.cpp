@@ -3,7 +3,7 @@
 /*
 Note ve thu tu Menu:
 
-Menu7: Random word
+ViewRandomWordMenu: Random word
 Menu 8,9,10: Search for keyword (cua Menu3)
 */
 
@@ -122,17 +122,16 @@ void Menu6(int index) {
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0);
 }
 
-void Menu7() {
-	// Chi cap nhat menu7 lai khi IsRandomValid == true
-	if (IsRandomValid)
+void ViewRandomWordMenu() {
+	// Chi cap nhat ViewRandomWordMenu lai khi RandomIndex == -1
+	if (RandomIndex == -1)
 	{
-		IsRandomValid = false;
 		srand(time(NULL));
-		int index = rand() % EmojiDict.ExistingWords.size();
+		RandomIndex = rand() % CurrentDict.ExistingWords.size();
 
 		string Instruction = "The randomly picked word is: ";
 		string WordAnnounce = "Word: "; 
-		string Word = EmojiDict.ExistingWords[index]->Word;
+		string Word = CurrentDict.ExistingWords[RandomIndex]->Word;
 		string DefAnnounce = "Definition: ";
 		string BackButton = "Back";
 
@@ -141,12 +140,17 @@ void Menu7() {
 		Print(Word, 16, 12, 15, 0);
 		Print(DefAnnounce, 10, 14, 14, 0);
 		int y_start = 14;
-		for (auto k : EmojiDict.ExistingWords[index]->Definition) {
+		for (auto k : CurrentDict.ExistingWords[RandomIndex]->Definition) {
 			PrintLong(k, 22, y_start, 15, 0);
 			y_start += 2;
 		}
-		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), 29, 15, 2);
+		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), y_start, 15, 2);
 	}
+}
+
+void GuessDefinitionFromWordMenu()
+{
+
 }
 
 void Menu8(string& KeyWord) {
@@ -175,7 +179,7 @@ void Menu8(string& KeyWord) {
 			AddToHistoryList(cur->Word, k);
 			count++;
 			if (count == 6) break;
-			PrintLongMost2Line(k, 22, y_start, 15, 0);
+			PrintLongAtMost2Line(k, 22, y_start, 15, 0);
 			y_start += 2;
 		}
 		page = 9;
@@ -492,7 +496,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 7:
 				page = 4;
 				vitri = 0;
-				IsRandomValid = true;
+				RandomIndex = -1;
 				Clrscr();
 				break;
 			case 9:
@@ -582,7 +586,7 @@ void Event() {
 				}
 				else if (page == 7) {
 					Menuchung();
-					Menu7();
+					ViewRandomWordMenu();
 				}
 				else if (page == 8) {
 					Menuchung();
