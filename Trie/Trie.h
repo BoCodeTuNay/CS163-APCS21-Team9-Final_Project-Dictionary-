@@ -43,6 +43,6 @@ struct Trie {
 	/*bool EditDef(const string& InputStr, const string& NewDef);*/
 
 	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
-	TrieNode* checkWordExist(const string& InputStr);
+	TrieNode* CheckWordExist(const string& InputStr);
 };
 

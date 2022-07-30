@@ -15,7 +15,7 @@ void Menu4(int index);
 void Menu5(int index);
 void Menu6(int index);
 void ViewRandomWordMenu();
-void GuessDefinitionFromWordMenu();
+void GuessDefinitionFromWordMenu(int OptionIndex);
 void Menu8(string& KeyWord);
 void Menu9(int index, string& KeyWord);
 void Menu10(int index, string& KeyWord);

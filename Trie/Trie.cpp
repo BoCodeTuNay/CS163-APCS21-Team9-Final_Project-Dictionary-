@@ -43,7 +43,7 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 //	return false;
 //}
 
-TrieNode* Trie::checkWordExist(const string& InputStr) {
+TrieNode* Trie::CheckWordExist(const string& InputStr) {
 	if (Root == nullptr) return nullptr;
 	TrieNode* Cur = Root;
 	int i = 0;
