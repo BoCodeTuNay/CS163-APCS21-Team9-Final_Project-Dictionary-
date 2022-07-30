@@ -1,5 +1,12 @@
 ﻿#include "Menu.h"
 
+/*
+Note ve thu tu Menu:
+
+ViewRandomWordMenu: Random word
+Menu 8,9,10: Search for keyword (cua Menu3)
+*/
+
 // Ve menu
 void DrawTitle() {
 	for (int i = 0; i < ConsoleWidth; i++) {
@@ -122,24 +129,182 @@ void DrawGameMenu(int index) {
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0);
 }
 
-void DrawRandMenu() {
-	// Chi cap nhat menu7 lai khi IsRandomValid == true
-	if (IsRandomValid)
+// Page Index = 7
+void ViewRandomWordMenu() {
+	// Chi cap nhat ViewRandomWordMenu lai khi RandomIndex == -1
+	if (RandomIndex == -1)
 	{
-		IsRandomValid = false;
 		srand(time(NULL));
-		int index = rand() % EmojiDict.ExistingWords.size();
+		RandomIndex = rand() % CurrentDict.ExistingWords.size();
 
 		string Instruction = "The randomly picked word is: ";
-		string Word = string("Word: ") + EmojiDict.ExistingWords[index]->Word;
-		string Definition = string("Definition: ") + EmojiDict.ExistingWords[index]->Definition;
+		string WordAnnounce = "Word: "; 
+		string Word = CurrentDict.ExistingWords[RandomIndex]->Word;
+		string DefAnnounce = "Definition: ";
 		string BackButton = "Back";
 
-		Print(Instruction, 10, 15, 14, 0);
-		Print(Word, 10, 17, 15, 0);
-		PrintLong(Definition, 10, 19, 15, 0);
-		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), 29, 15, 2);
+		Print(Instruction, 10, 10, 14, 0);
+		Print(WordAnnounce, 10, 12, 14, 0);
+		Print(Word, 16, 12, 15, 0);
+		Print(DefAnnounce, 10, 14, 14, 0);
+
+		int y_start = 14;
+
+		// Chi in ra 3 definition cua 1 tu
+		int numDefinition = 3;
+		vector<string>Definition = CurrentDict.ExistingWords[RandomIndex]->Definition;
+		for (int i = 0; i < numDefinition && i < Definition.size(); ++i) {
+			string SingleDef = Definition[i];
+			PrintLong(SingleDef, 22, y_start, 15, 0);
+			y_start += 2;
+		}
+
+		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), y_start, 15, 2);
 	}
+}
+
+
+// Page Index = 11
+void GuessDefinitionFromWordMenu(int OptionIndex)
+{
+	tongvitri = 5;
+
+	int numAnswer = 4;
+
+	// Chi cap nhat cac index lai khi RandomIndex == -1
+	if (RandomIndex == -1)
+	{
+		AnswersIndex.clear();
+
+		srand(time(NULL));
+		RandomIndex = rand() % CurrentDict.ExistingWords.size();
+
+		AnswersIndex.push_back(RandomIndex);
+
+		while (AnswersIndex.size() < numAnswer)
+		{
+			int tmp = rand() % CurrentDict.ExistingWords.size();
+			if (tmp != RandomIndex)
+			{
+				AnswersIndex.push_back(tmp);
+			}
+		}
+	}
+
+	string Instruction = "Choose the correct definition for: ";
+	string Word = CurrentDict.ExistingWords[RandomIndex]->Word;
+
+	int y_start = 10;
+
+	Print(Instruction, 10, y_start, 14, 0);
+	Print(Word, 45, y_start, 15, 0);
+	y_start += 2;
+
+	for (int i = 0; i < AnswersIndex.size(); ++i)
+	{
+		switch (i)
+		{
+		case 0:
+			Print("A. ", 10, y_start, 14, 0);
+			break;
+		case 1:
+			Print("B. ", 10, y_start, 14, 0);
+			break;
+		case 2:
+			Print("C. ", 10, y_start, 14, 0);
+			break;
+		case 3:
+			Print("D. ", 10, y_start, 14, 0);
+			break;
+		default:
+			break;
+		}
+
+		// Chi in ra definition dau tien cua 1 tu
+		string SingleDef = CurrentDict.ExistingWords[AnswersIndex[i]]->Definition[0];
+		PrintLong(SingleDef, 13, y_start, 15, 0);
+		y_start += 2;
+	}
+
+	for (int i = 0; i < numAnswer; ++i) {
+		switch (i)
+		{
+		case 0:
+			Print("A", 10, y_start, 14, (OptionIndex == 0) ? 2 : 0);
+			break;
+		case 1:
+			Print("B", 30, y_start, 14, (OptionIndex == 1) ? 2 : 0);
+			break;
+		case 2:
+			Print("C", 50, y_start, 14, (OptionIndex == 2) ? 2 : 0);
+			break;
+		case 3:
+			Print("D", 70, y_start, 14, (OptionIndex == 3) ? 2 : 0);
+			break;
+		default:
+			break;
+		}
+	}
+
+	string BackButton = "Back";
+	Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), y_start + 2, 15, (OptionIndex == 4) ? 2 : 0);
+}
+
+void Menu8(string& KeyWord) {
+	int i = 0;	
+	string s1 = "The keyword you want to search: ";
+	Print(s1, 10, 8, 14, 0);
+	cin >> KeyWord;
+	TrieNode* cur = CurrentDict.Root;	
+	for (i; i < KeyWord.length(); i++) {
+		char c = KeyWord[i];
+		int cNum = int(c);		
+		if (!cur->NextNode[cNum]) break;
+		if (cur->NextNode[cNum] != NULL) {
+			cur = cur->NextNode[cNum];
+		}
+	}
+	int y_start = 10;
+	string s2 = "Definition: ";
+
+	// count de dem so definition duoc in ra cua tu do
+	int count = 0;
+
+	if (i == KeyWord.length() && !cur->Definition.empty()) {
+		Print(s2, 10, 10, 14, 0);	
+		for (auto k : cur->Definition) {
+			AddToHistoryList(cur->Word, k);
+			count++;
+			if (count == 6) break;
+			PrintLongAtMost2Line(k, 22, y_start, 15, 0);
+			y_start += 2;
+		}
+		page = 9;
+	}	
+	else {		
+		page = 10;
+	}
+}
+
+void Menu9(int index, string& KeyWord) {
+	vitri = index;
+	string Announce = "Successfully";
+	string AddToFav = "Add to favourite list";
+	string BackButton = "Back";
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
+}
+
+void Menu10(int index, string& KeyWord) {
+	vitri = index;
+	KeyWord = "";
+	string Announce = "Invalid Word";
+	string SearchAgain = "Search again";
+	string BackButton = "Back";	
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(SearchAgain, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
 void HandleKeyInput(KEY_EVENT_RECORD key) {
@@ -207,6 +372,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					DrawGameMenu(vitri);
 				}
 				break;
+				
+			// tongvitri == 5
+			case 11:
+				if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
+				else vitri = 0;
+				break;
 			}
 
 			break;
@@ -272,17 +443,51 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					DrawGameMenu(vitri);
 				}
 				break;
+			case 9:
+				if (vitri == 0) vitri = 1;
+				break;
+			case 10:
+				if (vitri == 0) vitri = 1;
+				break;
+
+			// tongvitri == 5
+			case 11:
+				if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
+				else vitri = 0;
+				break;
 			}
 			break;
 		case VK_RETURN:
 			switch (page) {
 			case 1:
-				if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3 || vitri == 4) {
+				if (vitri == 0) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 1) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 2) {
+					page = 2;
+					vitri = 0;
+					CurrentDict = EngToEngDict;
+					Clrscr();
+				}
+				else if (vitri == 3) {
+					page = 2;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 4) {
 					page = 2;
 					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 5) {
+					OutputToHistoryList();
 					Clrscr();
 					exit(0);
 				}
@@ -320,6 +525,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 3:
 				if (vitri == 0) {
 					// ham SEARCH FOR KEYWORD
+					page = 8;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 1) {
@@ -382,6 +589,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 6:
 				if (vitri == 0) {
 					// ham GUESS DEFINITION FROM WORDS
+					page = 11;
 					Clrscr();
 				}
 				else if (vitri == 1) {
@@ -398,15 +606,88 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 7:
 				page = 4;
 				vitri = 0;
-				IsRandomValid = true;
+				RandomIndex = -1;
 				Clrscr();
+				break;
+			case 9:
+				if (vitri == 2) {
+					page = 3;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			case 10:
+				if (vitri == 1) {
+					page = 8;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 2) {
+					page = 3;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			case 11:
+				if (vitri == 0) {
+					page = 11;
+					vitri = 0;
+				}
+				else if (vitri == 1) {
+					page = 11;
+					vitri = 0;
+				}
+				else if (vitri == 2) {
+					page = 11;
+					vitri = 0;
+				}
+				else if (vitri == 3) {
+					page = 11;
+					vitri = 0;
+				}
+				if (vitri == 4) {
+					page = 6;
+					vitri = 0;
+					RandomIndex = -1;
+					Clrscr();
+				}
+			}
+			break;
+		case VK_LEFT:
+			switch (page) {
+			case 9:
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			case 10:
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+
+			// Tong cac button tren hang la 4
+			case 11:
+				if (vitri == 0) vitri = 3;
+				else --vitri;
 				break;
 			}
 			break;
-		}
+		case VK_RIGHT:
+			switch (page) {
+			case 9:
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			case 10:
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
 
+			// Tong cac button tren hang la 4
+			case 11:
+				vitri = (++vitri) % 4;
+				break;
+			}
+			break;
+		}		
 	}
 }
+
 void Event() {
 	while (true) {
 		DWORD DWNumberOfEvent = 0;
@@ -450,8 +731,25 @@ void Event() {
 				else if (page == 7) {
 					DrawTitle();
 					DrawRandMenu();
+					Menuchung();
+					ViewRandomWordMenu();
+				}
+				else if (page == 8) {
+					Menuchung();
+					Menu8(KeyWord);				
+				}
+				else if (page == 9) {
+					Menu9(vitri, KeyWord);
+				}
+				else if (page == 10) {
+					Menu10(vitri, KeyWord);
+				}
+				else if (page == 11) {
+					Menuchung();
+					GuessDefinitionFromWordMenu(vitri);
 				}
 			}
 		}
 	}
+
 }

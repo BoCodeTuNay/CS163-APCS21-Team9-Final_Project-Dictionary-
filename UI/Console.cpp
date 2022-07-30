@@ -65,7 +65,7 @@ void Print(string str, int x, int y, int color, int background)
 }
 
 // Tu dong xuong hang cho string qua dai
-void PrintLong(string str, int x, int y, int color, int background)
+void PrintLong(string str, int x, int& y, int color, int background)
 {
 	istringstream ss(str);
 	string token;
@@ -82,6 +82,29 @@ void PrintLong(string str, int x, int y, int color, int background)
 	}
 }
 
+// Tu dong xuong hang cho string qua dai (toi da 2 dong)
+void PrintLongAtMost2Line(string str, int x, int& y, int color, int background) 
+{	
+	int len = str.length();
+	int temp = ConsoleWidth - x;
+	if (str.length() > 2 * temp) {
+		str.erase(2 * temp - 10, len - 2 * temp + 10);
+		str.push_back('.');
+		str.push_back('.');
+	}	
+	istringstream ss(str);
+	string token;
+	int xTmp = x;
+	while (getline(ss, token, ' ')) {
+		if (x + token.size() > ConsoleWidth)
+		{
+			x = xTmp;
+			++y;
+		}
+		Print(token + ' ', x, y, color, background);
+		x += token.size() + 1;
+	}
+}
 void SetCursor(bool visible)
 {
 	CONSOLE_CURSOR_INFO info;

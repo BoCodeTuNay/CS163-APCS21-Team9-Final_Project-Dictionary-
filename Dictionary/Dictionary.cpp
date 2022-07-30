@@ -13,12 +13,13 @@ int main() {
 	SetCursor(false);
 
 	LoadEmojiData();
+	LoadEngToEngData();
+	LoadHistoryData();
 
 	page = 1;
 
 	Event();
-	cout << endl;
-
+	
 	system("pause");
 	return 0;
 }

@@ -31,7 +31,11 @@ void SetBGColor(WORD color);
 void Print(string str, int x, int y, int color, int background);
 
 // Tu dong xuong hang cho string qua dai
-void PrintLong(string str, int x, int y, int color, int background);
+void PrintLong(string str, int x, int& y, int color, int background);
+
+// Tu dong xuong hang cho string qua dai (toi da 2 dong)
+void PrintLongAtMost2Line(string str, int x, int& y, int color, int background);
+
 
 void SetCursor(bool visible);
 
