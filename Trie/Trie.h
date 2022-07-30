@@ -14,16 +14,26 @@ struct TrieNode {
 	string Definition;
 
 	char NodeChar;
+	long long ChildsNum;
 
+	TrieNode* ParNode;
 	TrieNode* NextNode[MaxDiffChar];
 
 	TrieNode() {
+		Word = "";
+		ChillsNum = 0;
+		ParNode = NULL;
 		NodeChar = '\0';
+		Definition = "";
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 
 	TrieNode(char c) {
+		Word = "";
+		ChillsNum = 0;
+		ParNode = NULL;
 		NodeChar = c;
+		Definition = "";
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 };
@@ -34,8 +44,10 @@ struct Trie {
 	// Phuc vu cho viec random access 1 tu ton tai trong tu dien
 	vector<TrieNode*>ExistingWords;
 
+	void UpdChildsNum(const TrieNode*& Leaf);
+	bool EditDef(const string& InputStr, const string& NewDef);
 	void AddToTrie(const string& InputStr, const string& Def);
 	string* SearchForDef(const string& InputStr);
-	bool EditDef(const string& InputStr, const string& NewDef);
+	bool DelWord(const string& InputStr);
 };
 

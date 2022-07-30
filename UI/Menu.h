@@ -6,15 +6,15 @@
 #include "../UI/Console.h"
 
 // Ve menu
-void Menuchung();
+void DrawTitle();
 void MenuHelper2();
-void Menu1(int index);
-void Menu2(int index);
-void Menu3(int index);
-void Menu4(int index);
-void Menu5(int index);
-void Menu6(int index);
-void Menu7();
+void DrawMenu(int index);
+void DrawFuncMenu(int index);s
+void DrawSearchMenu(int index);
+void DrawViewMenu(int index);
+void DrawEditMenu(int index);
+void DrawGameMenu(int index);
+void DrawRandMenu();
 
 // Xu li su kien ban phim
 void HandleKeyInput(KEY_EVENT_RECORD key);

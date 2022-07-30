@@ -1,7 +1,7 @@
 ﻿#include "Menu.h"
 
 // Ve menu
-void Menuchung() {
+void DrawTitle() {
 	for (int i = 0; i < ConsoleWidth; i++) {
 		Print("-", i, 0, 15, 0);
 	}
@@ -13,6 +13,7 @@ void Menuchung() {
 		Print("-", i, 4, 15, 0);
 	}
 }
+
 void MenuHelper2() {
 	for (int i = 0; i < ConsoleWidth; i++) {
 		Print("-", i, 0, 15, 0);
@@ -28,7 +29,8 @@ void MenuHelper2() {
 	string Instruction = "YOU WANT TO?";
 	Print(Instruction, ConsoleWidth / 2 - Instruction.length() / 2, 5, 14, 0);
 }
-void Menu1(int index) {
+
+void DrawMenu(int index) {
 	vitri = index;
 	tongvitri = 6;
 	string s1, s2, s3, s4, s5, s6;
@@ -45,7 +47,8 @@ void Menu1(int index) {
 	Print(s5, (ConsoleWidth / 2 - s5.length() / 2), 15, 15, (index == 4) ? 2 : 0);
 	Print(s6, (ConsoleWidth / 2 - s6.length() / 2), 17, 15, (index == 5) ? 2 : 0);
 }
-void Menu2(int index) {
+
+void DrawFuncMenu(int index) {
 	vitri = index;
 	tongvitri = 6;
 	string s1, s2, s3, s4, s5, s6;
@@ -62,7 +65,8 @@ void Menu2(int index) {
 	Print(s5, (ConsoleWidth / 2 - s5.length() / 2), 15, 15, (index == 4) ? 2 : 0);
 	Print(s6, (ConsoleWidth / 2 - s6.length() / 2), 17, 15, (index == 5) ? 2 : 0);
 }
-void Menu3(int index) {
+
+void DrawSearchMenu(int index) {
 	vitri = index;
 	tongvitri = 3;
 	string s1, s2, s3;
@@ -73,7 +77,8 @@ void Menu3(int index) {
 	Print(s2, (ConsoleWidth / 2 - s2.length() / 2), 9, 15, (index == 1) ? 2 : 0);
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0);
 }
-void Menu4(int index) {
+
+void DrawViewMenu(int index) {
 	vitri = index;
 	tongvitri = 4;
 	string s1, s2, s3, s4;
@@ -86,7 +91,8 @@ void Menu4(int index) {
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0);
 	Print(s4, (ConsoleWidth / 2 - s4.length() / 2), 13, 15, (index == 3) ? 2 : 0);
 }
-void Menu5(int index) {
+
+void DrawEditMenu(int index) {
 	vitri = index;
 	tongvitri = 6;
 	string s1, s2, s3, s4, s5, s6;
@@ -103,7 +109,8 @@ void Menu5(int index) {
 	Print(s5, (ConsoleWidth / 2 - s5.length() / 2), 15, 15, (index == 4) ? 2 : 0);
 	Print(s6, (ConsoleWidth / 2 - s6.length() / 2), 17, 15, (index == 5) ? 2 : 0);
 }
-void Menu6(int index) {
+
+void DrawGameMenu(int index) {
 	vitri = index;
 	tongvitri = 3;
 	string s1, s2, s3;
@@ -115,7 +122,7 @@ void Menu6(int index) {
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 11, 15, (index == 2) ? 2 : 0);
 }
 
-void Menu7() {
+void DrawRandMenu() {
 	// Chi cap nhat menu7 lai khi IsRandomValid == true
 	if (IsRandomValid)
 	{
@@ -147,7 +154,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu1(vitri);
+					DrawMenu(vitri);
 				}
 				break;
 			case 2:
@@ -157,7 +164,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu2(vitri);
+					DrawFuncMenu(vitri);
 				}
 				break;
 			case 3:
@@ -167,7 +174,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu3(vitri);
+					DrawSearchMenu(vitri);
 				}
 				break;
 			case 4:
@@ -177,7 +184,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu4(vitri);
+					DrawViewMenu(vitri);
 				}
 				break;
 			case 5:
@@ -187,7 +194,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu5(vitri);
+					DrawEditMenu(vitri);
 				}
 				break;
 			case 6:
@@ -197,7 +204,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri -= 1;
-					Menu6(vitri);
+					DrawGameMenu(vitri);
 				}
 				break;
 			}
@@ -212,7 +219,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu1(vitri);
+					DrawMenu(vitri);
 				}
 				break;
 			case 2:
@@ -222,7 +229,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu2(vitri);
+					DrawFuncMenu(vitri);
 				}
 				break;
 			case 3:
@@ -232,7 +239,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu3(vitri);
+					DrawSearchMenu(vitri);
 				}
 				break;
 			case 4:
@@ -242,7 +249,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu4(vitri);
+					DrawViewMenu(vitri);
 				}
 				break;
 			case 5:
@@ -252,7 +259,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu5(vitri);
+					DrawEditMenu(vitri);
 				}
 				break;
 			case 6:
@@ -262,7 +269,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else
 						vitri += 1;
-					Menu6(vitri);
+					DrawGameMenu(vitri);
 				}
 				break;
 			}
@@ -417,32 +424,32 @@ void Event() {
 					HandleKeyInput(eventbuffer[i].Event.KeyEvent);
 				}
 				if (page == 1) {
-					Menuchung();
-					Menu1(vitri);
+					DrawTitle();
+					DrawMenu(vitri);
 				}
 				else if (page == 2) {
 					MenuHelper2();
-					Menu2(vitri);
+					DrawFuncMenu(vitri);
 				}
 				else if (page == 3) {
 					MenuHelper2();
-					Menu3(vitri);
+					DrawSearchMenu(vitri);
 				}
 				else if (page == 4) {
 					MenuHelper2();
-					Menu4(vitri);
+					DrawViewMenu(vitri);
 				}
 				else if (page == 5) {
 					MenuHelper2();
-					Menu5(vitri);
+					DrawEditMenu(vitri);
 				}
 				else if (page == 6) {
 					MenuHelper2();
-					Menu6(vitri);
+					DrawGameMenu(vitri);
 				}
 				else if (page == 7) {
-					Menuchung();
-					Menu7();
+					DrawTitle();
+					DrawRandMenu();
 				}
 			}
 		}
