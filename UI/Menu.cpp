@@ -1,12 +1,5 @@
 ﻿#include "Menu.h"
 
-/*
-Note ve thu tu Menu:
-
-ViewRandomWordMenu: Random word
-Menu 8,9,10: Search for keyword (cua Menu3)
-*/
-
 // Ve menu
 void DrawTitle() {
 	for (int i = 0; i < ConsoleWidth; i++) {
@@ -250,7 +243,7 @@ void GuessDefinitionFromWordMenu(int OptionIndex)
 	Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), y_start + 2, 15, (OptionIndex == 4) ? 2 : 0);
 }
 
-void Menu8(string& KeyWord) {
+void SearchForKeyWordMenu(string& KeyWord) {
 	int i = 0;	
 	string s1 = "The keyword you want to search: ";
 	Print(s1, 10, 8, 14, 0);
@@ -286,7 +279,7 @@ void Menu8(string& KeyWord) {
 	}
 }
 
-void Menu9(int index, string& KeyWord) {
+void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	vitri = index;
 	string Announce = "Successfully";
 	string AddToFav = "Add to favourite list";
@@ -296,7 +289,7 @@ void Menu9(int index, string& KeyWord) {
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
-void Menu10(int index, string& KeyWord) {
+void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	vitri = index;
 	KeyWord = "";
 	string Announce = "Invalid Word";
@@ -730,22 +723,20 @@ void Event() {
 				}
 				else if (page == 7) {
 					DrawTitle();
-					DrawRandMenu();
-					Menuchung();
 					ViewRandomWordMenu();
 				}
 				else if (page == 8) {
-					Menuchung();
-					Menu8(KeyWord);				
+					DrawTitle();
+					SearchForKeyWordMenu(KeyWord);
 				}
 				else if (page == 9) {
-					Menu9(vitri, KeyWord);
+					FirstHelperSearchForKeyWordMenu(vitri, KeyWord);
 				}
 				else if (page == 10) {
-					Menu10(vitri, KeyWord);
+					SecondHelperSearchForKeyWordMenu(vitri, KeyWord);
 				}
 				else if (page == 11) {
-					Menuchung();
+					DrawTitle();
 					GuessDefinitionFromWordMenu(vitri);
 				}
 			}

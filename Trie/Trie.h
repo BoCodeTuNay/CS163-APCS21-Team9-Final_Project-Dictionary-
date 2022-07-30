@@ -25,19 +25,17 @@ struct TrieNode {
 
 	TrieNode() {
 		Word = "";
-		ChillsNum = 0;
+		ChildsNum = 0;
 		ParNode = NULL;
 		NodeChar = '\0';
-		Definition = "";
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 
 	TrieNode(char c) {
 		Word = "";
-		ChillsNum = 0;
+		ChildsNum = 0;
 		ParNode = NULL;
 		NodeChar = c;
-		Definition = "";
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 };
