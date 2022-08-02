@@ -300,6 +300,39 @@ void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
+// Page index = 12
+void HistoryOfSearchingMenu() {
+	// in ra toi da 4 tu
+	int maxWord = 5;
+	// in ra toi da 2 definition cho 1 tu
+	int maxDef = 2;
+	string s = "Your Searching History";
+	string s1 = "Word";
+	string s2 = "Definition";
+	string s3 = "Back";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	Print(s1, 10, 6, 14, 0);
+	Print(s2, 55, 6, 14, 0);
+	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 33, 15, 2);
+	int y_start = 8;
+	int countWord = 0;
+	for (History* temp : HistoryList) {
+		countWord++;
+		if (countWord > maxWord) break;
+		string a = temp->word;
+		vector<string> b = temp->Definition;	
+		int countDef = 0;
+		PrintLongForWord(a, 10, y_start, 15, 0);
+		for (auto k : b) {
+			countDef++;
+			if (countDef > maxDef) break;
+			Print("-", 38, y_start, 15, 0);
+			PrintLongAtMost2Line(k, 40, y_start, 15, 0);
+			y_start++;
+		}
+	}
+}
+
 void HandleKeyInput(KEY_EVENT_RECORD key) {
 	if (key.bKeyDown) {
 		switch (key.wVirtualKeyCode) {
@@ -535,6 +568,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case 4:
 				if (vitri == 0) {
 					// ham VIEW HISTORY OF SEARCHING
+					page = 12;
 					Clrscr();
 				}
 				else if (vitri == 1) {
@@ -644,6 +678,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					RandomIndex = -1;
 					Clrscr();
 				}
+				break;
+			case 12:
+				page = 4;
+				vitri = 0;
+				Clrscr();
+				break;
 			}
 			break;
 		case VK_LEFT:
@@ -738,6 +778,10 @@ void Event() {
 				else if (page == 11) {
 					DrawTitle();
 					GuessDefinitionFromWordMenu(vitri);
+				}
+				else if (page == 12) {
+					DrawTitle();
+					HistoryOfSearchingMenu();
 				}
 			}
 		}

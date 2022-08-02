@@ -97,6 +97,23 @@ void PrintLongAtMost2Line(string str, int x, int& y, int color, int background)
 	int xTmp = x;
 	while (getline(ss, token, ' ')) {
 		if (x + token.size() > ConsoleWidth)
+		{		
+			x = xTmp;
+			++y;
+		}
+		Print(token + ' ', x, y, color, background);
+		x += token.size() + 1;
+	}
+}
+
+// Format de in ra word trong muc view History, Favourite List
+void PrintLongForWord(string str, int x, int y, int color, int background) {
+	istringstream ss(str);
+	string token;
+
+	int xTmp = x;
+	while (getline(ss, token, ' ')) {
+		if (x + token.size() > 35)
 		{
 			x = xTmp;
 			++y;
@@ -105,6 +122,7 @@ void PrintLongAtMost2Line(string str, int x, int& y, int color, int background)
 		x += token.size() + 1;
 	}
 }
+
 void SetCursor(bool visible)
 {
 	CONSOLE_CURSOR_INFO info;

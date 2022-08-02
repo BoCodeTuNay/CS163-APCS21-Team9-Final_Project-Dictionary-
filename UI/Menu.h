@@ -19,6 +19,7 @@ void GuessDefinitionFromWordMenu(int OptionIndex);
 void SearchForKeyWordMenu(string& KeyWord);
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord);
+void HistoryOfSearchingMenu();
 
 // Xu li su kien ban phim
 void HandleKeyInput(KEY_EVENT_RECORD key);

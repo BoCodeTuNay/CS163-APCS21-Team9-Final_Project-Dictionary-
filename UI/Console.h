@@ -36,6 +36,8 @@ void PrintLong(string str, int x, int& y, int color, int background);
 // Tu dong xuong hang cho string qua dai (toi da 2 dong)
 void PrintLongAtMost2Line(string str, int x, int& y, int color, int background);
 
+// Format de in ra word trong muc view History, Favourite List (toi da 2 dong)
+void PrintLongForWord(string str, int x, int y, int color, int background);
 
 void SetCursor(bool visible);
 

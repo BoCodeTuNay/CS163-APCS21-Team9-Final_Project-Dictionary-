@@ -1,6 +1,6 @@
 #include "../Trie/Trie.h"
 
-void UpdChildsNum(const TrieNode*& Leaf) {
+void Trie::UpdChildsNum(TrieNode* Leaf) {
 	TrieNode* Cur = Leaf;
 	while (Cur != NULL) {
 		Cur = Cur->ParNode;
@@ -36,29 +36,44 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	Cur->Definition.push_back(Def);
 	ExistingWords.push_back(Cur);
 
-	this->UpdChildsNum(Cur);
-
-	return;
+	UpdChildsNum(Cur);
 }
 
-//string* Trie::SearchForDef(const string& InputStr) {
-//	TrieNode* Cur = Root;
-//	for (char c : InputStr) {
-//		int cNum = int(c);
-//		if (Cur->NextNode[cNum] == NULL) return NULL;
-//		Cur = Cur->NextNode[cNum];
-//	}
-//	return &(Cur->Definition);
-//}
+vector<string> Trie::SearchForDef(const string& InputStr) {
+	vector<string> temp(1, "");
+	vector<string> res;
+	TrieNode* Cur = Root;
+	for (char c : InputStr) {
+		int cNum = int(c);
+		if (Cur->NextNode[cNum] == NULL) return temp;
+		Cur = Cur->NextNode[cNum];
+	}
+	return Cur->Definition;
+}
 
-//bool Trie::EditDef(const string& InputStr, const string& NewDef) {
-//	string* NeedDef = SearchForDef(InputStr);
-//
-//	if (NeedDef != NULL) {
-//		*NeedDef = NewDef;
+bool Trie::EditDef(const string& InputStr, const string& NewDef) {
+	vector<string> NeedDef = SearchForDef(InputStr);
+	if (NeedDef[0] != "") return true;
+	return false;
+}
+
+//bool Trie::DelWord(const string& InputStr) {
+//	TrieNode* DelNode = this->SearchForDef(InputStr);
+//	if (DelNode == NULL) return false;
+//	if (DelNode->ChildsNum == 0) {
+//		while (DelNode != this->Root && DelNode != NULL && DelNode->ChildsNum == 0) {
+//			TrieNode* Cur = DelNode;
+//			DelNode = Cur->ParNode;
+//			--(DelNode->ChildsNum);
+//			delete Cur;
+//		}
 //		return true;
 //	}
-//	return false;
+//	else {
+//		DelNode->Definition = "";
+//		//DelNode->Word = "";
+//		return true;
+//	}
 //}
 
 TrieNode* Trie::CheckWordExist(const string& InputStr) {
@@ -72,34 +87,6 @@ TrieNode* Trie::CheckWordExist(const string& InputStr) {
 			Cur = Cur->NextNode[cNum];
 		}
 	}
-	return &(Cur->Definition);
-}
-
-bool Trie::EditDef(const string& InputStr, const string& NewDef) {
-	string* NeedDef = SearchForDef(InputStr);
-
-	if (NeedDef != NULL) {
-		*NeedDef = NewDef;
-		return true;
-	}
-	return false;
-}
-
-bool Trie::DelWord(const string& InputStr) {
-	TrieNode* DelNode = this->SearchForDef(InputStr);
-	if (DelNode == NULL) return false;
-	if (DelNode->ChildsNum == 0) {
-		while (DelNode != this->Root && DelNode != NULL && DelNode->ChildsNum == 0) {
-			TrieNode* Cur = DelNode;
-			DelNode = Cur->ParNode;
-			--(DelNode->ChildsNum);
-			delete Cur;
-		}
-		return true;
-	}
-	else {
-		DelNode->Definition = "";
-		//DelNode->Word = "";
-		return true;
-	}
+	if (i == InputStr.length()) return Cur;
+	else return nullptr;
 }

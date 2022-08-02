@@ -46,13 +46,18 @@ struct Trie {
 	// Phuc vu cho viec random access 1 tu ton tai trong tu dien
 	vector<TrieNode*>ExistingWords;
 
-	void UpdChildsNum(const TrieNode*& Leaf);
-	bool EditDef(const string& InputStr, const string& NewDef);
+	// update so luong child cua node 
+	void UpdChildsNum(TrieNode* Leaf);
+
+	// them tu va dinh nghia vao trie
 	void AddToTrie(const string& InputStr, const string& Def);
-	string* SearchForDef(const string& InputStr);
+
+	// tra ve cac dinh nghia cua tu
+	vector<string> SearchForDef(const string& InputStr);
+
+	bool EditDef(const string& InputStr, const string& NewDef);
+
 	bool DelWord(const string& InputStr);
-	/*string* SearchForDef(const string& InputStr);*/
-	/*bool EditDef(const string& InputStr, const string& NewDef);*/
 
 	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
 	TrieNode* CheckWordExist(const string& InputStr);
