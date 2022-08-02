@@ -8,10 +8,10 @@ Trie EngToVietDict;
 Trie VietToEngDict;
 vector<History*>HistoryList;
 
-// Bien int phuc vu chuc nang random
-// Loai bo truong hop data bi random lai khi nguoi dung su dung cac phim mui ten
+// Cac bien phuc vu cho chuc nang random
 int RandomIndex = -1;
 vector<int>AnswersIndex;
+int GameState = 2;
 
 //string Keyword để search for keyword
 string KeyWord;
