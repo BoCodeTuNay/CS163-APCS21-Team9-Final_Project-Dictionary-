@@ -142,6 +142,7 @@
     <ClCompile Include="..\Data\Data.cpp" />
     <ClCompile Include="..\Trie\Trie.cpp" />
     <ClCompile Include="..\UI\Console.cpp" />
+    <ClCompile Include="..\UI\KeyboardInput.cpp" />
     <ClCompile Include="..\UI\Menu.cpp" />
     <ClCompile Include="Dictionary.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="..\Data\Data.h" />
     <ClInclude Include="..\Trie\Trie.h" />
     <ClInclude Include="..\UI\Console.h" />
+    <ClInclude Include="..\UI\KeyboardInput.h" />
     <ClInclude Include="..\UI\Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

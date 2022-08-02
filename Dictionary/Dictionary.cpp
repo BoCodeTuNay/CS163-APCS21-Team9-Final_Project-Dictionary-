@@ -1,5 +1,6 @@
 ﻿#include "../Data/Data.h"
 #include "../UI/Menu.h"
+#include "../UI/KeyboardInput.h"
 #include "../Trie/Trie.h"
 
 using namespace std;
@@ -16,7 +17,7 @@ int main() {
 	LoadEngToEngData();
 	LoadHistoryData();
 
-	page = 1;
+	page = MAIN_MENU;
 
 	Event();
 	

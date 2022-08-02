@@ -30,6 +30,9 @@
     <ClCompile Include="..\UI\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\UI\KeyboardInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Trie\Trie.h">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\UI\Menu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UI\KeyboardInput.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
