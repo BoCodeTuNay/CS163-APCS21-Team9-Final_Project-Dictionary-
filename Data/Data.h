@@ -2,6 +2,7 @@
 
 #include "../Trie/Trie.h"
 #include "../History/History.h"
+#include "../Favourite/Favourite.h"
 
 extern Trie CurrentDict;
 extern Trie EmojiDict;
@@ -9,7 +10,6 @@ extern Trie SlangDict;
 extern Trie EngToEngDict;
 extern Trie EngToVietDict;
 extern Trie VietToEngDict;
-extern vector<History*>HistoryList;
 
 // Cac bien phuc vu cho chuc nang random
 #define GAME_OVER 0
@@ -26,9 +26,3 @@ extern string KeyWord;
 void LoadEmojiData();
 
 void LoadEngToEngData();
-
-void LoadHistoryData();
-
-void AddToHistoryList(string& InputWord, string& InputDef);
-
-void OutputToHistoryList();

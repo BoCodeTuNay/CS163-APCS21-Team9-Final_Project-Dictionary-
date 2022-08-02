@@ -8,22 +8,22 @@
 
 using namespace std;
 
-struct History {
+struct Favourite {
 	string word;
 	vector<string> Definition;
-	History() {
-	
+	Favourite() {
+
 	}
-	History(string& InputWord, string& InputDef) {
+	Favourite(string& InputWord, string& InputDef) {
 		this->word = InputWord;
 		this->Definition.push_back(InputDef);
 	}
 };
 
-extern vector<History*>HistoryList;
+extern vector<Favourite*> FavouriteList;
 
-void LoadHistoryData();
+void LoadFavouriteData();
 
-void AddToHistoryList(string& InputWord, string& InputDef);
+void AddToFavouriteList(string& InputWord, string& InputDef);
 
-void OutputToHistoryList();
+void OutputToFavouriteList();
