@@ -190,6 +190,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				}
 				else if (vitri == 5) {
 					OutputToHistoryList();
+					OutputToFavouriteList();
 					Clrscr();
 					exit(0);
 				}
@@ -256,7 +257,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 2) {
-					// ham VIEW FAVOURITE LIST
+					page = VIEW_FAVOURITE_MENU;
 					Clrscr();
 				}
 				else if (vitri == 3) {
@@ -394,6 +395,13 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				Clrscr();
 				break;
 			}
+
+			case VIEW_FAVOURITE_MENU: {
+				page = VIEW_MENU;
+				vitri = 0;
+				Clrscr();
+				break;
+			}
 			}
 			break;
 		}
@@ -508,6 +516,10 @@ void Event() {
 				else if (page == HISTORY_OF_SEARCHING_MENU) {
 					DrawTitle();
 					HistoryOfSearchingMenu();
+				}
+				else if (page == VIEW_FAVOURITE_MENU) {
+					DrawTitle();
+					FavouriteMenu();
 				}
 			}
 		}

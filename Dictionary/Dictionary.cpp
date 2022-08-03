@@ -16,6 +16,7 @@ int main() {
 	LoadEmojiData();
 	LoadEngToEngData();
 	LoadHistoryData();
+	LoadFavouriteData();
 
 	page = MAIN_MENU;
 

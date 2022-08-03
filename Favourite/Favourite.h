@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -16,3 +19,11 @@ struct Favourite {
 		this->Definition.push_back(InputDef);
 	}
 };
+
+extern vector<Favourite*> FavouriteList;
+
+void LoadFavouriteData();
+
+void AddToFavouriteList(string& InputWord, string& InputDef);
+
+void OutputToFavouriteList();
