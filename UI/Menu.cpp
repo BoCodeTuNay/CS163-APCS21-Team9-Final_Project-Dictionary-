@@ -423,7 +423,36 @@ void AddToFavouriteMenu() {
 	string Word;
 	cin >> Word;
 	show_console_cursor(false);
-	ThirdHelperSearchForKeyWordMenu(Word);
+	string Result;
+	// neu danh sach da full
+	if (FavouriteList.size() == maxWord) {
+		Result = "List is full";
+		Print(Result, (ConsoleWidth / 2 - Result.length() / 2), 30, 14, 0);
+		Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
+		return;
+	}
+	// neu word nam trong favourite List
+	for (auto temp : FavouriteList) {
+		if (temp->word == Word) {
+			Result = "Word had been added";
+			Print(Result, (ConsoleWidth / 2 - Result.length() / 2), 30, 14, 0);
+			Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
+			return;
+		}		
+	}	
+	TrieNode* Cur = CurrentDict.TakeLastNode(Word);
+	if (!Cur) {
+		// neu word khong ton tai
+		Result = "Invalid Word";
+	}
+	else {
+		// add thanh cong
+		Result = "Added Successfully";
+		for (auto temp : Cur->Definition) {
+			AddToFavouriteList(Word, temp);
+		}
+	}
+	Print(Result, (ConsoleWidth / 2 - Result.length() / 2), 30, 14, 0);
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
 }
 
@@ -464,7 +493,14 @@ void RemoveFromFavouriteMenu() {
 	show_console_cursor(false);
 	RemoveFromFavouriteList(Word);
 	if (EnableToRemove == true) {
-		string AnnouceSuccess = "Remove Successfully";
+		string AnnouceSuccess = "Removed Successfully";
 		Print(AnnouceSuccess, (ConsoleWidth / 2 - AnnouceSuccess.length() / 2), 30, 14, 0);
 	}
+	else {
+		string AnnouceFail = "Removed Fail";
+		Print(AnnouceFail, (ConsoleWidth / 2 - AnnouceFail.length() / 2), 30, 14, 0); 
+	}
+	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
 }
+
+

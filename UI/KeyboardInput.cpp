@@ -289,6 +289,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				}
 				else if (vitri == 4) {
 					// ham REMOVE A WORD OF FAVOURITE LIST
+					page = REMOVE_FROM_FAVOURITE_MENU;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 5) {
@@ -409,6 +411,13 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case ADD_TO_FAVOURITE_MENU: {
+				page = EDIT_MENU;
+				vitri = 0;
+				Clrscr();
+				break;
+			}
+			
+			case REMOVE_FROM_FAVOURITE_MENU: {
 				page = EDIT_MENU;
 				vitri = 0;
 				Clrscr();
@@ -545,6 +554,10 @@ void Event() {
 				else if (page == ADD_TO_FAVOURITE_MENU) {
 					DrawTitle();
 					AddToFavouriteMenu();
+				}
+				else if (page == REMOVE_FROM_FAVOURITE_MENU) {
+					DrawTitle();
+					RemoveFromFavouriteMenu();
 				}
 			}
 		}

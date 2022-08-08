@@ -1,30 +1,26 @@
-Hay `A hedge.
-Hay `A net set around the haunt of an animal, especially of a rabbit.
-Hay `To lay snares for rabbits.
-Hay `Grass cut and cured for fodder.
-Hay `To cut and cure grass for hay.
-Hay `A hedge.
-Hay `A net set around the haunt of an animal, especially of a rabbit.
-Hay `To lay snares for rabbits.
-Hay `Grass cut and cured for fodder.
-Hay `To cut and cure grass for hay.
-Then `At that time (referring to a time specified, either past or future).
-Then `Soon afterward, or immediately; next; afterward.
-Then `At another time; later; again.
-Then `Than.
-Then `In that case; in consequence; as a consequence; therefore; for this reason.
-Then `At that time (referring to a time specified, either past or future).
-Then `Soon afterward, or immediately; next; afterward.
-Then `At another time; later; again.
-Then `Than.
-Then `In that case; in consequence; as a consequence; therefore; for this reason.
+Rat `One of several species of small rodents of the genus Mus and allied genera, larger than mice, that infest houses, stores, and ships, especially the Norway, or brown, rat (M. decumanus), the black rat (M. rattus), and the roof rat (M. Alexandrinus). These were introduced into America from the Old World.
+Rat `A round and tapering mass of hair, or similar material, used by women to support the puffs and rolls of their natural hair.
+Rat `One who deserts his party or associates; hence, in the trades, one who works for lower wages than those prescribed by a trades union.
+Rat `In English politics, to desert one's party from interested motives; to forsake one's associates for one's own advantage; in the trades, to work for less wages, or on other conditions, than those established by a trades union.
+Rat `To catch or kill rats.
+Abbotship `The state or office of an abbot.
+Abbreviated `of Abbreviate
+Abbreviating `of Abbreviate
 Abbreviate `To make briefer; to shorten; to abridge; to reduce by contraction or omission, especially of words written or spoken.
 Abbreviate `To reduce to lower terms, as a fraction.
 Abbreviate `Abbreviated; abridged; shortened.
-Abbreviating `of Abbreviate
-Abbreviated `of Abbreviate
-Abbotship `The state or office of an abbot.
-Abbot `The superior or head of an abbey.
-Abbot `One of a class of bishops whose sees were formerly abbeys.
-Abbey `A monastery or society of persons of either sex, secluded from the world and devoted to religion and celibacy; also, the monastic building or buildings.
-Abbey `The church of a monastery.
+Then `At that time (referring to a time specified, either past or future).
+Then `Soon afterward, or immediately; next; afterward.
+Then `At another time; later; again.
+Then `Than.
+Then `In that case; in consequence; as a consequence; therefore; for this reason.
+Then `At that time (referring to a time specified, either past or future).
+Then `Soon afterward, or immediately; next; afterward.
+Then `At another time; later; again.
+Then `Than.
+Then `In that case; in consequence; as a consequence; therefore; for this reason.
+Hay `A hedge.
+Hay `A net set around the haunt of an animal, especially of a rabbit.
+Hay `To lay snares for rabbits.
+Hay `Grass cut and cured for fodder.
+Hay `To cut and cure grass for hay.

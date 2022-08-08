@@ -1,5 +1,15 @@
 #include "../Trie/Trie.h"
 
+void TrieNode::SaveBelowWords(TrieNode* Cur) {
+	if (!Cur) return;
+	if (Cur->Word != "") {
+		Cur->BelowWords.push_back(Cur);
+	}
+	for (int i = 0; i < MaxDiffChar; i++) {
+		SaveBelowWords(Cur->NextNode[i]);
+	}
+}
+
 void Trie::UpdChildsNum(TrieNode* Leaf) {
 	TrieNode* Cur = Leaf;
 	while (Cur != NULL) {
@@ -76,7 +86,7 @@ bool Trie::EditDef(const string& InputStr, const string& NewDef) {
 //	}
 //}
 
-TrieNode* Trie::CheckWordExist(const string& InputStr) {
+TrieNode* Trie::TakeLastNode(string& InputStr) {
 	if (Root == nullptr) return nullptr;
 	TrieNode* Cur = Root;
 	int i = 0;

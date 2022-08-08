@@ -17,6 +17,12 @@ struct TrieNode {
 	// 1 từ có thể có nhiều định nghĩa
 	vector<string> Definition;
 
+	// Phuc vu cho viec in ra suggest word khi search 
+	vector<TrieNode*> BelowWords;
+
+	// check xem có tồn tại các node con có nghĩa hay không
+	bool checkBelow;
+
 	char NodeChar;
 	long long ChildsNum;
 
@@ -38,13 +44,16 @@ struct TrieNode {
 		NodeChar = c;
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
+
+	// lưu các node có nghĩa con của node Cur
+	void SaveBelowWords(TrieNode* Cur);
 };
  
 struct Trie {
 	TrieNode* Root = NULL;
 
 	// Phuc vu cho viec random access 1 tu ton tai trong tu dien
-	vector<TrieNode*>ExistingWords;
+	vector<TrieNode*> ExistingWords;
 
 	// update so luong child cua node 
 	void UpdChildsNum(TrieNode* Leaf);
@@ -60,6 +69,6 @@ struct Trie {
 	bool DelWord(const string& InputStr);
 
 	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
-	TrieNode* CheckWordExist(const string& InputStr);
+	TrieNode* TakeLastNode(string& InputStr);
 };
 
