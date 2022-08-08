@@ -82,6 +82,30 @@ void PrintLong(string str, int x, int& y, int color, int background)
 	}
 }
 
+// Tu dong xuong hang cho string qua dai (toi da 1 dong)
+void PrintLongAtMost1Line(string str, int x, int& y, int color, int background) 
+{	
+	int len = str.length();
+	int temp = ConsoleWidth - x;
+	if (str.length() > temp) {
+		str.erase(temp - 4, len - temp + 4);
+		str.push_back('.');
+		str.push_back('.');
+	}	
+	istringstream ss(str);
+	string token;
+	int xTmp = x;
+	while (getline(ss, token, ' ')) {
+		if (x + token.size() > ConsoleWidth)
+		{		
+			x = xTmp;
+			++y;
+		}
+		Print(token + ' ', x, y, color, background);
+		x += token.size() + 1;
+	}
+}
+
 // Tu dong xuong hang cho string qua dai (toi da 2 dong)
 void PrintLongAtMost2Line(string str, int x, int& y, int color, int background) 
 {	
@@ -174,4 +198,16 @@ void ShowScrollbar(BOOL Show)
 {
 	HWND hWnd = GetConsoleWindow();
 	ShowScrollBar(hWnd, SB_BOTH, Show);
+}
+
+void show_console_cursor(const bool show) {
+#if defined(_WIN32)
+	static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	GetConsoleCursorInfo(handle, &cci);
+	cci.bVisible = show; // show/hide cursor
+	SetConsoleCursorInfo(handle, &cci);
+#elif defined(__linux__)
+	cout << (show ? "\033[?25h" : "\033[?25l"); // show/hide cursor
+#endif // Windows/Linux
 }

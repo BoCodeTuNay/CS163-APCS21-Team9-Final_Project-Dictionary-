@@ -33,6 +33,9 @@ void Print(string str, int x, int y, int color, int background);
 // Tu dong xuong hang cho string qua dai
 void PrintLong(string str, int x, int& y, int color, int background);
 
+// Tu dong xuong hang cho string qua dai(toi da 1 dong)
+void PrintLongAtMost1Line(string str, int x, int& y, int color, int background);
+
 // Tu dong xuong hang cho string qua dai (toi da 2 dong)
 void PrintLongAtMost2Line(string str, int x, int& y, int color, int background);
 
@@ -50,3 +53,4 @@ void DisableResizeWindow();
 
 void ShowScrollbar(BOOL Show);
 
+void show_console_cursor(const bool show);

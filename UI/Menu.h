@@ -37,6 +37,7 @@ void GuessDefinitionFromWordMenu(int OptionIndex);
 void SearchForKeyWordMenu(string& KeyWord);
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord);
+void ThirdHelperSearchForKeyWordMenu(string& KeyWord);
 void HistoryOfSearchingMenu();
 void ViewFavouriteMenu();
-void ThirdHelperSearchForKeyWordMenu(string& KeyWord);
+void AddToFavouriteMenu();

@@ -389,5 +389,40 @@ void ViewFavouriteMenu() {
 }
 
 void AddToFavouriteMenu() {
-
+	// in ra toi da 8 tu
+	int maxWord = 8;
+	// in ra toi da 1 definition cho 1 tu
+	int maxDef = 1;
+	string s = "Your Favourite List";
+	string s1 = "Word";
+	string s2 = "Definition";
+	string s3 = "Back";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	Print(s1, 10, 6, 14, 0);
+	Print(s2, 55, 6, 14, 0);
+	int y_start = 8;
+	int countWord = 0;
+	for (Favourite* temp : FavouriteList) {
+		countWord++;
+		if (countWord > maxWord) break;
+		string a = temp->word;
+		vector<string> b = temp->Definition;
+		int countDef = 0;
+		PrintLongForWord(a, 10, y_start, 15, 0);
+		for (auto k : b) {
+			countDef++;
+			if (countDef > maxDef) break;
+			Print("-", 38, y_start, 15, 0);
+			PrintLongAtMost1Line(k, 40, y_start, 15, 0);
+			y_start += 2;
+		}
+	}
+	string Annouce = "Input the word you want to add: ";
+	show_console_cursor(true);
+	Print(Annouce, 10, 28, 14, 0);
+	string Word;
+	cin >> Word;
+	show_console_cursor(false);
+	ThirdHelperSearchForKeyWordMenu(Word);
+	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
 }
