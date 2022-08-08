@@ -22,6 +22,7 @@ extern int GameState;
 
 //string Keyword để search for keyword
 extern string KeyWord;
+extern string SuggestWord;
 
 void LoadEmojiData();
 

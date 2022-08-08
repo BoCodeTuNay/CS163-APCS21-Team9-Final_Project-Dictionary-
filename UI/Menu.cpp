@@ -248,7 +248,7 @@ void GuessDefinitionFromWordMenu(int OptionIndex)
 	}
 }
 
-void SearchForKeyWordMenu(string& KeyWord) {
+void SearchForKeyWordMenu(string& KeyWord, int index) {
 	int i = 0;	
 	string s1 = "The keyword you want to search: ";
 	Print(s1, 10, 8, 14, 0);
@@ -263,12 +263,24 @@ void SearchForKeyWordMenu(string& KeyWord) {
 		}
 	}
 	int y_start = 10;
-	string s2 = "Definition: ";
 
 	// count de dem so definition duoc in ra cua tu do
 	int count = 0;
+	if (i < KeyWord.length()) {
+		page = SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU;
+		return;
+	}
 
-	if (i == KeyWord.length() && !cur->Definition.empty()) {
+	SaveBelowWords(cur, cur);
+	vector<TrieNode*> SuggestWordList = cur->BelowWords;
+	int NumsOfSuggestWord = SuggestWordList.size();
+	SuggestWord = SuggestWordList[index]->Word;
+	tongvitri = NumsOfSuggestWord;
+	for (int j = 0; j < NumsOfSuggestWord; j++) {
+		Print(SuggestWordList[j]->Word, 10, y_start, 15, (index == j) ? 2 : 0);
+		y_start++;
+	}
+	/*if (i == KeyWord.length() && !cur->Definition.empty()) {
 		Print(s2, 10, 10, 14, 0);	
 		for (auto k : cur->Definition) {
 			AddToHistoryList(cur->Word, k);
@@ -278,10 +290,7 @@ void SearchForKeyWordMenu(string& KeyWord) {
 			y_start += 2;
 		}
 		page = FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU;
-	}	
-	else {		
-		page = SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU;
-	}
+	}*/
 }
 
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
@@ -322,6 +331,25 @@ void ThirdHelperSearchForKeyWordMenu(string& KeyWord) {
 	}	
 	string AddSuccess = "Added Successfully";
 	Print(AddSuccess, (ConsoleWidth / 2 - AddSuccess.length() / 2), 32, 14, 0);
+}
+
+void FourthHelperSearchForKeyWordMenu(string& Word) {
+	string WordAnnounce = "The word is: ";
+	Print(WordAnnounce, 10, 8, 14, 0);
+	Print(Word, 25, 8, 15, 0);
+	string DefAnnounce = "Definition: ";
+	Print(DefAnnounce, 10, 10, 14, 0);
+	TrieNode* Cur = CurrentDict.TakeLastNode(Word);
+	int count = 0;
+	int y_start = 10;
+	for (auto k : Cur->Definition) {
+		AddToHistoryList(Cur->Word, k);
+		count++;
+		if (count == 6) break;
+		PrintLongAtMost2Line(k, 22, y_start, 15, 0);
+		y_start += 2;
+	}
+	page = THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU;
 }
 
 void HistoryOfSearchingMenu() {

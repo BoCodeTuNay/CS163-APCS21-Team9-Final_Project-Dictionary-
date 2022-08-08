@@ -1,12 +1,12 @@
 #include "../Trie/Trie.h"
 
-void TrieNode::SaveBelowWords(TrieNode* Cur) {
-	if (!Cur) return;
-	if (Cur->Word != "") {
-		Cur->BelowWords.push_back(Cur);
+void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1) {
+	if (!Cur1) return;
+	if (Cur1->Word != "") {
+		Cur->BelowWords.push_back(Cur1);
 	}
 	for (int i = 0; i < MaxDiffChar; i++) {
-		SaveBelowWords(Cur->NextNode[i]);
+		SaveBelowWords(Cur, Cur1->NextNode[i]);
 	}
 }
 

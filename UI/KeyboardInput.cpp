@@ -65,6 +65,15 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				break;
 			}
 
+			case SEARCH_FOR_KEYWORD_MENU: {
+				if (vitri == 0) {
+					vitri = tongvitri - 1;
+				}
+				else
+					vitri -= 1;
+				break;
+			}
+
 			case GUESS_DEFINITION_FROM_WORD_MENU: {
 				if (GameState == GAME_NOT_FINISHED) {
 					if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
@@ -135,6 +144,16 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				else
 					vitri += 1;
 				GameMenu(vitri);
+				break;
+			}
+			
+			case SEARCH_FOR_KEYWORD_MENU: {
+				cout << tongvitri << endl;
+				if (vitri == tongvitri - 1) {
+					vitri = 0;
+				}
+				else
+					vitri += 1;
 				break;
 			}
 
@@ -369,6 +388,13 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				Clrscr();
 				break;
 			}
+			
+			case SEARCH_FOR_KEYWORD_MENU: {
+				page = FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
+				vitri = 0;
+				Clrscr();
+				break;
+			}
 
 			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				if (vitri == 1) {
@@ -528,7 +554,7 @@ void Event() {
 				}
 				else if (page == SEARCH_FOR_KEYWORD_MENU) {
 					DrawTitle();
-					SearchForKeyWordMenu(KeyWord);
+					SearchForKeyWordMenu(KeyWord, vitri);
 				}
 				else if (page == FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU) {
 					FirstHelperSearchForKeyWordMenu(vitri, KeyWord);
@@ -538,6 +564,9 @@ void Event() {
 				}
 				else if (page == THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU) {
 					ThirdHelperSearchForKeyWordMenu(KeyWord);
+				}
+				else if (page == FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU) {
+					FourthHelperSearchForKeyWordMenu(SuggestWord);
 				}
 				else if (page == GUESS_DEFINITION_FROM_WORD_MENU) {
 					DrawTitle();

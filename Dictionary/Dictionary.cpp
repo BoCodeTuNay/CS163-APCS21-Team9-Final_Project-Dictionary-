@@ -21,9 +21,7 @@ int main() {
 	page = MAIN_MENU;
 
 	Event();
-	
 
-	
 	system("pause");
 	return 0;
 }

@@ -15,6 +15,8 @@ int GameState = 2;
 //string Keyword để search for keyword
 string KeyWord;
 
+//string SuggestWord 
+string SuggestWord;
 
 void LoadEmojiData()
 {

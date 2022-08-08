@@ -45,8 +45,6 @@ struct TrieNode {
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 
-	// lưu các node có nghĩa con của node Cur
-	void SaveBelowWords(TrieNode* Cur);
 };
  
 struct Trie {
@@ -72,3 +70,5 @@ struct Trie {
 	TrieNode* TakeLastNode(string& InputStr);
 };
 
+// lưu các node có nghĩa con của node Cur
+void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1);
