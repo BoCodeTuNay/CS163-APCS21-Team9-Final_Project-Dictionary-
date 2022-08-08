@@ -1,6 +1,7 @@
 #include "Favourite.h"
 
 vector<Favourite*> FavouriteList;
+bool EnableToAdd;
 
 void LoadFavouriteData() {
 	ifstream fin;
@@ -34,9 +35,12 @@ void LoadFavouriteData() {
 }
 
 void AddToFavouriteList(string& InputWord, string& InputDef) {
+	EnableToAdd = true;
+	int maxSize = 8;
+	// Favourite List co toi da 8 tu
 	int Size = FavouriteList.size();
 	// inputword da ton tai trong Favourite
-	if (Size <= 10) {
+	if (Size <= maxSize) {
 		for (int i = 0; i < Size; i++) {
 			if (FavouriteList[i]->word == InputWord) {
 				FavouriteList[i]->Definition.push_back(InputDef);
@@ -45,12 +49,11 @@ void AddToFavouriteList(string& InputWord, string& InputDef) {
 		}
 	}
 	// input word chua ton tai trong Favourite
-	if (Size == 10) {
-		Favourite* temp = new Favourite(InputWord, InputDef);
-		FavouriteList.pop_back();
-		FavouriteList.insert(FavouriteList.begin(), temp);
+	if (Size == maxSize) {
+		EnableToAdd = false;
+		return;
 	}
-	else if (Size < 10) {
+	else if (Size < maxSize) {
 		Favourite* temp = new Favourite(InputWord, InputDef);
 		FavouriteList.insert(FavouriteList.begin(), temp);
 	}
@@ -70,3 +73,5 @@ void OutputToFavouriteList() {
 	}
 	fout.close();
 }
+
+ 

@@ -189,9 +189,9 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 5) {
+					Clrscr();
 					OutputToHistoryList();
 					OutputToFavouriteList();
-					Clrscr();
 					exit(0);
 				}
 				break;
@@ -367,7 +367,10 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
-				if (vitri == 2) {
+				if (vitri == 1) {
+					page = THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU;
+				}
+				else if (vitri == 2) {
 					page = SEARCH_MENU;
 					vitri = 0;
 					Clrscr();
@@ -447,6 +450,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				}
 				break;
 			}
+
+			case THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				page = FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU;
+				vitri = 2;
+				break;
+			}
 			}
 			break;
 		}
@@ -509,6 +518,9 @@ void Event() {
 				else if (page == SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU) {
 					SecondHelperSearchForKeyWordMenu(vitri, KeyWord);
 				}
+				else if (page == THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU) {
+					ThirdHelperSearchForKeyWordMenu(KeyWord);
+				}
 				else if (page == GUESS_DEFINITION_FROM_WORD_MENU) {
 					DrawTitle();
 					GuessDefinitionFromWordMenu(vitri);
@@ -519,7 +531,7 @@ void Event() {
 				}
 				else if (page == VIEW_FAVOURITE_MENU) {
 					DrawTitle();
-					FavouriteMenu();
+					ViewFavouriteMenu();
 				}
 			}
 		}

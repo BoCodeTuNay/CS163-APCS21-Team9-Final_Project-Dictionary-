@@ -21,6 +21,7 @@ struct Favourite {
 };
 
 extern vector<Favourite*> FavouriteList;
+extern bool EnableToAdd;
 
 void LoadFavouriteData();
 

@@ -292,6 +292,9 @@ void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
 	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
+	if (index == 1) {
+
+	}
 }
 
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord) {
@@ -303,6 +306,22 @@ void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
 	Print(SearchAgain, 10, 31, 15, (index == 1) ? 2 : 0);
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
+}
+
+void ThirdHelperSearchForKeyWordMenu(string& KeyWord) {
+	TrieNode* Cur = CurrentDict.TakeLastNode(KeyWord);
+	if (Cur) {
+		for (string temp : Cur->Definition) {
+			AddToFavouriteList(KeyWord, temp);
+			if (EnableToAdd == false) {
+				string AddFail = "Favourite List reach maximum";
+				Print(AddFail, (ConsoleWidth / 2 - AddFail.length() / 2), 32, 14, 0);
+				return;
+			}
+		}
+	}	
+	string AddSuccess = "Added Successfully";
+	Print(AddSuccess, (ConsoleWidth / 2 - AddSuccess.length() / 2), 32, 14, 0);
 }
 
 void HistoryOfSearchingMenu() {
@@ -337,7 +356,7 @@ void HistoryOfSearchingMenu() {
 	}
 }
 
-void FavouriteMenu() {
+void ViewFavouriteMenu() {
 	// in ra toi da 8 tu
 	int maxWord = 8;
 	// in ra toi da 1 definition cho 1 tu
@@ -367,4 +386,8 @@ void FavouriteMenu() {
 			y_start += 2;
 		}
 	}
+}
+
+void AddToFavouriteMenu() {
+
 }

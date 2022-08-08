@@ -17,8 +17,11 @@
 #define SEARCH_FOR_KEYWORD_MENU 8
 #define FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU 9
 #define SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU 10
+#define THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU 14
 #define HISTORY_OF_SEARCHING_MENU 12
 #define VIEW_FAVOURITE_MENU 13
+#define ADD_TO_FAVOURITE_MENU 15
+#define REMOVE_FROM_FAVOURITE_MENU 16
 
 // Ve menu
 void DrawTitle();
@@ -35,4 +38,5 @@ void SearchForKeyWordMenu(string& KeyWord);
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void HistoryOfSearchingMenu();
-void FavouriteMenu();
+void ViewFavouriteMenu();
+void ThirdHelperSearchForKeyWordMenu(string& KeyWord);
