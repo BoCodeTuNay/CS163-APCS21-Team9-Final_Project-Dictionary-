@@ -22,9 +22,12 @@ struct Favourite {
 
 extern vector<Favourite*> FavouriteList;
 extern bool EnableToAdd;
+extern bool EnableToRemove;
 
 void LoadFavouriteData();
 
 void AddToFavouriteList(string& InputWord, string& InputDef);
 
 void OutputToFavouriteList();
+
+void RemoveFromFavouriteList(string& InputWord);

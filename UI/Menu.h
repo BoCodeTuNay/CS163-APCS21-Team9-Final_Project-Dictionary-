@@ -41,3 +41,4 @@ void ThirdHelperSearchForKeyWordMenu(string& KeyWord);
 void HistoryOfSearchingMenu();
 void ViewFavouriteMenu();
 void AddToFavouriteMenu();
+void RemoveFromFavouriteMenu();

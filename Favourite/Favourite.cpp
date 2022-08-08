@@ -2,6 +2,7 @@
 
 vector<Favourite*> FavouriteList;
 bool EnableToAdd;
+bool EnableToRemove;
 
 void LoadFavouriteData() {
 	ifstream fin;
@@ -74,4 +75,15 @@ void OutputToFavouriteList() {
 	fout.close();
 }
 
- 
+void RemoveFromFavouriteList(string& InputWord) {
+	EnableToRemove = true;
+	int Size = FavouriteList.size();
+	for (int i = 0; i < Size; i++) {
+		if (FavouriteList[i]->word == InputWord) {
+			vector<Favourite*> ::iterator it = FavouriteList.begin() + i;
+			FavouriteList.erase(it);
+			return;
+		}
+	}
+	EnableToRemove = false;
+}
