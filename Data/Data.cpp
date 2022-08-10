@@ -10,7 +10,8 @@ Trie VietToEngDict;
 // Cac bien phuc vu cho chuc nang random
 int RandomIndex = -1;
 vector<int>AnswersIndex;
-int GameState = 2;
+int GameState = GAME_NOT_FINISHED;
+int CorrectAnswer = -1;
 
 //string Keyword để search for keyword
 string KeyWord;

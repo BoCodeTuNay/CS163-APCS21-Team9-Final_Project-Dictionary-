@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Data\Data.cpp" />
+    <ClCompile Include="..\Favourite\Favourite.cpp" />
+    <ClCompile Include="..\History\History.cpp" />
     <ClCompile Include="..\Trie\Trie.cpp" />
     <ClCompile Include="..\UI\Console.cpp" />
     <ClCompile Include="..\UI\KeyboardInput.cpp" />
@@ -148,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Data\Data.h" />
+    <ClInclude Include="..\Favourite\Favourite.h" />
+    <ClInclude Include="..\History\History.h" />
     <ClInclude Include="..\Trie\Trie.h" />
     <ClInclude Include="..\UI\Console.h" />
     <ClInclude Include="..\UI\KeyboardInput.h" />
