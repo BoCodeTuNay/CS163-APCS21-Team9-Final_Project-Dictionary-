@@ -53,7 +53,7 @@ void LoadEmojiData()
 
 void LoadEngToEngData() {
 	ifstream fin;
-	fin.open("../Database/Anh Anh 1.txt");
+	fin.open("../Database/Anh Anh.txt");
 	string temp;
 	while (!fin.eof()) {
 		getline(fin, temp, '\n');
