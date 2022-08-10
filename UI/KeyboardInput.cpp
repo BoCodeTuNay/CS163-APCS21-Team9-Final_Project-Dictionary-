@@ -214,6 +214,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				else if (vitri == 1) {
 					page = FUNCTION_MENU;
 					vitri = 0;
+					CurrentDict = SlangDict;
 					Clrscr();
 				}
 				else if (vitri == 2) {

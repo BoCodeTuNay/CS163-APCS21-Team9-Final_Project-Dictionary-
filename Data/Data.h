@@ -28,3 +28,5 @@ extern string SuggestWord;
 void LoadEmojiData();
 
 void LoadEngToEngData();
+
+void LoadSlangData();

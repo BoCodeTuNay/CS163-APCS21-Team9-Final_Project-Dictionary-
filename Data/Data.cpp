@@ -81,3 +81,34 @@ void LoadEngToEngData() {
 	}
 	fin.close();
 }
+
+void LoadSlangData() {
+	ifstream fin;
+	fin.open("../Database/slang.txt");
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		SlangDict.AddToTrie(a, b);
+	}
+	fin.close();
+}
