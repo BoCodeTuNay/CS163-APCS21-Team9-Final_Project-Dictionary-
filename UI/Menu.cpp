@@ -436,6 +436,7 @@ void ThirdHelperSearchForKeyWordMenu() {
 			if (EnableToAdd == false) {
 				string AddFail = "Favourite List reach maximum";
 				Print(AddFail, (ConsoleWidth / 2 - AddFail.length() / 2), 32, 14, 0);
+				page = FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
 				return;
 			}
 		}

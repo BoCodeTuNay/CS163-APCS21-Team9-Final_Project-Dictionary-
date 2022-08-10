@@ -208,6 +208,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				if (vitri == 0) {
 					page = FUNCTION_MENU;
 					vitri = 0;
+					CurrentDict = EmojiDict;
 					Clrscr();
 				}
 				else if (vitri == 1) {
