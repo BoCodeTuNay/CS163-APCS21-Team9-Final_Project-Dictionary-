@@ -766,5 +766,5 @@ void ResetOriginMenu(string& MenuName) {
 	string Announce = "Reset Origin Successfully";
 	Print(Announce, (ConsoleWidth / 2 - Announce.size() / 2), 10, 14, 0);
 	string BackButton = "Back";
-	Print(BackButton, (ConsoleWidth / 2 - BackButton.size() / 2), 10, 14, 2);
+	Print(BackButton, (ConsoleWidth / 2 - BackButton.size() / 2), 15, 15, 2);
 }
