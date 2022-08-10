@@ -13,6 +13,7 @@
 #define EDIT_MENU 5
 #define GAME_MENU 6
 #define VIEW_RANDOM_WORD_MENU 7
+#define GUESS_WORD_FROM_DEFINITION_MENU 22
 #define SEARCH_FOR_KEYWORD_MENU 8
 #define FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU 9
 #define SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU 10
@@ -39,6 +40,7 @@ void EditMenu(int index);
 void GameMenu(int index);
 void ViewRandomWordMenu();
 void GuessDefinitionFromWordMenu(int OptionIndex);
+void GuessWordFromDefinitionMenu(int OptionIndex);
 void SearchForKeyWordMenu(string& KeyWord, int index);
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord);

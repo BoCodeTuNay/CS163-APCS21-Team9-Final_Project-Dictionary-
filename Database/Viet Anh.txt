@@ -1,4 +1,4 @@
-﻿A Dong `Adam
+A Dong `Adam
 A La Han `Arhant, Lohan (follower of Buddha)
 A Lich Son `Alexander
 A Lich Son dac Lo `Alexandre de Rhodes
@@ -420,7 +420,7 @@ Nho phong `scholarly tradition
 Nho sinh `student of Confucianism
 Nho si `(Confucian) scholar
 Nho dao `Confucianism
-Nha Ðien `Athens
+Nha Dien `Athens
 Nhat `Japan, Japanese
 Nhat Ban `Japan, Japanese
 Nhat Hoang `Japanese emperor
@@ -7965,7 +7965,6 @@ con rong chau a `Asian dragon
 con so `first child, oldest child
 con suot `quill, spindle, bobbin
 con song `river
-con song phan cach hai lang, the river separates the two villages
 con se `sparrow
 con so `number, digit, figure
 con so chinh xac `exact number
@@ -9177,7 +9176,6 @@ co nhu the khong `is it like this?
 co nhop `to have bad luck
 co nhung moi quan tam ve an ninh quoc gia `there are national security concerns
 co nen `should
-co nen: should (do sth)
 co noi `there is, there are places (where something happens)
 co nuoc da nuot na `glossy and fair-complexioned
 co nep co te `to have a boy and a girl
@@ -14364,7 +14362,6 @@ giu gia `to keep prices stable
 giu gin `to preserve, guard, maintain
 giu gin bo coi `to protect the country
 giu gin di san `to preserve one’s heritage
-giu gin pham cach, to preserve one's human dignity
 giu im lang `to keep quiet, hold one’s tongue
 giu kin `to hide, keep secret, keep confidential
 giu ke `show excessive caution (in one’s dealings), be overcautious
@@ -17124,7 +17121,6 @@ hau lai `future, in the future
 hau le `the later le dynasty
 hau mai `after-sales
 hau mon `anus, asshole
-hau nghiem :a posteriori
 hau phi `wife of the king
 hau phuong `rear
 hau phau `(y) post-operational
@@ -19916,7 +19912,6 @@ kenh dao `canal
 keu `to shout, call, cry
 keu canh sat `to call the police
 keu cuu `to call for help
-keu e e: to cry, wail
 keu gao `to shout, cry out
 keu goi `to appeal (to), call (up)on
 keu goi ca nuoc `to call on the entire country
@@ -20250,7 +20245,6 @@ ke mieng lo `have one foot in the grave
 ke vai sat canh `side by side, shoulder to shoulder
 kem `pincers
 kem che `to subdue, overcome, master, restrain, check, curb, dominate
-ken ken: vulture
 ke `(1) to include; (2) to list, mention, declare, consider; to relate, tell (a story); (3) individual, person
 ke benh `to relate one’s symptoms
 ke chuyen `to tell a story
@@ -28216,7 +28210,6 @@ nhay mat mot cai `in the wink of an eye
 nhay nhay `inversed commas, quotes, quotations marks; so-called
 nham `the night heavenly stem
 nham nhi `to sip
-nham: 9th cycle of the twelve years of the Chinese zodiac
 nhan `(1) at the time of; (2) core, kernel, almond; (3) to multiply; (4) man, person; (5) to cause
 nhan ai `charity, benevolence, philanthropy
 nhan ban `humanity
@@ -30797,7 +30790,6 @@ noi gian `eunuch
 noi giam `eunuch
 noi gian `planted spy
 noi hien `interiorize
-noi ham :connotation, comprehension
 noi hoa `home-made, home-grown, locally made; local goods
 noi hon `endogemy
 noi hai `the Inland Sea (of Japan)
@@ -31431,7 +31423,6 @@ pha giai `win a prize as a challenger, win a prize from the holder
 pha gioi `unfrock oneself, break one’s religious vow
 pha hoang `to break (claim) virgin land
 pha hoai `to destroy, sabotage, tear down, break up
-pha huy dong tu, to destroy, to demolish, to ruin
 pha hai `to mine, to ravage
 pha hong `to frustrate, foil, short-circuit
 pha huy `to destroy, demolish, annul
@@ -32546,7 +32537,6 @@ phu mau `parents
 phu nghia `ungrateful, thankless, unfaithful
 phu nhan `woman
 phu nu `woman
-phu nu cao nien :old woman
 phu nu nguc tran `topless woman
 phu phang `to forsake
 phu phi `additional fee, supplementary fee
@@ -34183,7 +34173,6 @@ rat quan tam ve `to pay a lot of attention to
 rat thich `to really like
 rat thong dung o Vietnamese `very common in VN
 rat thuong `very common
-rat thuong: very often, very common
 rat thua thai thoi gio `to have a lot of free time
 rat tiec `very sorry
 rat tiec la `it’s too bad that, it’s unfortunate that, I’m sorry that
@@ -34725,7 +34714,6 @@ sieu `very large, super-, giant; to transcend
 sieu cao ap `very high voltage
 sieu cuong `superpower (nation)
 sieu cuong quoc `superpower (country)
-sieu cam giac :suprasensible
 sieu cau truc `ultrastructure
 sieu dan `supraconductor
 sieu giai cap `above the classes, outside the classes
@@ -34830,7 +34818,6 @@ song toan `both complete
 song trung `double
 song tu diep `dicotyledon
 song duong `parents
-song de :dilemma
 song am `drink tea in one another’s company, make enough tea for two
 soai ham `flagship
 soat `to check
@@ -38160,7 +38147,6 @@ thang dong `to come out of a trance
 tho `letter, mail; poetry, verse; to be young, tender
 tho Nom `Nom poetry
 tho han `welder
-tho k‎y `secretary
 tho lai `secretary
 tho luc bat `six-eight meter
 tho mong `poetic, dreamlike
@@ -43230,7 +43216,6 @@ tinh hanh `conduct, behavior
 tinh khi `temper
 tinh khi nong nay `to have a hot temper
 tinh mang `life
-tinh mot dang ra mot neo: not work out as planned
 tinh ngu `adjective phrase, epithet
 tinh nhu nhuoc `weak character
 tinh nong `hot temper
@@ -45368,7 +45353,7 @@ ven duong `roadside, on the side of a road
 veo `very, very much, plenty of
 vet `to court, woo, flirt
 vet gai `to flirt (with a female)
-vet̉ mat ao nao `a doleful face
+vet mat ao nao `a doleful face
 vi `(1) to surround; (2) to act as; (3) small, subtle, delicate, tiny, micro; (4) to disobey; (5) (shark’s) fin
 vi ba `microwave
 vi bang `evidence, certificate
@@ -45862,7 +45847,6 @@ vao thang 3 vua roi `in the past three months
 vao thang `in the month of
 vao thang truoc `last month
 vao thap nien `in the decade
-vao the ky thu X: in the X-th century
 vao thit `in the flesh
 vao thoi bay gio `at the present time
 vao thoi gian nay `at, during this time
@@ -49045,7 +49029,6 @@ on `to review (a lesson)
 on con `little devil, imp
 on co tri tan `to revise the old in order to know the new
 on dich `epidemic, plague
-on hoa tinh tu, equable, temperate, moderate, mild, gentle
 on hoa `formal, moderate, temperate, calm, poised, peaceful, non-violent
 on hau `gentle and honest
 on luyen `review (revise) and drill
@@ -53338,7 +53321,6 @@ dua `(indicates a person of lower status)
 dua be `a boy, a child
 dua be ngang nguoc `a perverse child
 dua be eo uot `a sickly child
-dua be de non :, a premature baby
 dua con `child
 dua con gai `daughter
 dua con trai `male child
@@ -53985,7 +53967,6 @@ o ben tay mat `on the left
 o ben tay trai `on the right
 o ben trong `inside
 o ben duong `on the side of the road
-o bau thi tron, o ong thi dai
 o chan troi `on the horizon
 o cho `here, in this place
 o cho do `there, in that place
@@ -54235,140 +54216,4 @@ u `to consent; yes
 u hu `answer evasively
 u nhi `okay, yes
 u ao `say "yes" and not mean it
-u e `to give an evasive answer
-u u ao ao `say yes to everything and do nothing
-ung uc `gulp down, swallow
-ung `redden, tinge with red, grow red color, blush
-ung hong `to redden, turn pink
-ung do `blush
-u tai tu `actress
-ua `belch, belch (ing), eructation
-uc `to drink down, swallow loudly
-y `inertia, state of inactivity, stay out, inert, sluggish
-y ach `to toil, labor with difficulty
-y `(1) to be fat (said of a pig); (2) to depend on
 y eo `reproach someone with something
-y lai `to depend, rely on others
-y the `count on one’s power, one’s position, one’s influence
-﻿A Can dinh `Argentina, Argentine, Argentinean
-﻿quay phim `to film, record
-﻿dua tra `to bring back, carry back
-chua co thong tin `there is as yet no information that
-cac bien phap `measures
-cong bo chinh sach moi `to announce a new policy
-bai dien van `speech
-bai phat bieu `statement
-cuu Tong thong `former president
-dot pha ngoai giao `diplomatic breakthrough
-cuu thu `former enemy
-tang cuong thuc thi `to strengthen enforcement
-luat le du hanh `travel regulations
-an danh cho biet `to report anonymously
-tai tuc `to renew, restore
-ho so nhan quyen `human rights record
-tu do chinh tri `political freedom
-bi ap luc `to be pressured
-giao tiep ngoai giao `diplomatic contact
-trinh dien `to present oneself, report (to sh)
-bo do vet `suit
-mau xam `gray (colored)
-mau nau dam `dark brown (colored)
-thanh mot hang `in a row, in a line
-khu ngoai o `suburb, suburban area
-dan do `to recommend strongly
-dua em `younger sibling
-mien xa `faraway place
-mo mieng hoi `to open one’s mouth to ask
-cai va `to argue
-phong tiep khach `reception (room)
-danh cho `to set aside for
-khach quy `important guest, important visitor
-khong phai cho `to not be for
-nhung thang `guys, fellows
-cang phai `to must need to do sth even more, so much the more one needs to ...
-chuyen lon `big deal, important matter
-do lo `to be relieved, stop worrying
-dung truoc `to stop in front of
-cong sat `iron gate
-cua sat `iron door, iron gate
-may quay phim `(video, movie) camera
-tu ben trong `from inside
-loa dien `speaker
-sua ra: `to bark out
-tho dau `to stick (out) one’s head
-lanh nhu tien `cold as ice
-trong gap go da co mam ly biet `to be doomed from the start
-nguoi than tin `trusted person, confident
-linh gac `watchman, gatekeeper
-keo sang hai ben `to be pulled apart
-lon lam `very big
-khoi can phai noi them `to go without saying
-ngay ben `directly beside, right next to
-mang sung `to carry a gun
-su sang trong `luxury
-cai phong khach `guest room, living room, sitting room
-kieu tu `to excuse oneself, take one’s leave
-tien ra `to come out
-tu trong `from inside, from within
-suot tu sang den gio `since this morning
-xua `to drive away, drive out
-xua tay `to wave off, dismiss with a wave of the hand
-chai ruou `bottle of alcohol
-sao lai `why
-tho chan `to stick out one’s leg
-da nhe vao `to kick lightly
-ky lenh `to sign an order
-mien tu `pardon (from death)
-toi chet `capital crime, crime punishable by death
-cho ai dau `for no one
-cho co ngu `don’t be stupid
-moi viec `everything
-ket ruou `case of alcohol
-de chan `to bore easily
-nhin ngang nhin ngua `to look back and forth
-ngay ben canh `right next to
-nhan viec lam `accept a job, start a job
-nhac kheo `to prompt, remind, caution
-chung gan `approximately, almost, about
-tieng dong ho sau do `an hour later
-nho cho ky `(remember to) be careful
-thang ba hoa `bragger, boaster, show-off
-hang nguoi `type of person, kind of man
-vu phong van `interview
-con khong thi thoi `if not, that’s fine
-co gi ma `what is there to ..., why ...
-run nguoi `to shiver
-muon run nguoi `to feel like shivering
-thay lanh `to feel cold
-goc phong `corner of a room
-thinh lang `quiet, silent
-tuong go `wooden statue
-cu phai `to keep having to, to continue to have to
-nhin ve phia `to look towards
-ong boi `waiter, servant
-buon qua `it’s so sad, it’s so lonely
-dai khai `in general
-muon noi `to mean
-muon noi la `means that
-cung chung `in common, together
-xin lua `to ask for a light
-cam on nhieu lam `thank you very much
-dau co ai `there is no one, no one is here
-nu cuoi gia `fake smile
-them thuoc `to crave a cigarette
-co gi kho? `what’s hard about that?
-su chan that `sincerity, genuineness, frankness
-nhat dinh khong `absolutely not
-nhap thu `to try a sip
-lam thu `to try
-ke cho nguoi ta nghe `to tell other people, relate a story
-kha manh `very strong
-gioi y khoa `the medical world
-viec dieu tra `investigation
-vo y lam chet nguoi `to commit manslaughter, involuntarily kill sb
-danh bom hang loat `serial bombing
-theo canh sat `according to the police
-khong neu chi tiet `to not give any details
-cuoc song ca nhan `personal life
-dinh cu My `to take up residence in the United States
-hep lai `to make narrow, to begin to close
