@@ -16,6 +16,8 @@ int main() {
 	LoadEmojiData();
 	LoadEngToEngData();
 	LoadSlangData();
+	LoadVietToEngData();
+
 	LoadHistoryData();
 	LoadFavouriteData();
 

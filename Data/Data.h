@@ -30,3 +30,5 @@ void LoadEmojiData();
 void LoadEngToEngData();
 
 void LoadSlangData();
+
+void LoadVietToEngData();

@@ -231,6 +231,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				else if (vitri == 4) {
 					page = FUNCTION_MENU;
 					vitri = 0;
+					CurrentDict = VietToEngDict;
 					Clrscr();
 				}
 				else if (vitri == 5) {
