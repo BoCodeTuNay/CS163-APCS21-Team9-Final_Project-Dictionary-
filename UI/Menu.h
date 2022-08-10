@@ -19,6 +19,7 @@
 #define SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU 10
 #define THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU 14
 #define FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU 17
+#define FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU 18
 #define HISTORY_OF_SEARCHING_MENU 12
 #define VIEW_FAVOURITE_MENU 13
 #define ADD_TO_FAVOURITE_MENU 15
@@ -38,8 +39,9 @@ void GuessDefinitionFromWordMenu(int OptionIndex);
 void SearchForKeyWordMenu(string& KeyWord, int index);
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord);
 void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord);
-void ThirdHelperSearchForKeyWordMenu(string& KeyWord);
-void FourthHelperSearchForKeyWordMenu(string& Word);
+void ThirdHelperSearchForKeyWordMenu();
+void FourthHelperSearchForKeyWordMenu();
+void FifthHelperSearchForKeyWordMenu(int index);
 void HistoryOfSearchingMenu();
 void ViewFavouriteMenu();
 void AddToFavouriteMenu();

@@ -66,11 +66,14 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case SEARCH_FOR_KEYWORD_MENU: {
-				if (vitri == 0) {
+				break;
+			}
+
+			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				if (vitri == 1) {
 					vitri = tongvitri - 1;
 				}
-				else
-					vitri -= 1;
+				else vitri -= 1;
 				break;
 			}
 
@@ -148,12 +151,6 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 			
 			case SEARCH_FOR_KEYWORD_MENU: {
-				cout << tongvitri << endl;
-				if (vitri == tongvitri - 1) {
-					vitri = 0;
-				}
-				else
-					vitri += 1;
 				break;
 			}
 
@@ -167,10 +164,21 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 
 			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				if (vitri == 0) vitri = 1;
+				else if (vitri == tongvitri - 1) {
+					vitri = 1;
+				}
+				else {
+					vitri += 1;
+				}				
 				break;
 			}
 
 			case SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				if (vitri == 0) vitri = 1;
+				break;
+			}
+
+			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				if (vitri == 0) vitri = 1;
 				break;
 			}
@@ -390,18 +398,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 			
 			case SEARCH_FOR_KEYWORD_MENU: {
-				page = FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
-				vitri = 0;
-				Clrscr();
 				break;
 			}
 
 			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
-				if (vitri == 1) {
-					page = THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU;
-				}
-				else if (vitri == 2) {
-					page = SEARCH_MENU;
+				if (vitri != 0 && vitri < tongvitri) {
+					page = FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
 					vitri = 0;
 					Clrscr();
 				}
@@ -413,6 +415,18 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					page = SEARCH_FOR_KEYWORD_MENU;
 					vitri = 0;
 					Clrscr();
+				}
+				else if (vitri == 2) {
+					page = SEARCH_MENU;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			}
+
+			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				if (vitri == 1) {
+					page = THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU;
 				}
 				else if (vitri == 2) {
 					page = SEARCH_MENU;
@@ -455,12 +469,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 
 		case VK_LEFT: {
 			switch (page) {
-			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+			case SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
 
-			case SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
@@ -478,12 +492,12 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 
 		case VK_RIGHT: {
 			switch (page) {
-			case FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+			case SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
 
-			case SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
@@ -556,17 +570,21 @@ void Event() {
 					DrawTitle();
 					SearchForKeyWordMenu(KeyWord, vitri);
 				}
-				else if (page == FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU) {
+				else if (page == FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU) {			
 					FirstHelperSearchForKeyWordMenu(vitri, KeyWord);
 				}
 				else if (page == SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU) {
 					SecondHelperSearchForKeyWordMenu(vitri, KeyWord);
 				}
 				else if (page == THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU) {
-					ThirdHelperSearchForKeyWordMenu(KeyWord);
+					ThirdHelperSearchForKeyWordMenu();
 				}
 				else if (page == FOURTH_HELPER_SEARCH_FOR_KEYWORD_MENU) {
-					FourthHelperSearchForKeyWordMenu(SuggestWord);
+					DrawTitle();
+					FourthHelperSearchForKeyWordMenu();
+				}
+				else if (page == FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU) {
+					FifthHelperSearchForKeyWordMenu(vitri);
 				}
 				else if (page == GUESS_DEFINITION_FROM_WORD_MENU) {
 					DrawTitle();

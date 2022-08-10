@@ -262,24 +262,16 @@ void SearchForKeyWordMenu(string& KeyWord, int index) {
 			cur = cur->NextNode[cNum];
 		}
 	}
-	int y_start = 10;
-
+	
 	// count de dem so definition duoc in ra cua tu do
 	int count = 0;
 	if (i < KeyWord.length()) {
 		page = SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU;
 		return;
 	}
-
-	SaveBelowWords(cur, cur);
-	vector<TrieNode*> SuggestWordList = cur->BelowWords;
-	int NumsOfSuggestWord = SuggestWordList.size();
-	SuggestWord = SuggestWordList[index]->Word;
-	tongvitri = NumsOfSuggestWord;
-	for (int j = 0; j < NumsOfSuggestWord; j++) {
-		Print(SuggestWordList[j]->Word, 10, y_start, 15, (index == j) ? 2 : 0);
-		y_start++;
-	}
+	else {
+		page = FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU;
+	}	
 	/*if (i == KeyWord.length() && !cur->Definition.empty()) {
 		Print(s2, 10, 10, 14, 0);	
 		for (auto k : cur->Definition) {
@@ -294,7 +286,7 @@ void SearchForKeyWordMenu(string& KeyWord, int index) {
 }
 
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
-	vitri = index;
+	/*vitri = index;
 	string Announce = "Successfully";
 	string AddToFav = "Add to favourite list";
 	string BackButton = "Back";
@@ -303,6 +295,27 @@ void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 	if (index == 1) {
 
+	}*/
+	vitri = index;
+	string Announce = "List of suggest word: ";
+	Print(Announce, 10, 10, 15, (index == 0) ? 12 : 0);
+	int y_start = 12;
+	TrieNode* cur = CurrentDict.TakeLastNode(KeyWord);
+	cur->BelowWords.clear();
+	SaveBelowWords(cur, cur);
+	vector<TrieNode*> SuggestWordList = cur->BelowWords;	
+	int NumsOfSuggestWord = SuggestWordList.size();
+
+	if (index > 0) {
+		SuggestWord = SuggestWordList[index - 1]->Word;
+	}
+
+	if (NumsOfSuggestWord <= 19) tongvitri = NumsOfSuggestWord + 1;
+	else tongvitri = 20;
+
+	for (int j = 0; j < tongvitri - 1; j++) {
+		Print(SuggestWordList[j]->Word, 10, y_start, 15, (index == j + 1) ? 2 : 0);
+		y_start++;
 	}
 }
 
@@ -312,16 +325,16 @@ void SecondHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	string Announce = "Invalid Word";
 	string SearchAgain = "Search again";
 	string BackButton = "Back";	
-	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
-	Print(SearchAgain, 10, 31, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 25, 14, (index == 0) ? 12 : 0);
+	Print(SearchAgain, 10, 27, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 27, 15, (index == 2) ? 2 : 0);
 }
 
-void ThirdHelperSearchForKeyWordMenu(string& KeyWord) {
-	TrieNode* Cur = CurrentDict.TakeLastNode(KeyWord);
+void ThirdHelperSearchForKeyWordMenu() {
+	TrieNode* Cur = CurrentDict.TakeLastNode(SuggestWord);
 	if (Cur) {
 		for (string temp : Cur->Definition) {
-			AddToFavouriteList(KeyWord, temp);
+			AddToFavouriteList(SuggestWord, temp);
 			if (EnableToAdd == false) {
 				string AddFail = "Favourite List reach maximum";
 				Print(AddFail, (ConsoleWidth / 2 - AddFail.length() / 2), 32, 14, 0);
@@ -331,15 +344,19 @@ void ThirdHelperSearchForKeyWordMenu(string& KeyWord) {
 	}	
 	string AddSuccess = "Added Successfully";
 	Print(AddSuccess, (ConsoleWidth / 2 - AddSuccess.length() / 2), 32, 14, 0);
+	KeyWord = "";
+	SuggestWord = "";
+	page = FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
 }
 
-void FourthHelperSearchForKeyWordMenu(string& Word) {
+// in ra ket qua khi choose suggest word thanh cong
+void FourthHelperSearchForKeyWordMenu() {
 	string WordAnnounce = "The word is: ";
 	Print(WordAnnounce, 10, 8, 14, 0);
-	Print(Word, 25, 8, 15, 0);
+	Print(SuggestWord, 25, 8, 15, 0);
 	string DefAnnounce = "Definition: ";
 	Print(DefAnnounce, 10, 10, 14, 0);
-	TrieNode* Cur = CurrentDict.TakeLastNode(Word);
+	TrieNode* Cur = CurrentDict.TakeLastNode(SuggestWord);
 	int count = 0;
 	int y_start = 10;
 	for (auto k : Cur->Definition) {
@@ -349,7 +366,17 @@ void FourthHelperSearchForKeyWordMenu(string& Word) {
 		PrintLongAtMost2Line(k, 22, y_start, 15, 0);
 		y_start += 2;
 	}
-	page = THIRD_HELPER_SEARCH_FOR_KEYWORD_MENU;
+	page = FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU;
+}
+
+void FifthHelperSearchForKeyWordMenu(int index) {
+	vitri = index;
+	string Announce = "Search Successfully";
+	string AddToFav = "Add to favourite list";
+	string BackButton = "Back";
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
 void HistoryOfSearchingMenu() {
