@@ -155,8 +155,7 @@ void ViewRandomWordMenu() {
 	}
 }
 
-void GuessDefinitionFromWordMenu(int OptionIndex)
-{
+void GuessDefinitionFromWordMenu(int OptionIndex) {
 	if (GameState == GAME_NOT_FINISHED) {
 		int numAnswer = 4;
 
@@ -175,6 +174,9 @@ void GuessDefinitionFromWordMenu(int OptionIndex)
 					AnswersIndex.push_back(tmp);
 				}
 			}
+
+			CorrectAnswer = rand() % numAnswer;
+			swap(AnswersIndex[0], AnswersIndex[CorrectAnswer]);
 		}
 
 		string Instruction = "Choose the correct definition for: ";
@@ -207,6 +209,102 @@ void GuessDefinitionFromWordMenu(int OptionIndex)
 			// Chi in ra definition dau tien cua 1 tu
 			string SingleDef = CurrentDict.ExistingWords[AnswersIndex[i]]->Definition[0];
 			PrintLong(SingleDef, 13, y_start, 15, 0);
+			y_start += 2;
+		}
+
+		for (int i = 0; i < numAnswer; ++i) {
+			switch (i) {
+			case 0:
+				Print("A", 10, y_start, 14, (OptionIndex == 0) ? 2 : 0);
+				break;
+			case 1:
+				Print("B", 30, y_start, 14, (OptionIndex == 1) ? 2 : 0);
+				break;
+			case 2:
+				Print("C", 50, y_start, 14, (OptionIndex == 2) ? 2 : 0);
+				break;
+			case 3:
+				Print("D", 70, y_start, 14, (OptionIndex == 3) ? 2 : 0);
+				break;
+			default:
+				break;
+			}
+		}
+
+		string BackButton = "Back";
+		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), y_start + 2, 15, (OptionIndex == 4) ? 2 : 0);
+	}
+	else if (GameState == GAME_WON) {
+		string Announcement = "The answer is correct!";
+		Print(Announcement, ConsoleWidth / 2 - Announcement.length() / 2, ConsoleHeight / 2 - 1, 14, 0);
+
+		string BackButton = "Back";
+		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), ConsoleHeight / 2 + 1, 15, 2);
+	}
+	else if (GameState == GAME_OVER) {
+		string Announcement = "The answer is incorrect!";
+		Print(Announcement, ConsoleWidth / 2 - Announcement.length() / 2, ConsoleHeight / 2 - 1, 14, 0);
+
+		string BackButton = "Back";
+		Print(BackButton, (ConsoleWidth / 2 - BackButton.length() / 2), ConsoleHeight / 2 + 1, 15, 2);
+	}
+}
+
+void GuessWordFromDefinitionMenu(int OptionIndex) {
+	if (GameState == GAME_NOT_FINISHED) {
+		int numAnswer = 4;
+
+		// Chi cap nhat cac index lai khi RandomIndex == -1
+		if (RandomIndex == -1) {
+			AnswersIndex.clear();
+
+			srand(time(NULL));
+			RandomIndex = rand() % CurrentDict.ExistingWords.size();
+
+			AnswersIndex.push_back(RandomIndex);
+
+			while (AnswersIndex.size() < numAnswer) {
+				int tmp = rand() % CurrentDict.ExistingWords.size();
+				if (tmp != RandomIndex) {
+					AnswersIndex.push_back(tmp);
+				}
+			}
+
+			CorrectAnswer = rand() % numAnswer;
+			swap(AnswersIndex[0], AnswersIndex[CorrectAnswer]);
+		}
+
+		string Instruction = "Choose the correct word for: ";
+		string Definition = CurrentDict.ExistingWords[RandomIndex]->Definition[0];
+
+		int y_start = 10;
+
+		Print(Instruction, 10, y_start, 14, 0);
+		++y_start;
+		PrintLong(Definition, 10, y_start, 15, 0);
+		y_start += 2;
+
+		for (int i = 0; i < AnswersIndex.size(); ++i) {
+			switch (i) {
+			case 0:
+				Print("A. ", 10, y_start, 14, 0);
+				break;
+			case 1:
+				Print("B. ", 10, y_start, 14, 0);
+				break;
+			case 2:
+				Print("C. ", 10, y_start, 14, 0);
+				break;
+			case 3:
+				Print("D. ", 10, y_start, 14, 0);
+				break;
+			default:
+				break;
+			}
+
+			// In ra cac tu dap an de chon
+			string AnswerWord = CurrentDict.ExistingWords[AnswersIndex[i]]->Word;
+			PrintLong(AnswerWord, 13, y_start, 15, 0);
 			y_start += 2;
 		}
 

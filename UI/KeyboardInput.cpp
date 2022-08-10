@@ -84,6 +84,14 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				}
 				break;
 			}
+
+			case GUESS_WORD_FROM_DEFINITION_MENU: {
+				if (GameState == GAME_NOT_FINISHED) {
+					if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
+					else vitri = 0;
+				}
+				break;
+			}
 			}
 			break;
 		}
@@ -155,6 +163,14 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case GUESS_DEFINITION_FROM_WORD_MENU: {
+				if (GameState == GAME_NOT_FINISHED) {
+					if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
+					else vitri = 0;
+				}
+				break;
+			}
+
+			case GUESS_WORD_FROM_DEFINITION_MENU: {
 				if (GameState == GAME_NOT_FINISHED) {
 					if (vitri == 0 || vitri == 1 || vitri == 2 || vitri == 3) vitri = 4;
 					else vitri = 0;
@@ -334,7 +350,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 1) {
-					// GUESS WORD FROM DEFINITIONS
+					page = GUESS_WORD_FROM_DEFINITION_MENU;
 					Clrscr();
 				}
 				else if (vitri == 2) {
@@ -347,26 +363,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 
 			case GUESS_DEFINITION_FROM_WORD_MENU: {
 				if (GameState == GAME_NOT_FINISHED) {
-					if (vitri == 0) {
+					if (vitri == CorrectAnswer) {
 						GameState = GAME_WON;
-						page = GUESS_DEFINITION_FROM_WORD_MENU;
-						vitri = 0;
-						Clrscr();
-					}
-					else if (vitri == 1) {
-						GameState = GAME_OVER;
-						page = GUESS_DEFINITION_FROM_WORD_MENU;
-						vitri = 0;
-						Clrscr();
-					}
-					else if (vitri == 2) {
-						GameState = GAME_OVER;
-						page = GUESS_DEFINITION_FROM_WORD_MENU;
-						vitri = 0;
-						Clrscr();
-					}
-					else if (vitri == 3) {
-						GameState = GAME_OVER;
 						page = GUESS_DEFINITION_FROM_WORD_MENU;
 						vitri = 0;
 						Clrscr();
@@ -376,6 +374,44 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 						page = GAME_MENU;
 						vitri = 0;
 						RandomIndex = -1;
+						Clrscr();
+					}
+					else {
+						GameState = GAME_OVER;
+						page = GUESS_DEFINITION_FROM_WORD_MENU;
+						vitri = 0;
+						Clrscr();
+					}
+				}
+				else if (GameState == GAME_WON || GameState == GAME_OVER) {
+					GameState = GAME_NOT_FINISHED;
+					page = GAME_MENU;
+					vitri = 0;
+					RandomIndex = -1;
+					Clrscr();
+				}
+				break;
+			}
+
+			case GUESS_WORD_FROM_DEFINITION_MENU: {
+				if (GameState == GAME_NOT_FINISHED) {
+					if (vitri == CorrectAnswer) {
+						GameState = GAME_WON;
+						page = GUESS_DEFINITION_FROM_WORD_MENU;
+						vitri = 0;
+						Clrscr();
+					}
+					else if (vitri == 4) {
+						GameState = GAME_NOT_FINISHED;
+						page = GAME_MENU;
+						vitri = 0;
+						RandomIndex = -1;
+						Clrscr();
+					}
+					else {
+						GameState = GAME_OVER;
+						page = GUESS_DEFINITION_FROM_WORD_MENU;
+						vitri = 0;
 						Clrscr();
 					}
 				}
@@ -486,6 +522,14 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				}
 				break;
 			}
+
+			case GUESS_WORD_FROM_DEFINITION_MENU: {
+				if (GameState == GAME_NOT_FINISHED) {
+					if (vitri == 0) vitri = 3;
+					else --vitri;
+				}
+				break;
+			}
 			}
 			break;
 		}
@@ -503,6 +547,13 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case GUESS_DEFINITION_FROM_WORD_MENU: {
+				if (GameState == GAME_NOT_FINISHED) {
+					vitri = (++vitri) % 4;
+				}
+				break;
+			}
+
+			case GUESS_WORD_FROM_DEFINITION_MENU: {
 				if (GameState == GAME_NOT_FINISHED) {
 					vitri = (++vitri) % 4;
 				}
@@ -589,6 +640,10 @@ void Event() {
 				else if (page == GUESS_DEFINITION_FROM_WORD_MENU) {
 					DrawTitle();
 					GuessDefinitionFromWordMenu(vitri);
+				}
+				else if (page == GUESS_WORD_FROM_DEFINITION_MENU) {
+					DrawTitle();
+					GuessWordFromDefinitionMenu(vitri);
 				}
 				else if (page == HISTORY_OF_SEARCHING_MENU) {
 					DrawTitle();

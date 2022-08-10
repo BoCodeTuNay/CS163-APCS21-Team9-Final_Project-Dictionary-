@@ -19,6 +19,7 @@ extern Trie VietToEngDict;
 extern int RandomIndex;
 extern vector<int> AnswersIndex;
 extern int GameState;
+extern int CorrectAnswer;
 
 //string Keyword để search for keyword
 extern string KeyWord;
