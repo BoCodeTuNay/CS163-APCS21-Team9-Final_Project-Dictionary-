@@ -32,3 +32,5 @@ void LoadEngToEngData();
 void LoadSlangData();
 
 void LoadVietToEngData();
+
+void LoadEngToVietData();

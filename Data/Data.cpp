@@ -143,3 +143,34 @@ void LoadVietToEngData() {
 	}
 	fin.close();
 }
+
+void LoadEngToVietData() {
+	ifstream fin;
+	fin.open("../Database/Anh Viet.txt");
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		EngToVietDict.AddToTrie(a, b);
+	}
+	fin.close();
+}

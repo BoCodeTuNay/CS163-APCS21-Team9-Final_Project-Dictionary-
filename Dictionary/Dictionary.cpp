@@ -17,6 +17,7 @@ int main() {
 	LoadEngToEngData();
 	LoadSlangData();
 	LoadVietToEngData();
+	LoadEngToVietData();
 
 	LoadHistoryData();
 	LoadFavouriteData();
