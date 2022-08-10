@@ -420,7 +420,7 @@ Nho phong `scholarly tradition
 Nho sinh `student of Confucianism
 Nho si `(Confucian) scholar
 Nho dao `Confucianism
-Nha Ðien `Athens
+Nha Dien `Athens
 Nhat `Japan, Japanese
 Nhat Ban `Japan, Japanese
 Nhat Hoang `Japanese emperor
@@ -38147,7 +38147,6 @@ thang dong `to come out of a trance
 tho `letter, mail; poetry, verse; to be young, tender
 tho Nom `Nom poetry
 tho han `welder
-tho k‎y `secretary
 tho lai `secretary
 tho luc bat `six-eight meter
 tho mong `poetic, dreamlike
@@ -45354,7 +45353,7 @@ ven duong `roadside, on the side of a road
 veo `very, very much, plenty of
 vet `to court, woo, flirt
 vet gai `to flirt (with a female)
-vet̉ mat ao nao `a doleful face
+vet mat ao nao `a doleful face
 vi `(1) to surround; (2) to act as; (3) small, subtle, delicate, tiny, micro; (4) to disobey; (5) (shark’s) fin
 vi ba `microwave
 vi bang `evidence, certificate
