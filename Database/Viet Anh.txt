@@ -40,7 +40,6 @@ Bien Phong Phu `Mare Foecondatus
 Bien Thai Binh Duong `the Pacific Ocean
 Bien Trong `Mare Seranitatis
 Bien Tram Lang `Mare Traquilitatis
-Bien Ðong `South China Sea
 Bien dong `South China Sea
 Bien dia Trung Hai `Mediterranean Sea
 Brazin `Brazil
@@ -48353,13 +48352,13 @@ au trang `western clothes
 au a `Europe and Asia, East and West
 et To No `Estonia, Estonian
 e beu `Shame on you!
-Ða Lat `Dalat
-Ðai Loan `Taiwan
-Ðong Nam a `Southeast Asia, Southeast Asian
-Ðong a `East Asia, East Asian
-Ðong Ðuc `East Germany
-Ðai Han `Korean
-Ðuc `Germany, German
+Da Lat `Dalat
+Dai Loan `Taiwan
+Dong Nam a `Southeast Asia, Southeast Asian
+Dong a `East Asia, East Asian
+Dong Ðuc `East Germany
+Dai Han `Korean
+Duc `Germany, German
 ong But `Buddha
 ong Gia No En `Santa Claus, Father Christmas
 ong cu toi `my father
