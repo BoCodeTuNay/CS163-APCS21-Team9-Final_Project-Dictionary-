@@ -49,42 +49,38 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	UpdChildsNum(Cur);
 }
 
-vector<string> Trie::SearchForDef(const string& InputStr) {
-	vector<string> temp(1, "");
-	vector<string> res;
+TrieNode* Trie::SearchForNode(const string& InputStr) {
+	TrieNode* Res = NULL;
 	TrieNode* Cur = Root;
 	for (char c : InputStr) {
 		int cNum = int(c);
-		if (Cur->NextNode[cNum] == NULL) return temp;
+		if (Cur->NextNode[cNum] == NULL) return Res;
 		Cur = Cur->NextNode[cNum];
 	}
-	return Cur->Definition;
+	return Cur;
 }
 
 bool Trie::EditDef(const string& InputStr, const string& NewDef) {
-	vector<string> NeedDef = SearchForDef(InputStr);
-	if (NeedDef[0] != "") return true;
-	return false;
+	TrieNode* NeedNode = SearchForNode(InputStr);
+	if (NeedNode == NULL || NeedNode->Definition.size() == 0) return false;
+	NeedNode->Definition.clear();
+	NeedNode->Definition.push_back(NewDef);
+	return true;
 }
 
-//bool Trie::DelWord(const string& InputStr) {
-//	TrieNode* DelNode = this->SearchForDef(InputStr);
-//	if (DelNode == NULL) return false;
-//	if (DelNode->ChildsNum == 0) {
-//		while (DelNode != this->Root && DelNode != NULL && DelNode->ChildsNum == 0) {
-//			TrieNode* Cur = DelNode;
-//			DelNode = Cur->ParNode;
-//			--(DelNode->ChildsNum);
-//			delete Cur;
-//		}
-//		return true;
-//	}
-//	else {
-//		DelNode->Definition = "";
-//		//DelNode->Word = "";
-//		return true;
-//	}
-//}
+bool Trie::DelWord(const string& InputStr) {
+	TrieNode* DelNode = this->SearchForNode(InputStr);
+	if (DelNode == NULL) return false;
+	DelNode->Definition.clear();
+	vector<TrieNode*> ::iterator it;
+	for (it = ExistingWords.begin(); it != ExistingWords.end(); ++it) {
+		if (*(it) == DelNode) {
+		ExistingWords.erase(it);
+		break;
+		}
+	}
+	return true;
+}
 
 TrieNode* Trie::TakeLastNode(string& InputStr) {
 	if (Root == nullptr) return nullptr;

@@ -249,23 +249,14 @@ void GuessDefinitionFromWordMenu(int OptionIndex)
 }
 
 void SearchForKeyWordMenu(string& KeyWord, int index) {
-	int i = 0;	
 	string s1 = "The keyword you want to search: ";
 	Print(s1, 10, 8, 14, 0);
 	cin >> KeyWord;
-	TrieNode* cur = CurrentDict.Root;	
-	for (i; i < KeyWord.length(); i++) {
-		char c = KeyWord[i];
-		int cNum = int(c);		
-		if (!cur->NextNode[cNum]) break;
-		if (cur->NextNode[cNum] != NULL) {
-			cur = cur->NextNode[cNum];
-		}
-	}
-	
+	TrieNode* cur = CurrentDict.SearchForNode(KeyWord);
+
 	// count de dem so definition duoc in ra cua tu do
 	int count = 0;
-	if (i < KeyWord.length()) {
+	if (cur == NULL || cur->Definition.size() == 0 && cur->ChildsNum == 0) {
 		page = SECOND_HELPER_SEARCH_FOR_KEYWORD_MENU;
 		return;
 	}
@@ -314,8 +305,10 @@ void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
 	else tongvitri = 20;
 
 	for (int j = 0; j < tongvitri - 1; j++) {
-		Print(SuggestWordList[j]->Word, 10, y_start, 15, (index == j + 1) ? 2 : 0);
-		y_start++;
+		if (SuggestWordList[j]->Definition.size() > 0) {
+			Print(SuggestWordList[j]->Word, 10, y_start, 15, (index == j + 1) ? 2 : 0);
+			y_start++;
+		}
 	}
 }
 
@@ -558,4 +551,84 @@ void RemoveFromFavouriteMenu() {
 	Print(s3, (ConsoleWidth / 2 - s3.length() / 2), 35, 15, 2);
 }
 
+void AddNewWord() {
 
+	string s = "Input wew word:";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
+	string InputStr;
+	cin >> InputStr;
+
+	s = "Input word definition:";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
+	string InputDef;
+	cin >> InputDef;
+
+	CurrentDict.AddToTrie(InputStr, InputDef);
+	
+	s = "Successful!";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
+
+	s = "Back!";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 14, 7, 2);
+
+	page = FUNCTION_MENU;
+	return;
+}
+
+void EditWordDefinition() {
+	string s = "Input word for editing:";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
+	string InputStr;
+	cin >> InputStr;
+
+	s = "Input new definition:";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
+	string InputDef;
+	cin >> InputDef;
+
+	bool res = CurrentDict.EditDef(InputStr, InputDef);
+
+	if (res) {
+		s = "Successful!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
+	}
+	else {
+		s = "Fail! Unknown word!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 4, 0);
+	}
+
+	s = "Back!";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 14, 7, 2);
+
+	page = FUNCTION_MENU;
+	return;
+}
+
+void DeleteWord() {
+	string s = "Input word for deleting:";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
+	string InputStr;
+	cin >> InputStr;
+
+	bool res = CurrentDict.DelWord(InputStr);
+
+	if (res) {
+		s = "Successful!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 2, 0);
+	}
+	else {
+		s = "Fail! Unknown word!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 4, 0);
+	}
+
+	s = "Back!";
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 7, 2);
+
+	page = FUNCTION_MENU;
+	return;
+}

@@ -35,6 +35,7 @@ struct TrieNode {
 		ChildsNum = 0;
 		ParNode = NULL;
 		NodeChar = '\0';
+		Definition = {};
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 
@@ -43,6 +44,7 @@ struct TrieNode {
 		ChildsNum = 0;
 		ParNode = NULL;
 		NodeChar = c;
+		Definition = {};
 		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
 	}
 
@@ -62,6 +64,8 @@ struct Trie {
 
 	// tra ve cac dinh nghia cua tu
 	vector<string> SearchForDef(const string& InputStr);
+
+	TrieNode* SearchForNode(const string& InputStr);
 
 	bool EditDef(const string& InputStr, const string& NewDef);
 

@@ -298,14 +298,17 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			case EDIT_MENU: {
 				if (vitri == 0) {
 					// ham ADD NEW WORD AND ITS DEFINITION
+					page = ADD_NEW_WORD;
 					Clrscr();
 				}
 				else if (vitri == 1) {
 					// ham EDIT DEFINITION OF EXISTING WORD
+					page = EDIT_WORD_DEFINITION;
 					Clrscr();
 				}
 				else if (vitri == 2) {
 					// ham REMOVE A WORD FROM DICTIONARY
+					page = DELETE_WORD;
 					Clrscr();
 				}
 				else if (vitri == 3) {
@@ -605,6 +608,21 @@ void Event() {
 				else if (page == REMOVE_FROM_FAVOURITE_MENU) {
 					DrawTitle();
 					RemoveFromFavouriteMenu();
+				}
+				else if (page == ADD_NEW_WORD) {
+					DrawTitle();
+					AddNewWord();
+					vitri = 2;
+				}
+				else if (page == EDIT_WORD_DEFINITION) {
+					DrawTitle();
+					EditWordDefinition();
+					vitri = 2;
+				}
+				else if (page == DELETE_WORD) {
+					DrawTitle();
+					DeleteWord();
+					vitri = 2;
 				}
 			}
 		}
