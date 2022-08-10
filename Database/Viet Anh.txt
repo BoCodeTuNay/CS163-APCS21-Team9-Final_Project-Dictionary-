@@ -7965,7 +7965,6 @@ con rong chau a `Asian dragon
 con so `first child, oldest child
 con suot `quill, spindle, bobbin
 con song `river
-con song phan cach hai lang, the river separates the two villages
 con se `sparrow
 con so `number, digit, figure
 con so chinh xac `exact number
@@ -9177,7 +9176,6 @@ co nhu the khong `is it like this?
 co nhop `to have bad luck
 co nhung moi quan tam ve an ninh quoc gia `there are national security concerns
 co nen `should
-co nen: should (do sth)
 co noi `there is, there are places (where something happens)
 co nuoc da nuot na `glossy and fair-complexioned
 co nep co te `to have a boy and a girl
@@ -14364,7 +14362,6 @@ giu gia `to keep prices stable
 giu gin `to preserve, guard, maintain
 giu gin bo coi `to protect the country
 giu gin di san `to preserve one’s heritage
-giu gin pham cach, to preserve one's human dignity
 giu im lang `to keep quiet, hold one’s tongue
 giu kin `to hide, keep secret, keep confidential
 giu ke `show excessive caution (in one’s dealings), be overcautious
@@ -17124,7 +17121,6 @@ hau lai `future, in the future
 hau le `the later le dynasty
 hau mai `after-sales
 hau mon `anus, asshole
-hau nghiem :a posteriori
 hau phi `wife of the king
 hau phuong `rear
 hau phau `(y) post-operational
@@ -19916,7 +19912,6 @@ kenh dao `canal
 keu `to shout, call, cry
 keu canh sat `to call the police
 keu cuu `to call for help
-keu e e: to cry, wail
 keu gao `to shout, cry out
 keu goi `to appeal (to), call (up)on
 keu goi ca nuoc `to call on the entire country
@@ -20250,7 +20245,6 @@ ke mieng lo `have one foot in the grave
 ke vai sat canh `side by side, shoulder to shoulder
 kem `pincers
 kem che `to subdue, overcome, master, restrain, check, curb, dominate
-ken ken: vulture
 ke `(1) to include; (2) to list, mention, declare, consider; to relate, tell (a story); (3) individual, person
 ke benh `to relate one’s symptoms
 ke chuyen `to tell a story
@@ -28216,7 +28210,6 @@ nhay mat mot cai `in the wink of an eye
 nhay nhay `inversed commas, quotes, quotations marks; so-called
 nham `the night heavenly stem
 nham nhi `to sip
-nham: 9th cycle of the twelve years of the Chinese zodiac
 nhan `(1) at the time of; (2) core, kernel, almond; (3) to multiply; (4) man, person; (5) to cause
 nhan ai `charity, benevolence, philanthropy
 nhan ban `humanity
@@ -30797,7 +30790,6 @@ noi gian `eunuch
 noi giam `eunuch
 noi gian `planted spy
 noi hien `interiorize
-noi ham :connotation, comprehension
 noi hoa `home-made, home-grown, locally made; local goods
 noi hon `endogemy
 noi hai `the Inland Sea (of Japan)
@@ -31431,7 +31423,6 @@ pha giai `win a prize as a challenger, win a prize from the holder
 pha gioi `unfrock oneself, break one’s religious vow
 pha hoang `to break (claim) virgin land
 pha hoai `to destroy, sabotage, tear down, break up
-pha huy dong tu, to destroy, to demolish, to ruin
 pha hai `to mine, to ravage
 pha hong `to frustrate, foil, short-circuit
 pha huy `to destroy, demolish, annul
@@ -32546,7 +32537,6 @@ phu mau `parents
 phu nghia `ungrateful, thankless, unfaithful
 phu nhan `woman
 phu nu `woman
-phu nu cao nien :old woman
 phu nu nguc tran `topless woman
 phu phang `to forsake
 phu phi `additional fee, supplementary fee
@@ -34183,7 +34173,6 @@ rat quan tam ve `to pay a lot of attention to
 rat thich `to really like
 rat thong dung o Vietnamese `very common in VN
 rat thuong `very common
-rat thuong: very often, very common
 rat thua thai thoi gio `to have a lot of free time
 rat tiec `very sorry
 rat tiec la `it’s too bad that, it’s unfortunate that, I’m sorry that
@@ -34725,7 +34714,6 @@ sieu `very large, super-, giant; to transcend
 sieu cao ap `very high voltage
 sieu cuong `superpower (nation)
 sieu cuong quoc `superpower (country)
-sieu cam giac :suprasensible
 sieu cau truc `ultrastructure
 sieu dan `supraconductor
 sieu giai cap `above the classes, outside the classes
@@ -34830,7 +34818,6 @@ song toan `both complete
 song trung `double
 song tu diep `dicotyledon
 song duong `parents
-song de :dilemma
 song am `drink tea in one another’s company, make enough tea for two
 soai ham `flagship
 soat `to check
@@ -43230,7 +43217,6 @@ tinh hanh `conduct, behavior
 tinh khi `temper
 tinh khi nong nay `to have a hot temper
 tinh mang `life
-tinh mot dang ra mot neo: not work out as planned
 tinh ngu `adjective phrase, epithet
 tinh nhu nhuoc `weak character
 tinh nong `hot temper
@@ -45862,7 +45848,6 @@ vao thang 3 vua roi `in the past three months
 vao thang `in the month of
 vao thang truoc `last month
 vao thap nien `in the decade
-vao the ky thu X: in the X-th century
 vao thit `in the flesh
 vao thoi bay gio `at the present time
 vao thoi gian nay `at, during this time
@@ -49045,7 +49030,6 @@ on `to review (a lesson)
 on con `little devil, imp
 on co tri tan `to revise the old in order to know the new
 on dich `epidemic, plague
-on hoa tinh tu, equable, temperate, moderate, mild, gentle
 on hoa `formal, moderate, temperate, calm, poised, peaceful, non-violent
 on hau `gentle and honest
 on luyen `review (revise) and drill
@@ -53338,7 +53322,6 @@ dua `(indicates a person of lower status)
 dua be `a boy, a child
 dua be ngang nguoc `a perverse child
 dua be eo uot `a sickly child
-dua be de non :, a premature baby
 dua con `child
 dua con gai `daughter
 dua con trai `male child
@@ -53985,7 +53968,6 @@ o ben tay mat `on the left
 o ben tay trai `on the right
 o ben trong `inside
 o ben duong `on the side of the road
-o bau thi tron, o ong thi dai
 o chan troi `on the horizon
 o cho `here, in this place
 o cho do `there, in that place
