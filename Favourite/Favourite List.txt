@@ -1,13 +1,4 @@
-Anh kim `British pound, pound sterling
-$_$ `Has money
-Rat `One of several species of small rodents of the genus Mus and allied genera, larger than mice, that infest houses, stores, and ships, especially the Norway, or brown, rat (M. decumanus), the black rat (M. rattus), and the roof rat (M. Alexandrinus). These were introduced into America from the Old World.
-Rat `A round and tapering mass of hair, or similar material, used by women to support the puffs and rolls of their natural hair.
-Rat `One who deserts his party or associates; hence, in the trades, one who works for lower wages than those prescribed by a trades union.
-Rat `In English politics, to desert one's party from interested motives; to forsake one's associates for one's own advantage; in the trades, to work for less wages, or on other conditions, than those established by a trades union.
-Rat `To catch or kill rats.
-Abbotship `The state or office of an abbot.
-Abbreviated `of Abbreviate
-Abbreviating `of Abbreviate
-Abbreviate `To make briefer; to shorten; to abridge; to reduce by contraction or omission, especially of words written or spoken.
-Abbreviate `To reduce to lower terms, as a fraction.
-Abbreviate `Abbreviated; abridged; shortened.
+Abacination `The act of abacinating.
+Abaciscus `One of the tiles or squares of a tessellated pavement; an abaculus.
+Abacist `One who uses an abacus in casting accounts; a calculator.
+Aback `Toward the back or rear; backward.

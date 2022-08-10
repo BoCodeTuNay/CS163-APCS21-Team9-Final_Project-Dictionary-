@@ -11,6 +11,9 @@ extern Trie EngToEngDict;
 extern Trie EngToVietDict;
 extern Trie VietToEngDict;
 
+// MenuName de xac dinh vi tri cua CurrentDict
+extern string MenuName;
+
 // Cac bien phuc vu cho chuc nang random
 #define GAME_OVER 0
 #define GAME_WON 1

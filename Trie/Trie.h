@@ -73,7 +73,12 @@ struct Trie {
 
 	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
 	TrieNode* TakeLastNode(string& InputStr);
+
+	// xoa toan bo trie
+	void deleteAllNode();
 };
 
 // lưu các node có nghĩa con của node Cur
 void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1);
+
+void HelperDeleteAllNode(TrieNode*& Cur);

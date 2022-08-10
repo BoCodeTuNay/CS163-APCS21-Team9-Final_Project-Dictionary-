@@ -96,3 +96,17 @@ TrieNode* Trie::TakeLastNode(string& InputStr) {
 	if (i == InputStr.length()) return Cur;
 	else return nullptr;
 }
+
+void Trie::deleteAllNode() {
+	HelperDeleteAllNode(Root);
+}
+
+void HelperDeleteAllNode(TrieNode*& Cur) {
+	for (int i = 0; i < MaxDiffChar; i++) {
+		if (Cur->NextNode[i] != NULL) {
+			HelperDeleteAllNode(Cur->NextNode[i]);
+		}
+	}
+	delete(Cur);
+	Cur = nullptr;
+}

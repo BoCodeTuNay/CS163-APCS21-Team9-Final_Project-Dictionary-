@@ -40,7 +40,6 @@ Bien Phong Phu `Mare Foecondatus
 Bien Thai Binh Duong `the Pacific Ocean
 Bien Trong `Mare Seranitatis
 Bien Tram Lang `Mare Traquilitatis
-Bien Ðong `South China Sea
 Bien dong `South China Sea
 Bien dia Trung Hai `Mediterranean Sea
 Brazin `Brazil
@@ -81,7 +80,6 @@ Bac Phan `Northern part (of Vietnam)
 Bac Trieu Tien `North Korea
 Bac Viet `North(ern) Vietnam
 Bac au `Northern Europe, Scandinavia
-Bac Ðau Boi Tinh `(French) Legion of Honor medal
 Bac dai Tay Duong `North Atlantic (Ocean)
 Bac dau `Ursa Major (constellation)
 Be Ha `Sire, Your Majesty
@@ -1420,7 +1418,6 @@ bien giai `to explain
 bien ho `to defend, plead, apologize; defense (legal)
 bien luan `to argue, discuss
 bien ly `attorney, prosecutor
-bien ly cuoc `prosecutor’s office
 bien le `to make offerings, presents
 bien l‎y cuoc `prosecutor’s office
 bien minh `to explain, justify, clarify
@@ -1615,7 +1612,6 @@ buot tay `slip, loose hold
 buot tay danh roi cai chen `to let a cup slip down from one’s hand
 buom `butterfly
 buoc boi `discomfort
-bu‎yt `bus
 ba `grandmother; Mrs. (form of address for a woman)
 ba ba `south Vietnamese pajamas
 ba bong `medium
@@ -15388,7 +15384,6 @@ hien vat `things in nature; in kind (payment)
 hien diem `to manifest itself; manifestation
 hien dai `modern, present time, modern times, contemporary
 hien dai hoa `to modernize; modernization
-hien ‎‎‎y `present intention
 hiep `(1) to unite, join, come together; (2) round (in boxing), trip; (3) gorge, straits; (4) chivalrous
 hiep bien `high ranking court official
 hiep che `to coerce, force
@@ -19023,7 +19018,6 @@ khong nho `to not remember, forget
 khong nhung `not only
 khong nhung chi `not only
 khong nhung pho thong `it is not only universal
-khong nhung … ma con `not only … but also
 khong nai kho nhoc `not to mind hard work, insist, tie; jockey
 khong nen `should not
 khong noi gi `to not say anything
@@ -29647,7 +29641,6 @@ neu len nhung nghi van `to raise questions
 neu ra `to bring up (a subject), note, point out
 neu ra o tren `mentioned above, aforementioned
 neu ten `to name names, mention somebody or something by name
-neu y‎ kien `to express an idea
 ni `here
 nich `to cram, stuff, line, pack
 nich nich `full
@@ -42834,7 +42827,7 @@ tai xanh `green-white as a sheet, pale as a ghost
 tai xuat `to re-export
 tai xuat hien `to reappear
 tai xu li `to reprocess
-tai dac cuẳ̀ng thang `normally, under normal circumstances
+tai dac cuang thang `normally, under normal circumstances
 tai dac cu `to be reelected
 tai dinh cu `to resettle
 tam `eight
@@ -48353,13 +48346,13 @@ au trang `western clothes
 au a `Europe and Asia, East and West
 et To No `Estonia, Estonian
 e beu `Shame on you!
-Ða Lat `Dalat
-Ðai Loan `Taiwan
-Ðong Nam a `Southeast Asia, Southeast Asian
-Ðong a `East Asia, East Asian
-Ðong Ðuc `East Germany
-Ðai Han `Korean
-Ðuc `Germany, German
+Da Lat `Dalat
+Dai Loan `Taiwan
+Dong Nam a `Southeast Asia, Southeast Asian
+Dong a `East Asia, East Asian
+Dong Ðuc `East Germany
+Dai Han `Korean
+Duc `Germany, German
 ong But `Buddha
 ong Gia No En `Santa Claus, Father Christmas
 ong cu toi `my father

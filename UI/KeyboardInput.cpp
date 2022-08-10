@@ -209,30 +209,35 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = EmojiDict;
+					MenuName = "emotional";
 					Clrscr();
 				}
 				else if (vitri == 1) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = SlangDict;
+					MenuName = "slang";
 					Clrscr();
 				}
 				else if (vitri == 2) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = EngToEngDict;
+					MenuName = "Anh Anh";
 					Clrscr();
 				}
 				else if (vitri == 3) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = EngToVietDict;
+					MenuName = "Anh Viet";
 					Clrscr();
 				}
 				else if (vitri == 4) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = VietToEngDict;
+					MenuName = "Viet Anh";
 					Clrscr();
 				}
 				else if (vitri == 5) {
@@ -260,7 +265,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 3) {
-					// ham reset origin
+					page = RESET_ORIGIN_MENU;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 4) {
@@ -365,6 +371,13 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					vitri = 0;
 					Clrscr();
 				}
+				break;
+			}
+
+			case RESET_ORIGIN_MENU: {
+				page = FUNCTION_MENU;
+				vitri = 0;
+				Clrscr();
 				break;
 			}
 
@@ -682,6 +695,10 @@ void Event() {
 					DrawTitle();
 					DeleteWord();
 					vitri = 2;
+				}
+				else if (page == RESET_ORIGIN_MENU) {
+					DrawTitle();
+					ResetOriginMenu(MenuName);
 				}
 			}
 		}

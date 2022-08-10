@@ -18,6 +18,11 @@ int main() {
 	LoadSlangData();
 	LoadVietToEngData();
 	LoadEngToVietData();
+
+	/*cout << EmojiDict.Root->ChildsNum << endl;
+	EmojiDict.deleteAllNode();
+	if (EmojiDict.Root == NULL) cout << "haha";*/
+
 	LoadHistoryData();
 	LoadFavouriteData();
 

@@ -7,6 +7,9 @@ Trie EngToEngDict;
 Trie EngToVietDict;
 Trie VietToEngDict;
 
+// MenuName de xac dinh vi tri cua CurrentDict
+string MenuName;
+
 // Cac bien phuc vu cho chuc nang random
 int RandomIndex = -1;
 vector<int>AnswersIndex;

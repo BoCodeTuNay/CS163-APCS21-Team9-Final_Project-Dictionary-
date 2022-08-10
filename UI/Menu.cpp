@@ -731,3 +731,40 @@ void DeleteWord() {
 	page = FUNCTION_MENU;
 	return;
 }
+
+void ResetOriginMenu(string& MenuName) {
+	CurrentDict.deleteAllNode();
+	ifstream fin;
+	string s = "../Database/Origin/" + MenuName + ".txt";
+	fin.open(s);
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		CurrentDict.AddToTrie(a, b);
+	}
+	fin.close();
+	string Announce = "Reset Origin Successfully";
+	Print(Announce, (ConsoleWidth / 2 - Announce.size() / 2), 10, 14, 0);
+	string BackButton = "Back";
+	Print(BackButton, (ConsoleWidth / 2 - BackButton.size() / 2), 10, 14, 2);
+}

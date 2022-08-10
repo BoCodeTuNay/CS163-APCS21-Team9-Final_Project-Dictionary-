@@ -28,6 +28,7 @@
 #define ADD_NEW_WORD 19
 #define EDIT_WORD_DEFINITION 20
 #define DELETE_WORD 21
+#define RESET_ORIGIN_MENU 23
 
 // Ve menu
 void DrawTitle();
@@ -54,3 +55,4 @@ void RemoveFromFavouriteMenu();
 void AddNewWord();
 void EditWordDefinition();
 void DeleteWord();
+void ResetOriginMenu(string& MenuName);
