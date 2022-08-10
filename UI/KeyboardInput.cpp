@@ -397,7 +397,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				if (GameState == GAME_NOT_FINISHED) {
 					if (vitri == CorrectAnswer) {
 						GameState = GAME_WON;
-						page = GUESS_DEFINITION_FROM_WORD_MENU;
+						page = GUESS_WORD_FROM_DEFINITION_MENU;
 						vitri = 0;
 						Clrscr();
 					}
@@ -410,7 +410,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					}
 					else {
 						GameState = GAME_OVER;
-						page = GUESS_DEFINITION_FROM_WORD_MENU;
+						page = GUESS_WORD_FROM_DEFINITION_MENU;
 						vitri = 0;
 						Clrscr();
 					}
