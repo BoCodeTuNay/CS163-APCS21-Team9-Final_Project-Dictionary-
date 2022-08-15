@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 #include <cstring>
+#include <vector>
 #include "../Constant.h"
 
 using namespace std;
@@ -21,14 +22,11 @@ struct TrieNode {
 	// Phuc vu cho viec in ra suggest word khi search 
 	vector<TrieNode*> BelowWords;
 
-	// check xem có tồn tại các node con có nghĩa hay không
-	bool checkBelow;
-
 	char NodeChar;
 	long long ChildsNum;
 
 	TrieNode* ParNode;
-	TrieNode* NextNode[MaxDiffChar];
+	TrieNode** NextNode = NULL;
 
 	TrieNode() {
 		Word = "";
@@ -36,7 +34,12 @@ struct TrieNode {
 		ParNode = NULL;
 		NodeChar = '\0';
 		Definition = {};
-		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
+
+		NextNode = new TrieNode * [MaxDiffChar];
+		for (int i = 0; i < MaxDiffChar; ++i) {
+			NextNode[i] = NULL;
+		}
+			
 	}
 
 	TrieNode(char c) {
@@ -45,7 +48,18 @@ struct TrieNode {
 		ParNode = NULL;
 		NodeChar = c;
 		Definition = {};
-		for (int i = 0; i < MaxDiffChar; ++i) this->NextNode[i] = NULL;
+
+		NextNode = new TrieNode * [MaxDiffChar];
+		for (int i = 0; i < MaxDiffChar; ++i) {
+			NextNode[i] = NULL;
+		}
+	}
+
+	~TrieNode() {
+		for (int i = 0; i < MaxDiffChar; ++i) {
+			delete NextNode[i];
+		}
+		delete[] NextNode;
 	}
 
 };
@@ -56,14 +70,11 @@ struct Trie {
 	// Phuc vu cho viec random access 1 tu ton tai trong tu dien
 	vector<TrieNode*> ExistingWords;
 
-	// update so luong child cua node 
-	void UpdChildsNum(TrieNode* Leaf);
+	// Update so luong child cua node 
+	void UpdateChildsNum(TrieNode* Leaf);
 
-	// them tu va dinh nghia vao trie
+	// Them tu va dinh nghia vao trie
 	void AddToTrie(const string& InputStr, const string& Def);
-
-	// tra ve cac dinh nghia cua tu
-	vector<string> SearchForDef(const string& InputStr);
 
 	TrieNode* SearchForNode(const string& InputStr);
 
@@ -75,7 +86,7 @@ struct Trie {
 	TrieNode* TakeLastNode(string& InputStr);
 
 	// xoa toan bo trie
-	void deleteAllNode();
+	//void deleteAllNode();
 };
 
 // lưu các node có nghĩa con của node Cur

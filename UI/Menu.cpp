@@ -733,7 +733,7 @@ void DeleteWord() {
 }
 
 void ResetOriginMenu(string& MenuName) {
-	CurrentDict.deleteAllNode();
+	//CurrentDict.deleteAllNode();
 	ifstream fin;
 	string s = "../Database/Origin/" + MenuName + ".txt";
 	fin.open(s);

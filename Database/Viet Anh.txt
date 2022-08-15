@@ -51,7 +51,7 @@ Bat Quai dai `octagonal palace (Cao Dai)
 Binh Nhuong `Pyongyang
 Binh dinh `(province name)
 Bang Coc `Bangkok
-Bang Ðao `Iceland
+Bang dao `Iceland
 Bach Cung `the White House
 Bach Mi `God of Prostitutes
 Bach Nga `White Russian, Byelorussian
@@ -638,7 +638,7 @@ Viet-Phap `Vietnamese-French
 Van Nam `Yunnan
 Van Tuong `Vientiane
 Vang a `Yes sir
-Ve Ða `Veda
+Ve da `Veda
 Vinh Ba Tu `Persian Gulf
 Vinh Thai Lan `Gulf of Thailand
 Vong Cac `Bangkok
@@ -27154,7 +27154,7 @@ nguoi dung dau `leader, head, chief
 nguoi dung o dang kia la ai vay? `who’s the man standing over there?
 nguoi uu tu `person, talented person
 nguoi a Rap `Arab (person)
-nguoi an Ðo `Indian (person)
+nguoi an do `Indian (person)
 nguoi ay `that person
 nguoi om `thin body
 nguoi o `servant, domestic help
@@ -48350,7 +48350,7 @@ Da Lat `Dalat
 Dai Loan `Taiwan
 Dong Nam a `Southeast Asia, Southeast Asian
 Dong a `East Asia, East Asian
-Dong Ðuc `East Germany
+Dong duc `East Germany
 Dai Han `Korean
 Duc `Germany, German
 ong But `Buddha
@@ -53597,7 +53597,7 @@ ao anh `illusion, mirage
 an `(1) India, Indian, Hindi, Indo-; (2) to press, print; (3) official seal
 an Hoi `Indo-Pakistani
 an hoc `Indianism
-an Ðo `India
+an do `India
 an do `Indian, Hindi, India, Indo-
 an do Chi Na `Indochina
 an do Duong `Indian Ocean

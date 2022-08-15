@@ -11,9 +11,7 @@ using namespace std;
 struct History {
 	string word;
 	vector<string> Definition;
-	History() {
-	
-	}
+	History() = default;
 	History(string& InputWord, string& InputDef) {
 		this->word = InputWord;
 		this->Definition.push_back(InputDef);

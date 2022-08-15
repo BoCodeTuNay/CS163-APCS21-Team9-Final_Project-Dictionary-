@@ -10,7 +10,7 @@ void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1) {
 	}
 }
 
-void Trie::UpdChildsNum(TrieNode* Leaf) {
+void Trie::UpdateChildsNum(TrieNode* Leaf) {
 	TrieNode* Cur = Leaf;
 	while (Cur != NULL) {
 		Cur = Cur->ParNode;
@@ -46,7 +46,7 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	Cur->Definition.push_back(Def);
 	ExistingWords.push_back(Cur);
 
-	UpdChildsNum(Cur);
+	UpdateChildsNum(Cur);
 }
 
 TrieNode* Trie::SearchForNode(const string& InputStr) {
@@ -97,16 +97,16 @@ TrieNode* Trie::TakeLastNode(string& InputStr) {
 	else return nullptr;
 }
 
-void Trie::deleteAllNode() {
-	HelperDeleteAllNode(Root);
-}
-
-void HelperDeleteAllNode(TrieNode*& Cur) {
-	for (int i = 0; i < MaxDiffChar; i++) {
-		if (Cur->NextNode[i] != NULL) {
-			HelperDeleteAllNode(Cur->NextNode[i]);
-		}
-	}
-	delete(Cur);
-	Cur = nullptr;
-}
+//void Trie::deleteAllNode() {
+//	HelperDeleteAllNode(Root);
+//}
+//
+//void HelperDeleteAllNode(TrieNode*& Cur) {
+//	for (int i = 0; i < MaxDiffChar; i++) {
+//		if (Cur->NextNode[i] != NULL) {
+//			HelperDeleteAllNode(Cur->NextNode[i]);
+//		}
+//	}
+//	delete(Cur);
+//	Cur = nullptr;
+//}
