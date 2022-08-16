@@ -719,14 +719,14 @@ void RemoveFromFavouriteMenu() {
 
 void AddNewWord() {
 
-	string s = "Input new word:";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+	string s = "Input new word: ";
+	Print(s, 10, 8, 14, 0);
 	string InputStr;
 	getline(cin, InputStr);
 
-	s = "Input word definition:";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
-	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
+	s = "Input word definition: ";
+	Print(s, 10, 10, 14, 0);
+	/*Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);*/
 	string InputDef;
 	getline(cin, InputDef);
 
@@ -734,34 +734,36 @@ void AddNewWord() {
 	CurrentDictDef.AddToTrieDef(InputDef, InputStr);
 
 	s = "Successful!";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 2, 0);
 
 	s = "Back!";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 14, 7, 2);
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 17, 7, 2);
 
 	page = FUNCTION_MENU;
 	return;
 }
 
 void EditWordDefinition() {
-	string s = "Input word for editing:";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
-	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
+	string s = "Input word for editing: ";
+	Print(s, 10, 8, 14, 0);
+	/*Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);*/
 	string InputStr;
 	getline(cin,InputStr);
 
 	TrieNode* here = CurrentDict.TakeLastNode(InputStr);
 	if (here == nullptr) {
 		s = "Fail! Unknown word!";
-		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 4, 0);
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 4, 0);
+		s = "Back!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 17, 7, 2);
 		page = FUNCTION_MENU;
 		return;
 	}
 	vector<string> temp = here->Definition;
 
 	s = "Input new definition:";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
-	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
+	Print(s, 10, 10, 14, 0);
+	/*Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);*/
 	string InputDef;
 	getline(cin,InputDef);
 	
@@ -769,7 +771,7 @@ void EditWordDefinition() {
 	bool res = CurrentDict.EditDef(InputStr, InputDef);
 	if (res) {
 		s = "Successful!";
-		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 2, 0);
 		// Chinh cay CurrentDictDef
 		CurrentDictDef.AddToTrieDef(InputDef, InputStr);
 		for (auto k : temp) {
@@ -798,7 +800,7 @@ void EditWordDefinition() {
 	}
 
 	s = "Back!";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 14, 7, 2);
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 17, 7, 2);
 
 	page = FUNCTION_MENU;
 	return;
@@ -806,18 +808,27 @@ void EditWordDefinition() {
 
 void DeleteWord() {
 	string s = "Input word for deleting:";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
-	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
+	Print(s, 10, 8, 14, 0);
+	/*Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);*/
 	string InputStr;
 	getline(cin,InputStr);
-	vector<string> temp = CurrentDict.TakeLastNode(InputStr)->Definition;
+	TrieNode * hihi = CurrentDict.TakeLastNode(InputStr);
+	if (!hihi) {
+		s = "Fail! Unknown word!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 4, 0);
+		s = "Back!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 17, 7, 2);
 
+		page = FUNCTION_MENU;
+		return;
+	}
+	vector<string>temp = hihi->Definition;
 	// Chinh Trie CurrentDict
 	bool res = CurrentDict.DelWord(InputStr);
 
 	if (res) {
 		s = "Successful!";
-		Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 2, 0);
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 2, 0);
 		// Chinh cay CurrentDictDef
 		for (auto k : temp) {
 			TrieNodeDef* here = CurrentDictDef.TakeLastDefNode(k);
@@ -839,11 +850,11 @@ void DeleteWord() {
 	}
 	else {
 		s = "Fail! Unknown word!";
-		Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 4, 0);
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 4, 0);
 	}
 
 	s = "Back!";
-	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 7, 2);
+	Print(s, (ConsoleWidth / 2 - s.length() / 2), 17, 7, 2);
 
 
 	page = FUNCTION_MENU;
@@ -853,7 +864,8 @@ void DeleteWord() {
 void ResetOriginMenu(string& MenuName) {
 	/*string Loading = "Loading...";
 	Print(Loading, (ConsoleWidth / 2 - Loading.size() / 2), 10, 14, 0);*/
-	CurrentDict.deleteAllNode();
+
+	/*CurrentDict.deleteAllNode();
 	CurrentDictDef.deleteAllDefNode();
 	HistoryList.clear();
 	FavouriteList.clear();
@@ -886,9 +898,44 @@ void ResetOriginMenu(string& MenuName) {
 		CurrentDict.AddToTrie(a, b);
 		CurrentDictDef.AddToTrieDef(b, a);
 	}
-	fin.close();
+	fin.close();*/
 	/*eraseLines(10);*/
-	string Announce = "Reset Origin Successfully";
+	string Announce1 = "Loading";
+	Print(Announce1, (ConsoleWidth / 2 - Announce1.size() / 2), 8, 14, 0);
+	if (MenuName == "emotional") {
+		LoadOriginEmoji();
+		CurrentDict = EmojiDictOrigin;
+		EmojiDict = EmojiDictOrigin;
+		CurrentDictDef = EmojiDictDefOrigin;
+		EmojiDefDict = EmojiDictDefOrigin;
+	}
+	else if (MenuName == "slang") {
+		LoadOriginSlang();
+		CurrentDict = SlangDictOrigin;
+		SlangDict = SlangDictOrigin;
+		CurrentDictDef = SlangDictDefOrigin;
+		SlangDefDict = SlangDictDefOrigin;
+	}
+	else if (MenuName == "Anh Anh") {
+		LoadOriginEngToEng();
+		CurrentDict = EngToEngDictOrigin;
+		EngToEngDict = EngToEngDictOrigin;
+		CurrentDictDef = EngToEngDictDefOrigin;
+		EngToEngDefDict = EngToEngDictDefOrigin;
+	}
+	/*if (MenuName == "Anh Viet") {
+		LoadOriginEmoji();
+		CurrentDict = EmojiDictOrigin;
+		CurrentDictDef = EmojiDictDefOrigin;
+	}
+	if (MenuName == "Viet Anh") {
+		LoadOriginEmoji();
+		CurrentDict = EmojiDictOrigin;
+		CurrentDictDef = EmojiDictDefOrigin;
+	}*/
+	HistoryList.clear();
+	FavouriteList.clear();
+	string Announce = "Successfully";
 	Print(Announce, (ConsoleWidth / 2 - Announce.size() / 2), 10, 14, 0);
 	string BackButton = "Back";
 	Print(BackButton, (ConsoleWidth / 2 - BackButton.size() / 2), 15, 15, 2);

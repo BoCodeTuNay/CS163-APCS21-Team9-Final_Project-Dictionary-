@@ -149,6 +149,7 @@
     <ClCompile Include="Dictionary.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Constant.h" />
     <ClInclude Include="..\Data\Data.h" />
     <ClInclude Include="..\Favourite\Favourite.h" />
     <ClInclude Include="..\History\History.h" />

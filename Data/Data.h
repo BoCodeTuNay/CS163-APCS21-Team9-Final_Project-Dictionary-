@@ -17,6 +17,18 @@ extern Trie EngToEngDefDict;
 extern Trie EngToVietDefDict;
 extern Trie VietToEngDefDict;
 
+extern Trie EmojiDictOrigin;
+extern Trie SlangDictOrigin;
+extern Trie EngToEngDictOrigin;
+extern Trie EngToVietDictOrigin;
+extern Trie VietToEngDictOrigin;
+
+extern Trie EmojiDictDefOrigin;
+extern Trie SlangDictDefOrigin;
+extern Trie EngToEngDictDefOrigin;
+extern Trie EngToVietDictDefOrigin;
+extern Trie VietToEngDictDefOrigin;
+
 // MenuName de xac dinh vi tri cua CurrentDict
 extern string MenuName;
 
@@ -44,6 +56,12 @@ void LoadSlangData();
 void LoadVietToEngData();
 
 void LoadEngToVietData();
+
+void LoadOriginEmoji();
+
+void LoadOriginSlang();
+
+void LoadOriginEngToEng();
 
 void OutputEmojiData();
 

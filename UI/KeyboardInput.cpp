@@ -253,11 +253,11 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 5) {
-					OutputEmojiData();
+					/*OutputEmojiData();
 					OutputSlangData();
-					OutputEngToEngData();
-					OutputEngToVietData();
-					OutputVietToEngData();
+					OutputEngToEngData();*/
+					/*OutputEngToVietData();
+					OutputVietToEngData();*/
 					OutputToHistoryList();
 					OutputToFavouriteList();
 					exit(0);

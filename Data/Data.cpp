@@ -2,16 +2,30 @@
 
 Trie CurrentDict;
 Trie CurrentDictDef;
+
 Trie EmojiDict;
 Trie SlangDict;
 Trie EngToEngDict;
 Trie EngToVietDict;
 Trie VietToEngDict;
+
 Trie EmojiDefDict;
 Trie SlangDefDict;
 Trie EngToEngDefDict;
 Trie EngToVietDefDict;
 Trie VietToEngDefDict;
+
+Trie EmojiDictOrigin;
+Trie SlangDictOrigin;
+Trie EngToEngDictOrigin;
+Trie EngToVietDictOrigin;
+Trie VietToEngDictOrigin;
+
+Trie EmojiDictDefOrigin;
+Trie SlangDictDefOrigin;
+Trie EngToEngDictDefOrigin;
+Trie EngToVietDictDefOrigin;
+Trie VietToEngDictDefOrigin;
 
 // MenuName de xac dinh vi tri cua CurrentDict
 string MenuName;
@@ -196,6 +210,108 @@ void LoadEngToVietData() {
 		a.erase(a.length() - 1, 1);
 		b.erase(b.length() - 1, 1);
 		EngToVietDict.AddToTrie(a, b);
+	}
+	fin.close();
+}
+
+void LoadOriginEmoji() {
+	ifstream fin;
+	fin.open("../Database/Origin/emotional.txt");
+	fin.seekg(0, ios::beg);
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		if (temp.size() == 0) return;
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		EmojiDictOrigin.AddToTrie(a, b);
+		EmojiDictDefOrigin.AddToTrieDef(b, a);
+	}
+	fin.close();
+}
+
+void LoadOriginSlang() {
+	ifstream fin;
+	fin.open("../Database/Origin/slang.txt");
+	fin.seekg(0, ios::beg);
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		if (temp.size() == 0) return;
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		SlangDictOrigin.AddToTrie(a, b);
+		SlangDictDefOrigin.AddToTrieDef(b, a);
+	}
+	fin.close();
+}
+
+void LoadOriginEngToEng() {
+	ifstream fin;
+	fin.open("../Database/Origin/Anh Anh.txt");
+	fin.seekg(0, ios::beg);
+	string temp;
+	while (!fin.eof()) {
+		getline(fin, temp, '\n');
+		if (temp.size() == 0) return;
+		stringstream s(temp);
+		bool flag = false;
+		string a, b;
+		string d;
+		while (getline(s, d, ' ')) {
+			if (d[0] == '`') {
+				flag = true;
+			}
+			if (!flag) {
+				a += d;
+				a += ' ';
+			}
+			if (flag) {
+				b += d;
+				b += ' ';
+			}
+		}
+		b.erase(0, 1);
+		a.erase(a.length() - 1, 1);
+		b.erase(b.length() - 1, 1);
+		EngToEngDictOrigin.AddToTrie(a, b);
+		EngToEngDictDefOrigin.AddToTrieDef(b, a);
 	}
 	fin.close();
 }

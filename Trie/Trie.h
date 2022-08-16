@@ -92,7 +92,7 @@ struct Trie {
 	vector<string> WordDeleted;
 
 	// update so luong child cua node 
-	void UpdChildsNum(TrieNode* Leaf);
+	void UpdateChildsNum(TrieNode* Leaf);
 
 	// Them tu va dinh nghia vao trie
 	void AddToTrie(const string& InputStr, const string& Def);

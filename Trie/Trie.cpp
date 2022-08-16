@@ -43,7 +43,7 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	}
 
 	Cur->Word = WordTmp;
-	Cur->Definition.push_back(Def);
+	Cur->Definition.insert(Cur->Definition.begin(), Def);
 	ExistingWords.push_back(Cur);
 
 	UpdateChildsNum(Cur);
