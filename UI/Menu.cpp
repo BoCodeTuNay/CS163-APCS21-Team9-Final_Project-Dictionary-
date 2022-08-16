@@ -1,4 +1,5 @@
 ﻿#include "Menu.h"
+#include <time.h>
 
 // Ve menu
 void DrawTitle() {
@@ -730,8 +731,11 @@ void AddNewWord() {
 	string InputDef;
 	getline(cin, InputDef);
 
+	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
+	clock_t Tstart = clock();
 	CurrentDict.AddToTrie(InputStr, InputDef);
 	CurrentDictDef.AddToTrieDef(InputDef, InputStr);
+	cout << clock() - Tstart;
 
 	s = "Successful!";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 15, 2, 0);

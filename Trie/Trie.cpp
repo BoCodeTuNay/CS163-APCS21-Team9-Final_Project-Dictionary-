@@ -10,7 +10,7 @@ void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1) {
 	}
 }
 
-void Trie::UpdateChildsNum(TrieNode* Leaf) {
+void Trie::UpdChildsNum(TrieNode* Leaf) {
 	TrieNode* Cur = Leaf;
 	while (Cur != NULL) {
 		Cur = Cur->ParNode;
@@ -46,7 +46,7 @@ void Trie::AddToTrie(const string& InputStr, const string& Def) {
 	Cur->Definition.insert(Cur->Definition.begin(), Def);
 	ExistingWords.push_back(Cur);
 
-	UpdateChildsNum(Cur);
+	UpdChildsNum(Cur);
 }
 
 TrieNode* Trie::SearchForNode(const string& InputStr) {
@@ -75,8 +75,8 @@ bool Trie::DelWord(const string& InputStr) {
 	vector<TrieNode*> ::iterator it;
 	for (it = ExistingWords.begin(); it != ExistingWords.end(); ++it) {
 		if (*(it) == DelNode) {
-		ExistingWords.erase(it);
-		break;
+			ExistingWords.erase(it);
+			break;
 		}
 	}
 	return true;
