@@ -1,0 +1,6 @@
+Lúc tui chạy được lúc không
+add thêm từ: tui add từ vcl nghĩa là vo co lo vô nma tui search thì nó chỉ ra vo
+search: tui search xong thoát ra vòng vòng vô lại search ch bấm gì nó đã ghi invalid (sau mỗi lần add thêm từ mới bị (nó báo invalid xong back vô lại 2 lần là xài tiếp bth))
+sau khi reset origin thì từ trong favorite list chưa đổi nghĩa (nma lỗi này k quan trọng khỏi fix cx dc)
+cái này không phải bug nma mỗi khi reset origin xong nó bị lag (dù hiện nút back xanh r nma enter nó delay một buổi) nên ấn 1 lần r đợi chứ ko nó nhảy lung tung
+Việt Anh với Anh Việt hay bị lỗi vl nên test chủ yếu test trên emoji thôi, mấy kia cho thầy coi là search vài từ được thôi

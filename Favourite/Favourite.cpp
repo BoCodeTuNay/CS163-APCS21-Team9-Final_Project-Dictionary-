@@ -7,31 +7,31 @@ bool EnableToRemove;
 void LoadFavouriteData() {
 	ifstream fin;
 	fin.open("../Favourite/Favourite List.txt");
-	string temp;
+	string Line;
 	while (!fin.eof()) {
-		getline(fin, temp, '\n');
-		if (temp.size() == 0) return;
-		stringstream s(temp);
+		getline(fin, Line, '\n');
+		if (Line.size() == 0) break;
+
+		stringstream s(Line);
 		bool flag = false;
-		string a, b;
-		string d;
-		while (getline(s, d, ' ')) {
-			if (d[0] == '`') {
+		string Word, Definition, tmp;
+		while (getline(s, tmp, ' ')) {
+			if (tmp[0] == '`') {
 				flag = true;
 			}
 			if (!flag) {
-				a += d;
-				a += ' ';
+				Word += tmp;
+				Word += ' ';
 			}
 			if (flag) {
-				b += d;
-				b += ' ';
+				Definition += tmp;
+				Definition += ' ';
 			}
 		}
-		b.erase(0, 1);
-		a.erase(a.length() - 1, 1);
-		b.erase(b.length() - 1, 1);
-		AddToFavouriteList(a, b);
+		Definition.erase(0, 1);
+		Word.erase(Word.length() - 1, 1);
+		Definition.erase(Definition.length() - 1, 1);
+		AddToFavouriteList(Word, Definition);
 	}
 	fin.close();
 }
