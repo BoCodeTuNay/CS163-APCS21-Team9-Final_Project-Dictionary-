@@ -10,6 +10,7 @@ void LoadFavouriteData() {
 	string temp;
 	while (!fin.eof()) {
 		getline(fin, temp, '\n');
+		if (temp.size() == 0) return;
 		stringstream s(temp);
 		bool flag = false;
 		string a, b;

@@ -349,7 +349,7 @@ void GuessWordFromDefinitionMenu(int OptionIndex) {
 void SearchForKeyWordMenu(string& KeyWord, int index) {
 	string s1 = "The keyword you want to search: ";
 	Print(s1, 10, 8, 14, 0);
-	cin >> KeyWord;
+	getline(cin,KeyWord);
 	TrieNode* cur = CurrentDict.SearchForNode(KeyWord);
 
 	// count de dem so definition duoc in ra cua tu do
@@ -361,30 +361,9 @@ void SearchForKeyWordMenu(string& KeyWord, int index) {
 	else {
 		page = FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU;
 	}	
-	/*if (i == KeyWord.length() && !cur->Definition.empty()) {
-		Print(s2, 10, 10, 14, 0);	
-		for (auto k : cur->Definition) {
-			AddToHistoryList(cur->Word, k);
-			count++;
-			if (count == 6) break;
-			PrintLongAtMost2Line(k, 22, y_start, 15, 0);
-			y_start += 2;
-		}
-		page = FIRST_HELPER_SEARCH_FOR_KEYWORD_MENU;
-	}*/
 }
 
 void FirstHelperSearchForKeyWordMenu(int index, string& KeyWord) {
-	/*vitri = index;
-	string Announce = "Successfully";
-	string AddToFav = "Add to favourite list";
-	string BackButton = "Back";
-	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
-	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
-	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
-	if (index == 1) {
-
-	}*/
 	vitri = index;
 	string Announce = "List of suggest word: ";
 	Print(Announce, 10, 10, 15, (index == 0) ? 12 : 0);
@@ -471,9 +450,83 @@ void FifthHelperSearchForKeyWordMenu(int index) {
 	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
 }
 
+void SearchForDefinitionMenu(string& KeyDef, int index) {
+	string s1 = "The definition you want to search: ";
+	Print(s1, 10, 8, 14, 0);
+	getline(cin, KeyDef);
+	TrieNodeDef* cur = CurrentDictDef.TakeLastDefNode(KeyDef);
+	// count de dem so definition duoc in ra cua tu do
+	int count = 0;
+	if (cur == NULL || cur->Word.size() == 0) {
+		page = SECOND_HELPER_SEARCH_FOR_DEF_MENU;
+		return;
+	}
+	else {
+		TrieNodeDef* temp = CurrentDictDef.TakeLastDefNode(KeyDef);
+		for (auto k : temp->Word) {
+			AddToHistoryList(k, KeyDef);
+		}
+		string s2 = "Word: ";
+		Print(s2, 10, 10, 14, 0);
+		int y_start = 10;
+		for (auto k : cur->Word) {
+			Print(k, 17, y_start, 15, 0);
+			y_start += 2;
+		}
+		page = FIRST_HELPER_SEARCH_FOR_DEF_MENU;
+	}
+}
+
+void SecondHelperSearchForDefinitionMenu(int index, string& KeyDef) {
+	vitri = index;
+	KeyDef = "";
+	string Announce = "Invalid Definition";
+	string SearchAgain = "Search again";
+	string BackButton = "Back";
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 25, 14, (index == 0) ? 12 : 0);
+	Print(SearchAgain, 10, 27, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 27, 15, (index == 2) ? 2 : 0);
+}
+
+void FirstHelperSearchForDefinitionMenu(int index, string& KeyDef) {
+	vitri = index;
+	string Announce = "Search Successfully";
+	string AddToFav = "Add to favourite list";
+	string BackButton = "Back";
+	Print(Announce, (ConsoleWidth / 2 - Announce.length() / 2), 29, 14, (index == 0) ? 12 : 0);
+	Print(AddToFav, 10, 31, 15, (index == 1) ? 2 : 0);
+	Print(BackButton, 66, 31, 15, (index == 2) ? 2 : 0);
+}
+
+void ThirdHelperSearchForDefinitionMenu() {
+	TrieNodeDef* Cur = CurrentDictDef.TakeLastDefNode(KeyDef);
+	if (Cur) {
+		for (string temp : Cur->Word) {
+			AddToFavouriteList(temp, KeyDef);
+			if (EnableToAdd == false) {
+				string AddFail = "Favourite List reach maximum";
+				Print(AddFail, (ConsoleWidth / 2 - AddFail.length() / 2), 32, 14, 0);
+				page = FIRST_HELPER_SEARCH_FOR_DEF_MENU;
+				return;
+			}
+		}
+	}
+	string AddSuccess = "Added Successfully";
+	Print(AddSuccess, (ConsoleWidth / 2 - AddSuccess.length() / 2), 32, 14, 0);
+	KeyDef = "";
+	page = FIRST_HELPER_SEARCH_FOR_DEF_MENU;
+}
+
 void HistoryOfSearchingMenu() {
+	if (HistoryList.size() == 0) {
+		string s = "Your History List is empty";
+		string s1 = "Back";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+		Print(s1, (ConsoleWidth / 2 - s1.length() / 2), 10, 15, 2);
+		return;
+	}
 	// in ra toi da 5 tu
-	int maxWord = 5;
+	int maxWord = 7;
 	// in ra toi da 2 definition cho 1 tu
 	int maxDef = 2;
 	string s = "Your Searching History";
@@ -504,6 +557,13 @@ void HistoryOfSearchingMenu() {
 }
 
 void ViewFavouriteMenu() {
+	if (FavouriteList.size() == 0) {
+		string s = "Your Favourite List is empty";
+		string s1 = "Back";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+		Print(s1, (ConsoleWidth / 2 - s1.length() / 2), 10, 15, 2);
+		return;
+	}
 	// in ra toi da 8 tu
 	int maxWord = 8;
 	// in ra toi da 1 definition cho 1 tu
@@ -568,7 +628,7 @@ void AddToFavouriteMenu() {
 	show_console_cursor(true);
 	Print(Annouce, 10, 28, 14, 0);
 	string Word;
-	cin >> Word;
+	getline(cin,Word);
 	show_console_cursor(false);
 	string Result;
 	// neu danh sach da full
@@ -588,7 +648,7 @@ void AddToFavouriteMenu() {
 		}		
 	}	
 	TrieNode* Cur = CurrentDict.TakeLastNode(Word);
-	if (!Cur) {
+	if (!Cur || Cur->Definition.size() == 0) {
 		// neu word khong ton tai
 		Result = "Invalid Word";
 	}
@@ -604,6 +664,13 @@ void AddToFavouriteMenu() {
 }
 
 void RemoveFromFavouriteMenu() {
+	if (FavouriteList.size() == 0) {
+		string s = "Your Favourite List is empty";
+		string s1 = "Back";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
+		Print(s1, (ConsoleWidth / 2 - s1.length() / 2), 10, 15, 2);
+		return;
+	}
 	// in ra toi da 8 tu
 	int maxWord = 8;
 	// in ra toi da 1 definition cho 1 tu
@@ -636,7 +703,7 @@ void RemoveFromFavouriteMenu() {
 	show_console_cursor(true);
 	Print(Annouce, 10, 25, 14, 0);
 	string Word;
-	cin >> Word;
+	getline(cin,Word);
 	show_console_cursor(false);
 	RemoveFromFavouriteList(Word);
 	if (EnableToRemove == true) {
@@ -652,20 +719,20 @@ void RemoveFromFavouriteMenu() {
 
 void AddNewWord() {
 
-	string s = "Input wew word:";
+	string s = "Input new word:";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
-	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
 	string InputStr;
-	cin >> InputStr;
+	getline(cin, InputStr);
 
 	s = "Input word definition:";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
 	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
 	string InputDef;
-	cin >> InputDef;
+	getline(cin, InputDef);
 
 	CurrentDict.AddToTrie(InputStr, InputDef);
-	
+	CurrentDictDef.AddToTrieDef(InputDef, InputStr);
+
 	s = "Successful!";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
 
@@ -681,23 +748,53 @@ void EditWordDefinition() {
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
 	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
 	string InputStr;
-	cin >> InputStr;
+	getline(cin,InputStr);
+
+	TrieNode* here = CurrentDict.TakeLastNode(InputStr);
+	if (here == nullptr) {
+		s = "Fail! Unknown word!";
+		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 4, 0);
+		page = FUNCTION_MENU;
+		return;
+	}
+	vector<string> temp = here->Definition;
 
 	s = "Input new definition:";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 14, 0);
 	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 9);
 	string InputDef;
-	cin >> InputDef;
-
+	getline(cin,InputDef);
+	
+	// Chinh cay CurrentDict
 	bool res = CurrentDict.EditDef(InputStr, InputDef);
-
 	if (res) {
 		s = "Successful!";
 		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 2, 0);
-	}
-	else {
-		s = "Fail! Unknown word!";
-		Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 4, 0);
+		// Chinh cay CurrentDictDef
+		CurrentDictDef.AddToTrieDef(InputDef, InputStr);
+		for (auto k : temp) {
+			TrieNodeDef* here = CurrentDictDef.TakeLastDefNode(k);
+			vector<string> ::iterator it;
+			for (it = here->Word.begin(); it != here->Word.end(); it++) {
+				if (*(it) == InputStr) {
+					here->Word.erase(it);
+					break;
+				}
+			}
+		}
+		// Chinh lai History, Favourite co InputDef
+		for (auto k : FavouriteList) {
+			if (k->word == InputStr) {
+				k->Definition.clear();
+				k->Definition.push_back(InputDef);
+			}
+		}
+		for (auto k : HistoryList) {
+			if (k->word == InputStr) {
+				k->Definition.clear();
+				k->Definition.push_back(InputDef);
+			}
+		}
 	}
 
 	s = "Back!";
@@ -712,13 +809,33 @@ void DeleteWord() {
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 5, 14, 0);
 	Gotoxy((ConsoleWidth / 2 - s.length() / 2) + 2, 6);
 	string InputStr;
-	cin >> InputStr;
+	getline(cin,InputStr);
+	vector<string> temp = CurrentDict.TakeLastNode(InputStr)->Definition;
 
+	// Chinh Trie CurrentDict
 	bool res = CurrentDict.DelWord(InputStr);
 
 	if (res) {
 		s = "Successful!";
 		Print(s, (ConsoleWidth / 2 - s.length() / 2), 8, 2, 0);
+		// Chinh cay CurrentDictDef
+		for (auto k : temp) {
+			TrieNodeDef* here = CurrentDictDef.TakeLastDefNode(k);
+			vector<string> ::iterator it;
+			for (it = here->Word.begin(); it != here->Word.end(); it++) {
+				if (*(it) == InputStr) {
+					here->Word.erase(it);
+					break;
+				}
+			}
+		}
+		// Xoa khoi History, Favourite
+		for (auto k : FavouriteList) {
+			if (InputStr == k->word) RemoveFromFavouriteList(InputStr);
+		}
+		for (auto k : HistoryList) {
+			if (InputStr == k->word) RemoveFromHistoryList(InputStr);
+		}
 	}
 	else {
 		s = "Fail! Unknown word!";
@@ -728,12 +845,18 @@ void DeleteWord() {
 	s = "Back!";
 	Print(s, (ConsoleWidth / 2 - s.length() / 2), 11, 7, 2);
 
+
 	page = FUNCTION_MENU;
 	return;
 }
 
 void ResetOriginMenu(string& MenuName) {
+	/*string Loading = "Loading...";
+	Print(Loading, (ConsoleWidth / 2 - Loading.size() / 2), 10, 14, 0);*/
 	CurrentDict.deleteAllNode();
+	CurrentDictDef.deleteAllDefNode();
+	HistoryList.clear();
+	FavouriteList.clear();
 	ifstream fin;
 	string s = "../Database/Origin/" + MenuName + ".txt";
 	fin.open(s);
@@ -761,10 +884,13 @@ void ResetOriginMenu(string& MenuName) {
 		a.erase(a.length() - 1, 1);
 		b.erase(b.length() - 1, 1);
 		CurrentDict.AddToTrie(a, b);
+		CurrentDictDef.AddToTrieDef(b, a);
 	}
 	fin.close();
+	/*eraseLines(10);*/
 	string Announce = "Reset Origin Successfully";
 	Print(Announce, (ConsoleWidth / 2 - Announce.size() / 2), 10, 14, 0);
 	string BackButton = "Back";
 	Print(BackButton, (ConsoleWidth / 2 - BackButton.size() / 2), 15, 15, 2);
 }
+

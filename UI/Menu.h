@@ -29,6 +29,10 @@
 #define EDIT_WORD_DEFINITION 20
 #define DELETE_WORD 21
 #define RESET_ORIGIN_MENU 23
+#define SEARCH_FOR_DEF_MENU 24
+#define FIRST_HELPER_SEARCH_FOR_DEF_MENU 25
+#define SECOND_HELPER_SEARCH_FOR_DEF_MENU 26
+#define THIRD_HELPER_SEARCH_FOR_DEF_MENU 27
 
 // Ve menu
 void DrawTitle();
@@ -56,3 +60,7 @@ void AddNewWord();
 void EditWordDefinition();
 void DeleteWord();
 void ResetOriginMenu(string& MenuName);
+void SearchForDefinitionMenu(string& KeyDef, int index);
+void SecondHelperSearchForDefinitionMenu(int index, string& KeyDef);
+void FirstHelperSearchForDefinitionMenu(int index, string& KeyDef);
+void ThirdHelperSearchForDefinitionMenu();

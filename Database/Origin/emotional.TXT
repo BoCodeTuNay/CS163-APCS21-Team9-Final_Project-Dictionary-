@@ -376,7 +376,6 @@ IGTP `I get the point
 IHTFP `I hate this fountain place
 IHU `I hate you
 IHY `I hate you
-II `I’m impressed
 IIR `If I recall
 IIRC `If I recall correctly
 IIT `I’m impressed too

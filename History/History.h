@@ -27,3 +27,5 @@ void LoadHistoryData();
 void AddToHistoryList(string& InputWord, string& InputDef);
 
 void OutputToHistoryList();
+
+void RemoveFromHistoryList(string& InputWord);

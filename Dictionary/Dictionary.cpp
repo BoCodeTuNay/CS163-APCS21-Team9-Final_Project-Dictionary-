@@ -19,14 +19,16 @@ int main() {
 	LoadVietToEngData();
 	LoadEngToVietData();
 
-	/*cout << EmojiDict.Root->ChildsNum << endl;
-	EmojiDict.deleteAllNode();
-	if (EmojiDict.Root == NULL) cout << "haha";*/
-
 	LoadHistoryData();
 	LoadFavouriteData();
 
 	page = MAIN_MENU;
+
+	//TrieNodeDef* temp = EmojiDefDict.RootDef->NextNode[73]->NextNode[32]->NextNode[115]->NextNode[101]->NextNode[101];
+	//cout << temp->Def;
+	//for (auto k : temp->Word) {
+	//	cout << k << endl;
+	//}
 
 	Event();
 

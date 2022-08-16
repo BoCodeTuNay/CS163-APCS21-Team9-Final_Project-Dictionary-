@@ -50,11 +50,32 @@ struct TrieNode {
 
 };
  
+struct TrieNodeDef {
+	string Def;
+	vector<string> Word;
+	char NodeChar;
+	TrieNodeDef* NextNode[MaxDiffChar];
+	TrieNodeDef() {
+		Def = "";
+		NodeChar = '\0';
+		for (int i = 0; i < MaxDiffChar; i++) this->NextNode[i] = NULL;
+	}
+	TrieNodeDef(char c) {
+		Def = "";
+		NodeChar = c;
+		for (int i = 0; i < MaxDiffChar; i++) this->NextNode[i] = NULL;
+	}
+};
+
 struct Trie {
 	TrieNode* Root = NULL;
+	TrieNodeDef* RootDef = NULL;
 
 	// Phuc vu cho viec random access 1 tu ton tai trong tu dien
 	vector<TrieNode*> ExistingWords;
+
+	// Phuc vu cho viec search definition cua cac word da xoa
+	vector<string> WordDeleted;
 
 	// update so luong child cua node 
 	void UpdChildsNum(TrieNode* Leaf);
@@ -73,12 +94,20 @@ struct Trie {
 
 	// Trả về node cuối nếu word đã được load, ngc lại trả về null 
 	TrieNode* TakeLastNode(string& InputStr);
-
+	
 	// xoa toan bo trie
 	void deleteAllNode();
+
+	void deleteAllDefNode();
+
+	void AddToTrieDef(const string& InputDef, const string& InputWord);
+
+	TrieNodeDef* TakeLastDefNode(string& InputStr);
 };
 
 // lưu các node có nghĩa con của node Cur
 void SaveBelowWords(TrieNode* Cur, TrieNode* Cur1);
 
 void HelperDeleteAllNode(TrieNode*& Cur);
+
+void HelperDeleteAllDefNode(TrieNodeDef*& Cur);

@@ -638,7 +638,6 @@ Viet-Phap `Vietnamese-French
 Van Nam `Yunnan
 Van Tuong `Vientiane
 Vang a `Yes sir
-Ve Ða `Veda
 Vinh Ba Tu `Persian Gulf
 Vinh Thai Lan `Gulf of Thailand
 Vong Cac `Bangkok
@@ -1419,7 +1418,6 @@ bien ho `to defend, plead, apologize; defense (legal)
 bien luan `to argue, discuss
 bien ly `attorney, prosecutor
 bien le `to make offerings, presents
-bien l‎y cuoc `prosecutor’s office
 bien minh `to explain, justify, clarify
 bien phap `measure, action, method, means, procedure
 bien phap an ninh `security measures
@@ -16952,7 +16950,6 @@ hai luu `sea current
 hai lo `sea route
 hai luc khong quan `army, navy, and air force
 hai luc `sea forces
-hai l‎y gio `knot (unit of speed)
 hai mien `sponge
 hai ma `sea horse, hippocampus
 hai ma ngu `hippocampus
@@ -27154,7 +27151,6 @@ nguoi dung dau `leader, head, chief
 nguoi dung o dang kia la ai vay? `who’s the man standing over there?
 nguoi uu tu `person, talented person
 nguoi a Rap `Arab (person)
-nguoi an Ðo `Indian (person)
 nguoi ay `that person
 nguoi om `thin body
 nguoi o `servant, domestic help
@@ -29244,7 +29240,6 @@ nho nhoi `make a slip of the tongue
 nho thi `(of women) too old to get married
 nho thoi `miss a chance
 nho tau `to miss the boat (literally and figuratively)
-nho … thi sao `what if
 nhon cau `eyeball
 nho `rope, string, fine cord; sweetish
 nhot `pale

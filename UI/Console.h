@@ -54,3 +54,5 @@ void DisableResizeWindow();
 void ShowScrollbar(BOOL Show);
 
 void show_console_cursor(const bool show);
+
+void eraseLines(int count);

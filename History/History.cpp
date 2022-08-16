@@ -8,6 +8,7 @@ void LoadHistoryData() {
 	string temp;
 	while (!fin.eof()) {
 		getline(fin, temp, '\n');
+		if (temp.size() == 0) return;
 		stringstream s(temp);
 		bool flag = false;
 		string a, b;
@@ -35,10 +36,19 @@ void LoadHistoryData() {
 
 void AddToHistoryList(string& InputWord, string& InputDef) {
 	int Size = HistoryList.size();
+	bool DefExist = false;
+	for (int i = 0; i < Size; i++) {
+		if (HistoryList[i]->word == InputWord) {
+			for (auto k : HistoryList[i]->Definition) {
+				if (k == InputDef) DefExist = true;
+				break;
+			}
+		}
+	}
 	// inputword da ton tai trong history
 	if (Size <= 10) {
 		for (int i = 0; i < Size; i++) {
-			if (HistoryList[i]->word == InputWord) {
+			if (HistoryList[i]->word == InputWord && DefExist == false) {
 				HistoryList[i]->Definition.push_back(InputDef);
 				return;
 			}
@@ -69,4 +79,15 @@ void OutputToHistoryList() {
 		}
 	}
 	fout.close();
+}
+
+void RemoveFromHistoryList(string& InputWord) {
+	int Size = HistoryList.size();
+	for (int i = 0; i < Size; i++) {
+		if (HistoryList[i]->word == InputWord) {
+			vector<History*> ::iterator it = HistoryList.begin() + i;
+			HistoryList.erase(it);
+			return;
+		}
+	}
 }

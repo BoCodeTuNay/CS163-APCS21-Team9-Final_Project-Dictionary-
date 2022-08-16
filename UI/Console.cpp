@@ -211,3 +211,16 @@ void show_console_cursor(const bool show) {
 	cout << (show ? "\033[?25h" : "\033[?25l"); // show/hide cursor
 #endif // Windows/Linux
 }
+
+void eraseLines(int count) {
+	if (count > 0) {
+		std::cout << "\x1b[2K"; // Delete current line
+		// i=1 because we included the first line
+		for (int i = 1; i < count; i++) {
+			std::cout
+				<< "\x1b[1A" // Move cursor up one
+				<< "\x1b[2K"; // Delete the entire line
+		}
+		std::cout << "\r"; // Resume the cursor at beginning of line
+	}
+}

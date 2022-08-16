@@ -101,10 +101,57 @@ void Trie::deleteAllNode() {
 	HelperDeleteAllNode(Root);
 }
 
+void Trie::deleteAllDefNode() {
+	HelperDeleteAllDefNode(RootDef);
+}
+
+void Trie::AddToTrieDef(const string& InputDef, const string& InputWord) {
+	if (RootDef == NULL) {
+		RootDef = new TrieNodeDef();
+	}
+
+	TrieNodeDef* Cur = RootDef;
+
+	string WordTmp = "";
+	for (char c : InputDef) {		
+		int cNum = int(c);
+		if (c >= 128 || c < 0) continue;
+		WordTmp += c;
+		if (Cur->NextNode[cNum] == NULL) {
+			Cur->NextNode[cNum] = new TrieNodeDef(c);
+		}
+		Cur = Cur->NextNode[cNum];
+	}
+
+	Cur->Def = WordTmp;
+	Cur->Word.push_back(InputWord);
+}
+
+TrieNodeDef* Trie:: TakeLastDefNode(string& InputStr) {
+	TrieNodeDef* Res = NULL;
+	TrieNodeDef* Cur = RootDef;
+	for (char c : InputStr) {
+		int cNum = int(c);
+		if (Cur->NextNode[cNum] == NULL) return Res;
+		Cur = Cur->NextNode[cNum];
+	}
+	return Cur;
+}
+
 void HelperDeleteAllNode(TrieNode*& Cur) {
 	for (int i = 0; i < MaxDiffChar; i++) {
 		if (Cur->NextNode[i] != NULL) {
 			HelperDeleteAllNode(Cur->NextNode[i]);
+		}
+	}
+	delete(Cur);
+	Cur = nullptr;
+}
+
+void HelperDeleteAllDefNode(TrieNodeDef*& Cur) {
+	for (int i = 0; i < MaxDiffChar; i++) {
+		if (Cur->NextNode[i] != NULL) {
+			HelperDeleteAllDefNode(Cur->NextNode[i]);
 		}
 	}
 	delete(Cur);

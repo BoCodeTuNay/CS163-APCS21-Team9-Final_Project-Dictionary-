@@ -5,11 +5,17 @@
 #include "../Favourite/Favourite.h"
 
 extern Trie CurrentDict;
+extern Trie CurrentDictDef;
 extern Trie EmojiDict;
 extern Trie SlangDict;
 extern Trie EngToEngDict;
 extern Trie EngToVietDict;
 extern Trie VietToEngDict;
+extern Trie EmojiDefDict;
+extern Trie SlangDefDict;
+extern Trie EngToEngDefDict;
+extern Trie EngToVietDefDict;
+extern Trie VietToEngDefDict;
 
 // MenuName de xac dinh vi tri cua CurrentDict
 extern string MenuName;
@@ -27,6 +33,7 @@ extern int CorrectAnswer;
 //string Keyword để search for keyword
 extern string KeyWord;
 extern string SuggestWord;
+extern string KeyDef;
 
 void LoadEmojiData();
 
@@ -37,3 +44,15 @@ void LoadSlangData();
 void LoadVietToEngData();
 
 void LoadEngToVietData();
+
+void OutputEmojiData();
+
+void OutputSlangData();
+
+void OutputEngToEngData();
+
+void OutputEngToVietData();
+
+void OutputVietToEngData();
+
+void HelperOutputData(ofstream& fout, TrieNode* Root);

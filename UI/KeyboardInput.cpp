@@ -198,6 +198,15 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				if (vitri == 0) vitri = 1;
 				break;
 			}
+			case FIRST_HELPER_SEARCH_FOR_DEF_MENU: {
+				if (vitri == 0) vitri = 1;
+				break;
+			}
+
+			case SECOND_HELPER_SEARCH_FOR_DEF_MENU: {
+				if (vitri == 0) vitri = 1;
+				break;
+			}
 			}
 			break;
 		}
@@ -209,6 +218,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = EmojiDict;
+					CurrentDictDef = EmojiDefDict;
 					MenuName = "emotional";
 					Clrscr();
 				}
@@ -216,6 +226,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = SlangDict;
+					CurrentDictDef = SlangDefDict;
 					MenuName = "slang";
 					Clrscr();
 				}
@@ -223,6 +234,7 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					page = FUNCTION_MENU;
 					vitri = 0;
 					CurrentDict = EngToEngDict;
+					CurrentDictDef = EngToEngDefDict;
 					MenuName = "Anh Anh";
 					Clrscr();
 				}
@@ -241,7 +253,11 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 5) {
-					Clrscr();
+					OutputEmojiData();
+					OutputSlangData();
+					OutputEngToEngData();
+					OutputEngToVietData();
+					OutputVietToEngData();
 					OutputToHistoryList();
 					OutputToFavouriteList();
 					exit(0);
@@ -289,7 +305,8 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 					Clrscr();
 				}
 				else if (vitri == 1) {
-					// ham SEARCH FOR DEFINITION
+					page = SEARCH_FOR_DEF_MENU;
+					vitri = 0;
 					Clrscr();
 				}
 				else if (vitri == 2) {
@@ -519,6 +536,32 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 				Clrscr();
 				break;
 			}
+
+			case FIRST_HELPER_SEARCH_FOR_DEF_MENU: {
+				if (vitri == 1) {
+					page = THIRD_HELPER_SEARCH_FOR_DEF_MENU;
+				}
+				else if (vitri == 2) {
+					page = SEARCH_MENU;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			}
+
+			case SECOND_HELPER_SEARCH_FOR_DEF_MENU: {
+				if (vitri == 1) {
+					page = SEARCH_FOR_DEF_MENU;
+					vitri = 0;
+					Clrscr();
+				}
+				else if (vitri == 2) {
+					page = SEARCH_MENU;
+					vitri = 0;
+					Clrscr();
+				}
+				break;
+			}
 			}
 			break;
 		}
@@ -531,6 +574,16 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			}
+
+			case FIRST_HELPER_SEARCH_FOR_DEF_MENU: {
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			}
+
+			case SECOND_HELPER_SEARCH_FOR_DEF_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
@@ -562,6 +615,16 @@ void HandleKeyInput(KEY_EVENT_RECORD key) {
 			}
 
 			case FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU: {
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			}
+
+			case FIRST_HELPER_SEARCH_FOR_DEF_MENU: {
+				vitri = (vitri == 1) ? 2 : 1;
+				break;
+			}
+
+			case SECOND_HELPER_SEARCH_FOR_DEF_MENU: {
 				vitri = (vitri == 1) ? 2 : 1;
 				break;
 			}
@@ -656,6 +719,19 @@ void Event() {
 				}
 				else if (page == FIFTH_HELPER_SEARCH_FOR_KEYWORD_MENU) {
 					FifthHelperSearchForKeyWordMenu(vitri);
+				}
+				else if (page == SEARCH_FOR_DEF_MENU) {
+					DrawTitle();
+					SearchForDefinitionMenu(KeyDef, vitri);
+				}
+				else if (page == FIRST_HELPER_SEARCH_FOR_DEF_MENU) {
+					FirstHelperSearchForDefinitionMenu(vitri, KeyDef);
+				}
+				else if (page == SECOND_HELPER_SEARCH_FOR_DEF_MENU) {
+					SecondHelperSearchForDefinitionMenu(vitri, KeyDef);
+				}
+				else if (page == THIRD_HELPER_SEARCH_FOR_DEF_MENU) {
+					ThirdHelperSearchForDefinitionMenu();
 				}
 				else if (page == GUESS_DEFINITION_FROM_WORD_MENU) {
 					DrawTitle();
