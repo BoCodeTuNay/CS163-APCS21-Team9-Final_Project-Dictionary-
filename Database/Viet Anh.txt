@@ -20,49 +20,14 @@ Anh ly `English mile
 Anh ngu `English language
 Anh ngu kem `poor English
 Ba La Mon `Brahman
+Ba La Mon `Brahman
 Ba Lan `Poland
 Ba Le `Paris
+Ba Linh `Berlin
 Ba Linh `Berlin
 Ba Nhi Can `(the) Balkans
 Ba Tay `Brazil, Brazilian
 Ba Ti Luan `Babylon
-Bao Tich Nhuoc `(character in the book “Anh Hung Xa dieu”)
-Binh thu yeu luoc `The Art of War (book by Sun Tzu)
-Biet lam the nao bay gio `What can one do now!
-Bien Bang `Mare Frigoris (lunar sea)
-Bien Ca Bao To `Oceanus Procellarum
-Bien Hai Huoc `Mare Humorum (lunar sea)
-Bien Hoi `Mare Vaporum (lunar sea)
-Bien Khung Hoang `Mare Crisium (lunar sea)
-Bien May `Mare Nubium (lunar sea)
-Bien Mua Gio `Mare Imbrium (lunar sea)
-Bien Nam Hai `South Sea
-Bien Phong Phu `Mare Foecondatus
-Bien Thai Binh Duong `the Pacific Ocean
-Bien Trong `Mare Seranitatis
-Bien Tram Lang `Mare Traquilitatis
-Bien dong `South China Sea
-Bien dia Trung Hai `Mediterranean Sea
-Brazin `Brazil
-Ba La Mon `Brahman
-Bau Soi `(name of a village)
-Ba Linh `Berlin
-Bai hoa giao `Zoroastrianism
-Bat Quai dai `octagonal palace (Cao Dai)
-Binh Nhuong `Pyongyang
-Binh dinh `(province name)
-Bang Coc `Bangkok
-Bang Ðao `Iceland
-Bach Cung `the White House
-Bach Mi `God of Prostitutes
-Bach Nga `White Russian, Byelorussian
-Bach tuyet `Snow White
-Bach oc `the White House
-Ban Chau `Honshu (region of Japan)
-Ban Mon diem `Panmunjon
-Bao Gia Loi `Bulgaria, Bulgarian
-Bao quoc Huan chuong `National Order Medal
-Bac au `Northern Europe, Scandinavia
 Bac Bang Duong `Arctic Ocean
 Bac Binh `Peiping
 Bac Bo `north(ern) region of Vietnam
@@ -82,43 +47,76 @@ Bac Trieu Tien `North Korea
 Bac Viet `North(ern) Vietnam
 Bac au `Northern Europe, Scandinavia
 Bac au `Northern Europe, Scandinavia
+Bac au `Northern Europe, Scandinavia
 Bac dai Tay Duong `North Atlantic (Ocean)
 Bac dau `Ursa Major (constellation)
+Bang Ðao `Iceland
+Bach Cung `the White House
 Bach Cung `the White House
 Bach Mi `God of Prostitutes
+Bach Mi `God of Prostitutes
+Bach Nga `White Russian, Byelorussian
 Bach Nga `White Russian, Byelorussian
 Bach oc `the White House
+Bach oc `the White House
+Bach tuyet `Snow White
 Bach tuyet `Snow White
 Bai hoa giao `Zoroastrianism
+Bai hoa giao `Zoroastrianism
+Ban Chau `Honshu (region of Japan)
 Ban Chau `Honshu (region of Japan)
 Ban Mon diem `Panmunjon
-Bang Ðao `Iceland
+Ban Mon diem `Panmunjon
+Bang Coc `Bangkok
 Bang Coc `Bangkok
 Bao Gia Loi `Bulgaria, Bulgarian
+Bao Gia Loi `Bulgaria, Bulgarian
+Bao Tich Nhuoc `(character in the book “Anh Hung Xa dieu”)
 Bao Tich Nhuoc `(character in the book “Anh Hung Xa dieu”)
 Bao quoc Huan chuong `National Order Medal
+Bao quoc Huan chuong `National Order Medal
 Bat Quai dai `octagonal palace (Cao Dai)
+Bat Quai dai `octagonal palace (Cao Dai)
+Bau Soi `(name of a village)
 Bau Soi `(name of a village)
 Be Ha `Sire, Your Majesty
 Bi Loi Thi `Belgium, Belgian
 Bi quoc `Belgium
 Bien Bang `Mare Frigoris (lunar sea)
+Bien Bang `Mare Frigoris (lunar sea)
+Bien Ca Bao To `Oceanus Procellarum
 Bien Ca Bao To `Oceanus Procellarum
 Bien Hai Huoc `Mare Humorum (lunar sea)
+Bien Hai Huoc `Mare Humorum (lunar sea)
+Bien Hoi `Mare Vaporum (lunar sea)
 Bien Hoi `Mare Vaporum (lunar sea)
 Bien Khung Hoang `Mare Crisium (lunar sea)
+Bien Khung Hoang `Mare Crisium (lunar sea)
+Bien May `Mare Nubium (lunar sea)
 Bien May `Mare Nubium (lunar sea)
 Bien Mua Gio `Mare Imbrium (lunar sea)
+Bien Mua Gio `Mare Imbrium (lunar sea)
+Bien Nam Hai `South Sea
 Bien Nam Hai `South Sea
 Bien Phong Phu `Mare Foecondatus
+Bien Phong Phu `Mare Foecondatus
+Bien Thai Binh Duong `the Pacific Ocean
 Bien Thai Binh Duong `the Pacific Ocean
 Bien Tram Lang `Mare Traquilitatis
+Bien Tram Lang `Mare Traquilitatis
+Bien Trong `Mare Seranitatis
 Bien Trong `Mare Seranitatis
 Bien dia Trung Hai `Mediterranean Sea
+Bien dia Trung Hai `Mediterranean Sea
+Bien dong `South China Sea
 Bien dong `South China Sea
 Biet lam the nao bay gio `What can one do now!
+Biet lam the nao bay gio `What can one do now!
+Binh Nhuong `Pyongyang
 Binh Nhuong `Pyongyang
 Binh dinh `(province name)
+Binh dinh `(province name)
+Binh thu yeu luoc `The Art of War (book by Sun Tzu)
 Binh thu yeu luoc `The Art of War (book by Sun Tzu)
 Bo Canh Binh `Ministry of Agriculture
 Bo Canh Nong `Ministry of Agriculture
@@ -157,6 +155,7 @@ Bo Xa Hoi `Ministry of Social Welfare
 Bo Y Te `Ministry of Public Health
 Bo dai dong a `the Greater East Asia Ministry
 Bo dao Nha `Portugal, Portuguese
+Brazin `Brazil
 Brazin `Brazil
 Buc Man Sat `Iron Curtain
 But `Buddha
@@ -1811,9 +1810,9 @@ au `careless, reckless, negligent; to strike
 au Chau `Europe, European
 au My `Europe and the United States, Occidental, Western
 au Tay `Western, Occidental, European
+Dong Ðuc `East Germany
 au Tay hoa `westernization, westernize
 au a `Europe and Asia, East and West
-Dong Ðuc `East Germany
 au ca `sing in chorus the praises
 au chua `young king, child king
 au da `fight, brawl; to fight
